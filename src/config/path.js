@@ -1,3 +1,4 @@
 export const PATH = {
-    product: '/product'
+    product: '/product',
+    shopping_cart: '/shopping-cart',
 }
