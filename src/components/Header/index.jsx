@@ -2361,12 +2361,12 @@ export const Header = () => {
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
                 <a className="nav-link" href="./">
-                  Trang chủ
+                  Home
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="./shop.html">
-                  Sản phẩm
+                  Product
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -2376,12 +2376,12 @@ export const Header = () => {
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link" href="#">
-                  Máy tính
+                  Computer
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="docs/getting-started.html">
-                  Sản phẩm khuyến mãi
+                  Sale Product
                 </a>
               </li>
             </ul>
