@@ -12,6 +12,7 @@ import { profile } from "./profile";
 import { GuestRoute } from "@/components/GuestRoute";
 import { OrderCompleted } from "@/pages/order-completed";
 
+
 export const routers = [
   {
     element: <MainLayouts />,
@@ -42,7 +43,7 @@ export const routers = [
       },
 
       {
-        element: <PrivateRoute />,
+        element: <PrivateRoute redirect={PATH.Account} />,
         children: profile,
         path: PATH.Profile.index,
       },
@@ -66,6 +67,11 @@ export const routers = [
       {
         path: PATH.OrderCompleted,
         element: <OrderCompleted />,
+      },
+
+      {
+        path: PATH.ContactUs,
+        element: <ContactUs />,
       },
 
       {
