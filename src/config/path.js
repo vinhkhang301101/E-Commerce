@@ -5,4 +5,5 @@ export const PATH = {
     accountAddressEdit: '/account-address-edit',
     accountAdress: '/account-address',
     accountOrder: 'account-order',
+    checkout: 'checkout',
 }

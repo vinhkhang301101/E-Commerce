@@ -8,6 +8,7 @@ import { Auth } from "@/pages/auth";
 import { AccountAddressEdit } from "@/pages/accountAddressEdit";
 import { AccountAdress } from "@/pages/accountAdress";
 import { AccountOrder } from "@/pages/accountOrder";
+import { Checkout } from "@/pages/checkout";
 
 export const routers = [
   {
@@ -42,6 +43,10 @@ export const routers = [
       {
         path: PATH.accountOrder,
         element: <AccountOrder />,
+      },
+      {
+        path: PATH.checkout,
+        element: <Checkout />,
       },
 
       {
