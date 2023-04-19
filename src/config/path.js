@@ -1,4 +1,4 @@
-const PROFILE = '/account'
+const PROFILE = '/profile'
 
 export const PATH = {
     Home: '/',
