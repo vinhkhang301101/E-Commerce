@@ -1,3 +1,5 @@
+const PROFILE = '/account'
+
 export const PATH = {
     product: '/product',
     shopping_cart: '/shopping-cart',
@@ -5,6 +7,4 @@ export const PATH = {
     accountAddressEdit: '/account-address-edit',
     accountAdress: '/account-address',
     accountOrder: 'account-order',
-    checkout: 'checkout',
-    contactUs: 'contact-us',
 }

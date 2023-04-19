@@ -1,8 +1,9 @@
 import React from "react";
 
-export const AccountAdress = () => {
+export const Payment = () => {
   return (
     <div>
+      {/* BREADCRUMB */}
       <nav className="py-5">
         <div className="container">
           <div className="row">
@@ -20,6 +21,7 @@ export const AccountAdress = () => {
           </div>
         </div>
       </nav>
+      {/* CONTENT */}
       <section className="pt-7 pb-12">
         <div className="container">
           <div className="row">
@@ -52,13 +54,13 @@ export const AccountAdress = () => {
                     Personal Info
                   </a>
                   <a
-                    className="list-group-item list-group-item-action dropright-toggle active"
+                    className="list-group-item list-group-item-action dropright-toggle "
                     href="account-address.html"
                   >
                     Addresses
                   </a>
                   <a
-                    className="list-group-item list-group-item-action dropright-toggle "
+                    className="list-group-item list-group-item-action dropright-toggle active"
                     href="account-payment.html"
                   >
                     Payment Methods
@@ -79,54 +81,30 @@ export const AccountAdress = () => {
                   <div className="card card-lg bg-light mb-8">
                     <div className="card-body">
                       {/* Heading */}
-                      <h6 className="mb-6">Shipping Address</h6>
+                      <h6 className="mb-6">Debit / Credit Card</h6>
                       {/* Text */}
-                      <p className="text-muted mb-0">
-                        Daniel Robinson <br />
-                        3997 Raccoon Run <br />
-                        Kingston <br />
-                        45644 <br />
-                        United States <br />
-                        6146389574
+                      <p className="mb-5">
+                        <strong>Card Number:</strong> <br />
+                        <span className="text-muted">
+                          4242 ∙∙∙∙ ∙∙∙∙ 7856 (Mastercard)
+                        </span>
+                      </p>
+                      {/* Text */}
+                      <p className="mb-5">
+                        <strong>Expiry Date:</strong> <br />
+                        <span className="text-muted">Feb 2022</span>
+                      </p>
+                      {/* Text */}
+                      <p className="mb-0">
+                        <strong>Name on Card:</strong> <br />
+                        <span className="text-muted">Daniel Robinson</span>
                       </p>
                       {/* Action */}
                       <div className="card-action card-action-right">
                         {/* Button */}
                         <a
                           className="btn btn-xs btn-circle btn-white-primary"
-                          href="account-address-edit.html"
-                        >
-                          <i className="fe fe-edit-2" />
-                        </a>
-                        {/* Button */}
-                        <button className="btn btn-xs btn-circle btn-white-primary">
-                          <i className="fe fe-x" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  {/* Card */}
-                  <div className="card card-lg bg-light mb-8">
-                    <div className="card-body">
-                      {/* Heading */}
-                      <h6 className="mb-6">Billing Address</h6>
-                      {/* Text */}
-                      <p className="text-muted mb-0">
-                        Daniel Robinson <br />
-                        3997 Raccoon Run <br />
-                        Kingston <br />
-                        45644 <br />
-                        United States <br />
-                        6146389574
-                      </p>
-                      {/* Action */}
-                      <div className="card-action card-action-right">
-                        {/* Button */}
-                        <a
-                          className="btn btn-xs btn-circle btn-white-primary"
-                          href="account-address-edit.html"
+                          href="account-payment-edit.html"
                         >
                           <i className="fe fe-edit-2" />
                         </a>
@@ -142,9 +120,9 @@ export const AccountAdress = () => {
                   {/* Button */}
                   <a
                     className="btn btn-block btn-lg btn-outline-border"
-                    href="account-address-edit.html"
+                    href="account-payment-edit.html"
                   >
-                    Add Address <i className="fe fe-plus" />
+                    Add Payment Method <i className="fe fe-plus" />
                   </a>
                 </div>
               </div>

@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react'
 
-export const AccountAddressEdit = () => {
+export const Profile = () => {
   return (
     <div>
+      {/* BREADCRUMB */}
       <nav className="py-5">
         <div className="container">
           <div className="row">
@@ -20,7 +21,7 @@ export const AccountAddressEdit = () => {
           </div>
         </div>
       </nav>
-
+      {/* CONTENT */}
       <section className="pt-7 pb-12">
         <div className="container">
           <div className="row">
@@ -47,13 +48,13 @@ export const AccountAddressEdit = () => {
                     Wishlist
                   </a>
                   <a
-                    className="list-group-item list-group-item-action dropright-toggle "
+                    className="list-group-item list-group-item-action dropright-toggle active"
                     href="account-personal-info.html"
                   >
                     Personal Info
                   </a>
                   <a
-                    className="list-group-item list-group-item-action dropright-toggle active"
+                    className="list-group-item list-group-item-action dropright-toggle "
                     href="account-address.html"
                   >
                     Addresses
@@ -74,105 +75,98 @@ export const AccountAddressEdit = () => {
               </nav>
             </div>
             <div className="col-12 col-md-9 col-lg-8 offset-lg-1">
-              {/* Heading */}
-              <h6 className="mb-7">Add Address</h6>
               {/* Form */}
               <form>
                 <div className="row">
                   <div className="col-12">
+                    {/* Email */}
                     <div className="form-group">
-                      <label htmlFor="firstName">Full Name *</label>
+                      <label htmlFor="accountFirstName">Full Name *</label>
                       <input
-                        className="form-control"
-                        id="firstName"
+                        className="form-control form-control-sm"
+                        id="accountFirstName"
                         type="text"
-                        placeholder="First Name"
+                        placeholder="Full Name *"
+                        defaultValue="Daniel"
                         required
                       />
                     </div>
                   </div>
                   <div className="col-12">
+                    {/* Email */}
                     <div className="form-group">
-                      <label htmlFor="emailAddress">Email Address *</label>
+                      <label htmlFor="accountEmail">Email Address *</label>
                       <input
-                        className="form-control"
-                        id="emailAddress"
+                        disabled
+                        className="form-control form-control-sm"
+                        id="accountEmail"
                         type="email"
-                        placeholder="Email Address"
+                        placeholder="Email Address *"
+                        defaultValue="user@email.com"
                         required
                       />
                     </div>
                   </div>
-                  <div className="col-12">
+                  <div className="col-12 col-md-6">
+                    {/* Password */}
                     <div className="form-group">
-                      <label htmlFor="mobilePhone">Mobile Phone *</label>
+                      <label htmlFor="accountPassword">
+                        Current Password *
+                      </label>
                       <input
-                        className="form-control"
-                        id="mobilePhone"
-                        type="tel"
-                        placeholder="Mobile Phone"
+                        className="form-control form-control-sm"
+                        id="accountPassword"
+                        type="password"
+                        placeholder="Current Password *"
                         required
                       />
                     </div>
                   </div>
-                  <div className="col-12">
+                  <div className="col-12 col-md-6">
                     <div className="form-group">
-                      <label htmlFor="companyName">Province *</label>
+                      <label htmlFor="AccountNewPassword">New Password *</label>
                       <input
-                        className="form-control"
-                        id="companyName"
-                        type="text"
-                        placeholder="Company Name"
+                        className="form-control form-control-sm"
+                        id="AccountNewPassword"
+                        type="password"
+                        placeholder="New Password *"
                         required
                       />
                     </div>
                   </div>
-                  <div className="col-12">
+                  <div className="col-12 col-lg-6">
                     <div className="form-group">
-                      <label htmlFor="country">District *</label>
+                      <label>Date of Birth</label>
                       <input
-                        className="form-control"
-                        id="country"
-                        type="text"
-                        placeholder="Country"
+                        className="form-control form-control-sm"
+                        type="date"
+                        placeholder="dd/mm/yyyy"
                         required
                       />
                     </div>
                   </div>
-                  <div className="col-12">
-                    <div className="form-group">
-                      <label htmlFor="addressLineOne">Address *</label>
-                      <input
-                        className="form-control"
-                        id="addressLineOne"
-                        type="text"
-                        placeholder="Address Line 1"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="form-group">
-                      <div className="custom-control custom-checkbox mb-0">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="defaultShippingAddress"
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor="defaultShippingAddress"
-                        >
-                          Default shipping address
+                  <div className="col-12 col-lg-6">
+                    {/* Gender */}
+                    <div className="form-group mb-8">
+                      <label>Gender</label>
+                      <div className="btn-group-toggle" data-toggle="buttons">
+                        <label className="btn btn-sm btn-outline-border active">
+                          <input type="radio" name="gender" defaultChecked />{" "}
+                          Male
+                        </label>
+                        <label className="btn btn-sm btn-outline-border">
+                          <input type="radio" name="gender" /> Female
                         </label>
                       </div>
                     </div>
                   </div>
+                  <div className="col-12">
+                    {/* Button */}
+                    <button className="btn btn-dark" type="submit">
+                      Save Changes
+                    </button>
+                  </div>
                 </div>
-                {/* Button */}
-                <button className="btn btn-dark" type="submit">
-                  Add Address
-                </button>
               </form>
             </div>
           </div>
@@ -180,4 +174,4 @@ export const AccountAddressEdit = () => {
       </section>
     </div>
   );
-};
+}

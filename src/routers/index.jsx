@@ -4,46 +4,63 @@ import { Page404 } from "@/pages/404";
 import { PATH } from "@/config/path";
 import { Product } from "@/pages/product";
 import { ShoppingCart } from "@/pages/shopping-cart";
-import { Auth } from "@/pages/auth";
-import { AccountAddressEdit } from "@/pages/accountAddressEdit";
-import { AccountAdress } from "@/pages/accountAdress";
-import { AccountOrder } from "@/pages/accountOrder";
 import { Checkout } from "@/pages/checkout";
-import { ContactUs } from "@/pages/contactUs";
+import { Account } from "@/pages/account";
+import { ProductDetailPages } from "@/pages/[slug]";
+import { PrivateRoute } from "@/components/PrivateRoute";
+import { profile } from "./profile";
+import { GuestRoute } from "@/components/GuestRoute";
+
 
 export const routers = [
   {
     element: <MainLayouts />,
     children: [
       {
-        path: "/",
+        path: PATH.Home,
         element: <Home />,
       },
 
       {
-        path: PATH.product,
+        path: PATH.Product,
         element: <Product />,
       },
 
       {
-        path: PATH.shopping_cart,
+        path: PATH.ProductDetail,
+        element: <ProductDetailPages />,
+      },
+
+      {
+        path: PATH.Category,
+        element: <Product />,
+      },
+
+      {
+        path: PATH.ShoppingCart,
         element: <ShoppingCart />,
       },
+
       {
-        path: PATH.auth,
-        element: <Auth />,
+        element: <PrivateRoute />,
+        children: profile,
+        path: PATH.Profile.index,
       },
+
       {
-        path: PATH.accountAddressEdit,
-        element: <AccountAddressEdit />,
+        element: <GuestRoute redirect={PATH.Profile.index} />,
+        children: [
+          {
+            index: true,
+            element: <Account />,
+          },
+        ],
+        path: PATH.Account,
       },
+
       {
-        path: PATH.accountAdress,
-        element: <AccountAdress />,
-      },
-      {
-        path: PATH.accountOrder,
-        element: <AccountOrder />,
+        path: PATH.Checkout,
+        element: <Checkout />,
       },
       {
         path: PATH.checkout,
