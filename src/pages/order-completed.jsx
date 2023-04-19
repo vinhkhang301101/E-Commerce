@@ -13,7 +13,7 @@ export const OrderCompleted = () => {
               <p className="mb-7 text-gray-500">
                 Your order <span className="text-body text-decoration-underline">673290789</span> has been completed. Your order
                 details
-                are shown for your personal accont.
+                are shown for your personal account.
               </p>
               {/* Button */}
               <a className="btn btn-dark" href="./account-order.html">
