@@ -1,12 +1,12 @@
-import { authService } from "@/services/auth.service"
+import { authService } from "@/services/auth"
 import axios from "axios"
-import { getToken, setToken } from "../utils/token"
+// import { getToken, setToken } from "../utils/token"
 
 export const USER_API = import.meta.env.VITE_USER_API
 export const AUTHENTICATION_API = import.meta.env.VITE_AUTHENTICATION_API;
 
-export const api = axios.create()
-api.interceptors.response.use((res) => {
+export const http = axios.create()
+http.interceptors.response.use((res) => {
     return res.data
 }, async (error) => {
     try {
@@ -20,7 +20,7 @@ api.interceptors.response.use((res) => {
 
             setToken(res.data)
 
-            return api(error.config)
+            return http(error.config)
         }
     } catch (error) {
 
@@ -28,7 +28,7 @@ api.interceptors.response.use((res) => {
     throw error
 })
 
-api.interceptors.response.use((config) => {
+http.interceptors.response.use((config) => {
     const token = getToken()
     if (token) {
         config.headers['Authorization'] = `Bearer ${token.accessToken}`

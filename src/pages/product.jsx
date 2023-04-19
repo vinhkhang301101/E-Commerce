@@ -1,7 +1,15 @@
 import { Paginate } from "@/components/Paginate";
+import { useQuery } from "@/hooks/useQuery";
+import { productService } from "@/services/product";
 import React from "react";
 
 export const Product = () => {
+  const { data, loading } = useQuery({
+    queryFn: () => productService.getProduct(`?fields=name,real_price,price,categories,slug,id`)
+  })
+
+  if(loading) return null
+
   return (
     <section className="py-11">
       <div className="container">
