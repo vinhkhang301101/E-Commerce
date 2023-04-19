@@ -5,6 +5,10 @@ import { PATH } from "@/config/path";
 import { Product } from "@/pages/product";
 import { ShoppingCart } from "@/pages/shopping-cart";
 import { Checkout } from "@/pages/checkout";
+import { Auth } from "@/pages/auth";
+import { AccountAddressEdit } from "@/pages/accountAddressEdit";
+import { AccountAdress } from "@/pages/accountAdress";
+import { AccountOrder } from "@/pages/accountOrder";
 
 export const routers = [
   {
@@ -23,6 +27,22 @@ export const routers = [
       {
         path: PATH.shopping_cart,
         element: <ShoppingCart />,
+      },
+      {
+        path: PATH.auth,
+        element: <Auth />,
+      },
+      {
+        path: PATH.accountAddressEdit,
+        element: <AccountAddressEdit />,
+      },
+      {
+        path: PATH.accountAdress,
+        element: <AccountAdress />,
+      },
+      {
+        path: PATH.accountOrder,
+        element: <AccountOrder />,
       },
 
       {
