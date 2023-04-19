@@ -12,6 +12,11 @@ import { profile } from "./profile";
 import { GuestRoute } from "@/components/GuestRoute";
 import { OrderCompleted } from "@/pages/order-completed";
 import { ContactUs } from "@/pages/contact-us";
+import { Blog } from "@/pages/blog";
+import { Blog_post } from "@/pages/blog-post";
+import { Faq } from "@/pages/faq";
+import { Shipping_and_returns } from "@/pages/shipping-and-returns";
+import { Shop } from "@/pages/shop";
 
 
 export const routers = [
@@ -37,6 +42,27 @@ export const routers = [
         path: PATH.Category,
         element: <Product />,
       },
+
+      {
+        path: PATH.Blog,
+        element: <Blog />,
+      },
+
+      {
+        path: PATH.Blog_post,
+        element: <Blog_post />,
+      },
+
+      {
+        path: PATH.Faq,
+        element: <Faq/>,
+      },
+
+      {
+        path: PATH.Shipping_and_returns,
+        element: <Shipping_and_returns/>,
+      },
+
 
       {
         path: PATH.ShoppingCart,
