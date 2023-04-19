@@ -62,12 +62,9 @@ export const routers = [
         path: PATH.Checkout,
         element: <Checkout />,
       },
+
       {
-        path: PATH.checkout,
-        element: <Checkout />,
-      },
-      {
-        path: PATH.contactUs,
+        path: PATH.ContactUs,
         element: <ContactUs />,
       },
 

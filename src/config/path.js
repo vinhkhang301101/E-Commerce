@@ -1,10 +1,19 @@
 const PROFILE = '/profile'
 
 export const PATH = {
-    product: '/product',
-    shopping_cart: '/shopping-cart',
-    auth: '/auth',
-    accountAddressEdit: '/account-address-edit',
-    accountAdress: '/account-address',
-    accountOrder: 'account-order',
-}
+  Home: "/",
+  Product: "/product",
+  ProductDetail: "/:slug",
+  Category: "/:slug/:id",
+  ShoppingCart: "/shopping-cart",
+  Checkout: "/checkout",
+  Profile: {
+    index: PROFILE,
+    Order: PROFILE + "/order",
+    Wishlist: PROFILE + "/wishlist",
+    Address: PROFILE + "/address",
+    Payment: PROFILE + "/payment",
+  },
+  Account: "/account",
+  ContactUs: "/contact-us",
+};
