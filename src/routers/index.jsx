@@ -11,6 +11,7 @@ import { PrivateRoute } from "@/components/PrivateRoute";
 import { profile } from "./profile";
 import { GuestRoute } from "@/components/GuestRoute";
 
+
 export const routers = [
   {
     element: <MainLayouts />,
@@ -60,6 +61,14 @@ export const routers = [
       {
         path: PATH.Checkout,
         element: <Checkout />,
+      },
+      {
+        path: PATH.checkout,
+        element: <Checkout />,
+      },
+      {
+        path: PATH.contactUs,
+        element: <ContactUs />,
       },
 
       {
