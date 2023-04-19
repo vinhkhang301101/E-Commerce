@@ -11,6 +11,7 @@ import { PrivateRoute } from "@/components/PrivateRoute";
 import { profile } from "./profile";
 import { GuestRoute } from "@/components/GuestRoute";
 import { OrderCompleted } from "@/pages/order-completed";
+import { ContactUs } from "@/pages/contact-us";
 
 
 export const routers = [
