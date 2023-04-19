@@ -10,6 +10,7 @@ import { ProductDetailPages } from "@/pages/[slug]";
 import { PrivateRoute } from "@/components/PrivateRoute";
 import { profile } from "./profile";
 import { GuestRoute } from "@/components/GuestRoute";
+import { OrderCompleted } from "@/pages/order-completed";
 
 export const routers = [
   {
@@ -60,6 +61,11 @@ export const routers = [
       {
         path: PATH.Checkout,
         element: <Checkout />,
+      },
+
+      {
+        path: PATH.OrderCompleted,
+        element: <OrderCompleted />,
       },
 
       {

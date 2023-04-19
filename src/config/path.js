@@ -15,4 +15,5 @@ export const PATH = {
         Payment: PROFILE + '/payment',
     },
     Account: '/account',
+    OrderCompleted: '/order-completed'
 }
