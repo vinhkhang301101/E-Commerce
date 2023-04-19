@@ -4,13 +4,14 @@ import { Page404 } from "@/pages/404";
 import { PATH } from "@/config/path";
 import { Product } from "@/pages/product";
 import { ShoppingCart } from "@/pages/shopping-cart";
+import { Checkout } from "@/pages/checkout";
 
 export const routers = [
   {
     element: <MainLayouts />,
     children: [
       {
-        path: "/",
+        path: PATH.home,
         element: <Home />,
       },
 
@@ -22,6 +23,11 @@ export const routers = [
       {
         path: PATH.shopping_cart,
         element: <ShoppingCart />,
+      },
+
+      {
+        path: PATH.checkout,
+        element: <Checkout />,
       },
 
       {
