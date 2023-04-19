@@ -1,6 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
 
 export const ProductDetailPages = () => {
+  const { slug } = useParams();
+  const [,id] = slug.split("-id");
+    console.log(id);
   return (
     <div>
       {/* BREADCRUMB */}
@@ -1606,4 +1610,4 @@ export const ProductDetailPages = () => {
       </section>
     </div>
   );
-}
+};

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Auth = () => {
+export const Account = () => {
   return (
     <section className="py-12">
       <div className="container">

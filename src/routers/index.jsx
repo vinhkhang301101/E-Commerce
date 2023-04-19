@@ -5,48 +5,59 @@ import { PATH } from "@/config/path";
 import { Product } from "@/pages/product";
 import { ShoppingCart } from "@/pages/shopping-cart";
 import { Checkout } from "@/pages/checkout";
-import { Auth } from "@/pages/auth";
-import { AccountAddressEdit } from "@/pages/accountAddressEdit";
-import { AccountAdress } from "@/pages/accountAdress";
-import { AccountOrder } from "@/pages/accountOrder";
+import { Account } from "@/pages/account";
+import { ProductDetailPages } from "@/pages/[slug]";
+import { PrivateRoute } from "@/components/PrivateRoute";
+import { profile } from "./profile";
 
 export const routers = [
   {
     element: <MainLayouts />,
     children: [
       {
-        path: PATH.home,
+        path: PATH.Home,
         element: <Home />,
       },
 
       {
-        path: PATH.product,
+        path: PATH.Product,
         element: <Product />,
       },
 
       {
-        path: PATH.shopping_cart,
-        element: <ShoppingCart />,
-      },
-      {
-        path: PATH.auth,
-        element: <Auth />,
-      },
-      {
-        path: PATH.accountAddressEdit,
-        element: <AccountAddressEdit />,
-      },
-      {
-        path: PATH.accountAdress,
-        element: <AccountAdress />,
-      },
-      {
-        path: PATH.accountOrder,
-        element: <AccountOrder />,
+        path: PATH.ProductDetail,
+        element: <ProductDetailPages />,
       },
 
       {
-        path: PATH.checkout,
+        path: PATH.Category,
+        element: <Product />,
+      },
+
+      {
+        path: PATH.ShoppingCart,
+        element: <ShoppingCart />,
+      },
+
+      {
+        element: <PrivateRoute />,
+        children: profile,
+        path: PATH.Profile.index,
+      },
+
+      {
+        element: <GuestRoute redirect={PATH.Profile.index} />,
+        children: [
+          {
+            index: true,
+            element: <Account />,
+          },
+        ],
+        path: PATH.Account,
+      },
+
+      {
+        path: PATH.Checkout,
         element: <Checkout />,
       },
 
