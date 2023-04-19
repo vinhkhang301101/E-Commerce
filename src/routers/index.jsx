@@ -9,6 +9,7 @@ import { Account } from "@/pages/account";
 import { ProductDetailPages } from "@/pages/[slug]";
 import { PrivateRoute } from "@/components/PrivateRoute";
 import { profile } from "./profile";
+import { GuestRoute } from "@/components/GuestRoute";
 
 export const routers = [
   {

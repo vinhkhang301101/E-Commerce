@@ -7,10 +7,6 @@ export const PATH = {
     Category: '/:slug/:id',
     ShoppingCart: '/shopping-cart',
     Checkout: '/checkout',
-    Auth: '/auth',
-    AccountAddressEdit: '/account-address-edit',
-    AccountAdress: '/account-address',
-    AccountOrder: '/account-order',
     Profile: {
         index: PROFILE,
         Order: PROFILE + '/order',
