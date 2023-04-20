@@ -853,6 +853,11 @@
   "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz"
   "version" "1.0.5"
 
+"ev-emitter@^2.0.0", "ev-emitter@^2.1.2":
+  "integrity" "sha512-jQ5Ql18hdCQ4qS+RCrbLfz1n+Pags27q5TwMKvZyhp5hh2UULUYZUy1keqj6k6SYsdqIYjnmz7xyyEY0V67B8Q=="
+  "resolved" "https://registry.npmjs.org/ev-emitter/-/ev-emitter-2.1.2.tgz"
+  "version" "2.1.2"
+
 "fast-glob@^3.2.12":
   "integrity" "sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w=="
   "resolved" "https://registry.npmjs.org/fast-glob/-/fast-glob-3.2.12.tgz"
@@ -877,6 +882,22 @@
   "version" "7.0.1"
   dependencies:
     "to-regex-range" "^5.0.1"
+
+"fizzy-ui-utils@^3.0.0":
+  "integrity" "sha512-uJj38QFQiJ/KCio5tiZhwAjIbTXSIgzBCKdKVbaYfLS053F6z23Nb0o1ZoO9gnxOQWN7BCc35jsvrCtAq3gY9g=="
+  "resolved" "https://registry.npmjs.org/fizzy-ui-utils/-/fizzy-ui-utils-3.0.0.tgz"
+  "version" "3.0.0"
+
+"flickity@^3.0.0":
+  "integrity" "sha512-Xw4znhglA2LVSmka0yKmzb4+fLwXm13TuKmdG1HbUoZZL95J1ZMr4hAA3w69s+Z6q/c6CyBDM25JVwMqgF3rOg=="
+  "resolved" "https://registry.npmjs.org/flickity/-/flickity-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "ev-emitter" "^2.1.2"
+    "fizzy-ui-utils" "^3.0.0"
+    "get-size" "^3.0.0"
+    "imagesloaded" "^5.0.0"
+    "unidragger" "^3.0.0"
 
 "follow-redirects@^1.15.0":
   "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
@@ -911,6 +932,11 @@
   "integrity" "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="
   "resolved" "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz"
   "version" "1.0.0-beta.2"
+
+"get-size@^3.0.0":
+  "integrity" "sha512-Y8aiXLq4leR7807UY0yuKEwif5s3kbVp1nTv+i4jBeoUzByTLKkLWu/HorS6/pB+7gsB0o7OTogC8AoOOeT0Hw=="
+  "resolved" "https://registry.npmjs.org/get-size/-/get-size-3.0.0.tgz"
+  "version" "3.0.0"
 
 "git@^0.1.5":
   "integrity" "sha512-N+bfOrXyKMU/fQtCj6D/U9MQOEN0DAA8TLHSLdUQRSWBOkeRvsjJHdrdkvcq05xO7GSDKWc3nDEGoTZ4DfCCSg=="
@@ -968,6 +994,13 @@
   "version" "3.3.2"
   dependencies:
     "react-is" "^16.7.0"
+
+"imagesloaded@^5.0.0":
+  "integrity" "sha512-/0JGSubc1MTCoDKVmonLHgbifBWHdyLkun+R/151E1c5n79hiSxcd7cB7mPXFgojYu8xnRZv7GYxzKoxW8BetQ=="
+  "resolved" "https://registry.npmjs.org/imagesloaded/-/imagesloaded-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "ev-emitter" "^2.1.2"
 
 "immer@^9.0.21":
   "integrity" "sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA=="
@@ -1940,6 +1973,13 @@
   "integrity" "sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA=="
   "resolved" "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz"
   "version" "0.1.13"
+
+"unidragger@^3.0.0":
+  "integrity" "sha512-RngbGSwBFmqGBWjkaH+yB677uzR95blSQyxq6hYbrQCejH3Mx1nm8DVOuh3M9k2fQyTstWUG5qlgCnNqV/9jVw=="
+  "resolved" "https://registry.npmjs.org/unidragger/-/unidragger-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "ev-emitter" "^2.0.0"
 
 "update-browserslist-db@^1.0.10":
   "integrity" "sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA=="

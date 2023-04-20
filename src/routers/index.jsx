@@ -16,6 +16,7 @@ import { Blog } from "@/pages/blog";
 import { Blog_post } from "@/pages/blog-post";
 import { Faq } from "@/pages/faq";
 import { Shipping_and_returns } from "@/pages/shipping-and-returns";
+import { Auth } from "@/pages/profile/auth";
 
 
 export const routers = [
@@ -50,6 +51,10 @@ export const routers = [
       {
         path: PATH.Blog_post,
         element: <Blog_post />,
+      },
+      {
+        path: PATH.Auth,
+        element: <Auth />,
       },
 
       {
