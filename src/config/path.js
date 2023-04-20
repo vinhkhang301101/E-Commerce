@@ -1,5 +1,3 @@
-import { Blog_post } from "@/pages/blog-post";
-
 const PROFILE = '/profile'
 
 export const PATH = {
