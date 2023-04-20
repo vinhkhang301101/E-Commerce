@@ -449,7 +449,7 @@ export const Product = () => {
                         {/* Button */}
                         <a
                           className="btn btn-link px-0 text-body"
-                          href="shop.html"
+                          href="/shop"
                         >
                           View Collection{" "}
                           <i className="fe fe-arrow-right ml-2" />

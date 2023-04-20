@@ -801,7 +801,7 @@ export const Header = () => {
                 </div>
               </div>
               {/* Button */}
-              <a className="btn btn-link px-0 text-reset" href="./shop.html">
+              <a className="btn btn-link px-0 text-reset" href="./shop">
                 View All <i className="fe fe-arrow-right ml-2" />
               </a>
             </div>
@@ -1096,47 +1096,47 @@ export const Header = () => {
                         {/* Links */}
                         <ul className="list-styled font-size-lg py-3">
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               All Clothing
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Blouses &amp; Shirts
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Coats &amp; Jackets
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Dresses
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Hoodies &amp; Sweats
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Denim
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Jeans
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Jumpers &amp; Cardigans
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Leggings
                             </a>
                           </li>
@@ -1150,42 +1150,42 @@ export const Header = () => {
                         {/* Links */}
                         <ul className="list-styled font-size-lg">
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               All Shoes &amp; Boots
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Branded Shoes
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Boots
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Heels
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Trainers
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Sandals
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Shoes
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Wide Fit Shoes
                             </a>
                           </li>
@@ -1199,47 +1199,47 @@ export const Header = () => {
                         {/* Links */}
                         <ul className="list-styled font-size-lg">
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               All Bags &amp; Accessories
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Accessories
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Bags &amp; Purses
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Luggage
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Belts
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Hats
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Hair Accessories
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Jewellery
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Travel Accessories
                             </a>
                           </li>
@@ -1270,7 +1270,7 @@ export const Header = () => {
                         {/* Links */}
                         <ul className="list-styled font-size-lg">
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./shop.html">
+                            <a className="list-styled-link" href="./shop">
                               Default
                             </a>
                           </li>
@@ -2365,7 +2365,7 @@ export const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./shop.html">
+                <a className="nav-link" href="./shop">
                   Product
                 </a>
               </li>

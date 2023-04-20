@@ -16,7 +16,6 @@ import { Blog } from "@/pages/blog";
 import { Blog_post } from "@/pages/blog-post";
 import { Faq } from "@/pages/faq";
 import { Shipping_and_returns } from "@/pages/shipping-and-returns";
-import { Shop } from "@/pages/shop";
 
 
 export const routers = [
