@@ -1,5 +1,5 @@
 import { Paginate } from "@/components/Paginate";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
 import React from "react";
@@ -12,12 +12,11 @@ export const Product = () => {
     queryKey: currentPage,
     queryFn: () =>
       productService.getProduct(
-        `?fields=name,real_price,price,categories,slug,id,images`
+        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count`
       ),
   });
 
-  if (loading) return null;
-  console.log(data);
+  // if (loading) return null;
 
   return (
     <section className="py-11">
@@ -560,9 +559,11 @@ export const Product = () => {
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {data.map((e) => (
+              <ProductCardLoading />
+
+              {/* {data.map((e) => (
                 <ProductCard key={e.id} {...e} />
-              ))}
+              ))} */}
             </div>
             {/* Pagination */}
             <Paginate totalPAge={10}></Paginate>
