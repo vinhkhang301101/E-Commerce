@@ -21,4 +21,5 @@ export const PATH = {
   Blog_post: "/blog-post",
   Faq: "/faq",
   Shipping_and_returns: "/shipping-and-returns",
+  Auth: "/auth",
 };

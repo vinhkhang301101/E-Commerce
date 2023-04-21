@@ -261,7 +261,7 @@ export const Header = () => {
                   {/* Button */}
                   <a
                     className="btn btn-sm btn-block btn-primary"
-                    href="./product.html"
+                    href="./product"
                   >
                     More Product Info <i className="fe fe-info ml-2" />
                   </a>
@@ -699,7 +699,7 @@ export const Header = () => {
                   <p className="mb-0 font-weight-bold">
                     <a
                       className="stretched-link text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Leather mid-heel Sandals
                     </a>{" "}
@@ -722,7 +722,7 @@ export const Header = () => {
                   <p className="mb-0 font-weight-bold">
                     <a
                       className="stretched-link text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Cotton floral print Dress
                     </a>{" "}
@@ -745,7 +745,7 @@ export const Header = () => {
                   <p className="mb-0 font-weight-bold">
                     <a
                       className="stretched-link text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Leather Sneakers
                     </a>{" "}
@@ -768,7 +768,7 @@ export const Header = () => {
                   <p className="mb-0 font-weight-bold">
                     <a
                       className="stretched-link text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Cropped cotton Top
                     </a>{" "}
@@ -791,7 +791,7 @@ export const Header = () => {
                   <p className="mb-0 font-weight-bold">
                     <a
                       className="stretched-link text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Floral print midi Dress
                     </a>{" "}
@@ -846,7 +846,7 @@ export const Header = () => {
                 <div className="row align-items-center">
                   <div className="col-4">
                     {/* Image */}
-                    <a href="./product.html">
+                    <a href="./product">
                       <img
                         className="img-fluid"
                         src="./img/products/product-6.jpg"
@@ -857,7 +857,7 @@ export const Header = () => {
                   <div className="col-8">
                     {/* Title */}
                     <p className="font-size-sm font-weight-bold mb-6">
-                      <a className="text-body" href="./product.html">
+                      <a className="text-body" href="./product">
                         Cotton floral print Dress
                       </a>{" "}
                       <br />
@@ -886,7 +886,7 @@ export const Header = () => {
                 <div className="row align-items-center">
                   <div className="col-4">
                     {/* Image */}
-                    <a href="./product.html">
+                    <a href="./product">
                       <img
                         className="img-fluid"
                         src="./img/products/product-10.jpg"
@@ -897,7 +897,7 @@ export const Header = () => {
                   <div className="col-8">
                     {/* Title */}
                     <p className="font-size-sm font-weight-bold mb-6">
-                      <a className="text-body" href="./product.html">
+                      <a className="text-body" href="./product">
                         Suede cross body Bag
                       </a>{" "}
                       <br />
@@ -930,7 +930,7 @@ export const Header = () => {
             </div>
             {/* Buttons */}
             <div className="modal-body">
-              <a className="btn btn-block btn-dark" href="./checkout.html">
+              <a className="btn btn-block btn-dark" href="./checkout">
                 Continue to Checkout
               </a>
               <a
@@ -1011,7 +1011,7 @@ export const Header = () => {
                   >
                     <ul className="list-styled font-size-lg py-3 mb-0">
                       <li className="list-styled-item">
-                        <a className="list-styled-link" href="./index.html">
+                        <a className="list-styled-link" href="./index">
                           Default
                         </a>
                       </li>
@@ -1316,7 +1316,7 @@ export const Header = () => {
                           <li className="list-styled-item">
                             <a
                               className="list-styled-link"
-                              href="./product.html"
+                              href="./product"
                             >
                               Default
                             </a>
@@ -1371,7 +1371,7 @@ export const Header = () => {
                           <li className="list-styled-item">
                             <a
                               className="list-styled-link"
-                              href="./checkout.html"
+                              href="./checkout"
                             >
                               Checkout
                             </a>
@@ -1379,7 +1379,7 @@ export const Header = () => {
                           <li className="list-styled-item">
                             <a
                               className="list-styled-link"
-                              href="./order-completed.html"
+                              href="./order-completed"
                             >
                               Order Completed
                             </a>
@@ -1387,7 +1387,7 @@ export const Header = () => {
                           <li className="list-styled-item">
                             <a
                               className="list-styled-link"
-                              href="./shipping-and-returns.html"
+                              href="./shipping-and-returns"
                             >
                               Shipping &amp; Returns
                             </a>
@@ -1418,7 +1418,7 @@ export const Header = () => {
                           <li className="list-styled-item">
                             <a
                               className="list-styled-link"
-                              href="./account-wishlist.html"
+                              href="./account-wishlist"
                             >
                               Wishlist
                             </a>
@@ -1472,7 +1472,7 @@ export const Header = () => {
                             </a>
                           </li>
                           <li className="list-styled-item">
-                            <a className="list-styled-link" href="./auth.html">
+                            <a className="list-styled-link" href="./auth">
                               Auth
                             </a>
                           </li>
@@ -1589,7 +1589,7 @@ export const Header = () => {
                         </a>
                       </li>
                       <li className="list-styled-item">
-                        <a className="list-styled-link" href="./faq.html">
+                        <a className="list-styled-link" href="./faq">
                           FAQ
                         </a>
                       </li>
@@ -1626,12 +1626,12 @@ export const Header = () => {
                   >
                     <ul className="list-styled font-size-lg py-3 mb-0">
                       <li className="list-styled-item">
-                        <a className="list-styled-link" href="./blog.html">
+                        <a className="list-styled-link" href="./blog">
                           Blog
                         </a>
                       </li>
                       <li className="list-styled-item">
-                        <a className="list-styled-link" href="./blog-post.html">
+                        <a className="list-styled-link" href="./blog-post">
                           Blog Post
                         </a>
                       </li>
@@ -1938,7 +1938,7 @@ export const Header = () => {
               <div className="row mb-6">
                 <div className="col-12 col-md-3">
                   {/* Image */}
-                  <a href="./product.html">
+                  <a href="./product">
                     <img
                       className="img-fluid mb-7 mb-md-0"
                       src="./img/products/product-6.jpg"
@@ -1951,7 +1951,7 @@ export const Header = () => {
                   <p>
                     <a
                       className="font-weight-bold text-body"
-                      href="./product.html"
+                      href="./product"
                     >
                       Cotton floral print Dress
                     </a>
@@ -2294,17 +2294,17 @@ export const Header = () => {
             {/* Nav */}
             <ul className="nav navbar-nav mr-8">
               <li className="nav-item">
-                <a className="nav-link" href="./shipping-and-returns.html">
+                <a className="nav-link" href="./shipping-and-returns">
                   Shipping
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./faq.html">
+                <a className="nav-link" href="./faq">
                   FAQ
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./contact-us.html">
+                <a className="nav-link" href="./contact-us">
                   Contact
                 </a>
               </li>
@@ -2393,12 +2393,12 @@ export const Header = () => {
                 </a>
               </li>
               <li className="nav-item ml-lg-n4">
-                <a className="nav-link" href="./auth.html">
+                <a className="nav-link" href="./auth">
                   <i className="fe fe-user" />
                 </a>
               </li>
               <li className="nav-item ml-lg-n4">
-                <a className="nav-link" href="./account-wishlist.html">
+                <a className="nav-link" href="./account-wishlist">
                   <i className="fe fe-heart" />
                 </a>
               </li>
