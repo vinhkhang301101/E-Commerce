@@ -1,4 +1,6 @@
+import { PATH } from "@/config/path";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -2393,9 +2395,9 @@ export const Header = () => {
                 </a>
               </li>
               <li className="nav-item ml-lg-n4">
-                <a className="nav-link" href="./auth">
+                <Link className="nav-link" to={PATH.Auth}>
                   <i className="fe fe-user" />
-                </a>
+                </Link>
               </li>
               <li className="nav-item ml-lg-n4">
                 <a className="nav-link" href="./account-wishlist">

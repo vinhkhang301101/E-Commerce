@@ -1,10 +1,10 @@
 import React from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
-export const Paginate = ({ totalPAge }) => {
+export const Paginate = ({ totalPAge, name = "page" }) => {
   const [search, setSearch] = useSearchParams();
-  const currentPAge = parseInt(search.get("page") || 1);
-  const {pathname} = useLocation();
+  const currentPAge = parseInt(search.get(name) || 1);
+  const { pathname } = useLocation();
   const _search = new URLSearchParams(search);
   const renderItem = () => {
     const list = [];
@@ -22,7 +22,7 @@ export const Paginate = ({ totalPAge }) => {
       if (start < 1) start = 1;
     }
     for (let i = start; i <= end; i++) {
-      _search.set('page', i);
+      _search.set(name, i);
       list.push(
         <li key={i} className="page-item">
           <a className="page-link" href={`${pathname}?${_search.toString()}`}>
@@ -30,32 +30,31 @@ export const Paginate = ({ totalPAge }) => {
           </a>
         </li>
       );
-    }    
+    }
     return list;
   };
 
-  _search.set('page', currentPAge - 1)
-  const preLink = `${pathname}?${_search.toString()}`
-  _search.set('page', currentPAge + 1)
-  const nextLink = `${pathname}?${_search.toString()}`
-
+  _search.set(name, currentPAge - 1);
+  const preLink = `${pathname}?${_search.toString()}`;
+  _search.set(name, currentPAge + 1);
+  const nextLink = `${pathname}?${_search.toString()}`;
 
   return (
     <nav className="d-flex justify-content-center justify-content-md-end">
       <ul className="pagination pagination-sm text-gray-400">
         {currentPAge > 1 && (
           <li className="page-item">
-            <a className="page-link page-link-arrow" href={preLink}>
+            <Link className="page-link page-link-arrow" to={preLink}>
               <i className="fa fa-caret-left" />
-            </a>
+            </Link>
           </li>
         )}
         {renderItem()}
         {currentPAge < totalPAge - 2 && (
           <li className="page-item">
-            <a className="page-link page-link-arrow" href={nextLink}>
+            <Link className="page-link page-link-arrow" to={nextLink}>
               <i className="fa fa-caret-right" />
-            </a>
+            </Link>
           </li>
         )}
       </ul>
