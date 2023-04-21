@@ -7,8 +7,9 @@ export const Product = () => {
   const { data, loading } = useQuery({
     queryFn: () => productService.getProduct(`?fields=name,real_price,price,categories,slug,id`)
   })
-
-  if(loading) return null
+  console.log(loading)
+  console.log(data)
+  if(!loading) return null
 
   return (
     <section className="py-11">
