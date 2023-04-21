@@ -202,17 +202,24 @@ export const ProductCardLoading = () => {
         </div>
         {/* Body */}
         <div className="card-body px-0">
-          
+          {/* Category */}
+          <div className="font-size-xs">
+            <a className="text-muted" href="shop.html">
+              <Skeleton width={150} height="100%" />
+            </a>
+          </div>
           {/* Title */}
           <div className="font-weight-bold">
-            
+            <a className="text-body card-product-name" href="product.html">
+              <Skeleton height="100%" />
+            </a>
           </div>
           <div className="card-product-rating">
-            
+            <Skeleton width={150} height="100%" />
           </div>
           {/* Price */}
           <div className="card-product-price">
-            
+            <Skeleton width={100} height="100%" />
           </div>
         </div>
       </div>
