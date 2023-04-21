@@ -30,8 +30,13 @@ export const useQuery = (options = {}) => {
       setStatus("pending");
       const res = await queryFn();
       setData(res.data);
-      if (queryKey && cacheTime) {
-        const expired = Date.now() + cacheTime;
+      if (queryKey) {
+        let expired = Date.now();
+        if (cacheTime) {
+          expired += cacheTime;
+        } else {
+          expired = undefined;
+        }
         cache.set(queryKey, res.data, expired);
       }
       setStatus("success");
