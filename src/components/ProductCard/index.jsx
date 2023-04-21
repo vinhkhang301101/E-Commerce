@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ProductCard = () => {
   return (
     <div className="col-6 col-md-4">

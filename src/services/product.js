@@ -1,3 +1,4 @@
+import { PRODUCT_API } from '@/config/api'
 import {http} from '@/utils'
 
 export const productService = {
