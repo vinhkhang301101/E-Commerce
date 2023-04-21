@@ -20,9 +20,7 @@ export const useQuery = (options = {}) => {
 
   useEffect(() => {
     if (enabled) {
-      console.log("useEffect useQuery");
       fetchData();
-      console.log("call fetchData");
     }
   }, dependencyList);
 
