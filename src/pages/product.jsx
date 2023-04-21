@@ -3,9 +3,13 @@ import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 
 export const Product = () => {
+  const [search] = useSearchParams();
+  const currentPage = parseInt(search.get("page") || 1);
   const { data, loading, error } = useQuery({
+    queryKey: currentPage,
     queryFn: () =>
       productService.getProduct(
         `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count`
