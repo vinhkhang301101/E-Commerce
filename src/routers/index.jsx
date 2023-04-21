@@ -17,6 +17,8 @@ import { Blog_post } from "@/pages/blog-post";
 import { Faq } from "@/pages/faq";
 import { Shipping_and_returns } from "@/pages/shipping-and-returns";
 import { Auth } from "@/pages/profile/auth";
+import { Shop } from "@/pages/shop";
+import { Store_locator } from "../pages/store-locator";
 
 
 export const routers = [
@@ -60,6 +62,16 @@ export const routers = [
       {
         path: PATH.Faq,
         element: <Faq/>,
+      },
+
+      {
+        path: PATH.Shop,
+        element: <Shop/>,
+      },
+
+      {
+        path: PATH.Store_locator,
+        element: <Store_locator/>,
       },
 
       {

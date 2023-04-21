@@ -22,4 +22,6 @@ export const PATH = {
   Faq: "/faq",
   Shipping_and_returns: "/shipping-and-returns",
   Auth: "/auth",
+  Shop: "/shop",
+  Store_locator: "/store-locator"
 };
