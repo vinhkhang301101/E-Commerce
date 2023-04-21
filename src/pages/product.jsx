@@ -9,7 +9,7 @@ export const Product = () => {
   const [search] = useSearchParams();
   const currentPage = parseInt(search.get("page") || 1);
   const { data, loading, error } = useQuery({
-    queryKey: currentPage,
+    dependencyList: [currentPage],
     queryFn: () =>
       productService.getProduct(
         `?fields=name,real_price,price,categories,slug,id,images`
@@ -17,7 +17,6 @@ export const Product = () => {
   });
 
   if (loading) return null;
-  console.log(data);
 
   return (
     <section className="py-11">
