@@ -157,7 +157,7 @@ export const ProductCard = ({
                 </span>
               </>
             ) : (
-              <span className="font-size-xs text-gray-350 text-decoration-line-through">
+              <span className="text-primary sale">
                 {currency(real_price)}
               </span>
             )}

@@ -8,16 +8,15 @@ import { useSearchParams } from "react-router-dom";
 export const Product = () => {
   const [search] = useSearchParams();
   const currentPage = parseInt(search.get("page") || 1);
-  const { data, loading, error } = useQuery({
+  const { data, loading } = useQuery({
     dependencyList: [currentPage],
     queryFn: () =>
       productService.getProduct(
-        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count`
+        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count&page=${currentPage}`
       ),
   });
 
   if (loading) return null;
-  console.log(data);
 
   return (
     <section className="py-11">
@@ -560,13 +559,14 @@ export const Product = () => {
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {
-                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
-                data.map((e) => (<ProductCard key={e.id} {...e} />))
-              }
+              {loading
+                ? Array.from(Array(15)).map((_, i) => (
+                    <ProductCardLoading key={i} />
+                  ))
+                : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
             </div>
             {/* Pagination */}
-            <Paginate totalPAge={10}></Paginate>
+            <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
           </div>
         </div>
       </div>
