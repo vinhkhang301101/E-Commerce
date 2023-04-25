@@ -19,7 +19,6 @@ import { Shipping_and_returns } from "@/pages/shipping-and-returns";
 import { Auth } from "@/pages/profile/auth";
 import { Store_locator } from "../pages/store-locator";
 
-
 export const routers = [
   {
     element: <MainLayouts />,

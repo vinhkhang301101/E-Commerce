@@ -25,7 +25,7 @@ export const Auth = () => {
       try {
         await registerService();
       } catch (error) {
-        console.log(error);
+        handleError(error)
       }
     }
   };
