@@ -17,7 +17,6 @@ export const Product = () => {
   });
 
   if (loading) return null;
-  console.log(data);
 
   return (
     <section className="py-11">
@@ -560,10 +559,11 @@ export const Product = () => {
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {
-                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
-                data.map((e) => (<ProductCard key={e.id} {...e} />))
-              }
+              {loading
+                ? Array.from(Array(15)).map((_, i) => (
+                    <ProductCardLoading key={i} />
+                  ))
+                : data.map((e) => <ProductCard key={e.id} {...e} />)}
             </div>
             {/* Pagination */}
             <Paginate totalPAge={10}></Paginate>

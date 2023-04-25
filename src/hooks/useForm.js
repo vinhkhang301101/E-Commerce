@@ -10,12 +10,21 @@ import { useState } from "react";
 export const useForm = (rules) => {
   const [form, setForm] = useState({});
   const [error, setError] = useState({});
-
+  const [values, setValues] = useState({});
   const register = (name) => {
     return {
       error: error[name],
       value: form[name] || "",
-      onChange: (ev) => setForm({ ...form, [name]: ev.target.value }),
+      onChange: (value) => {
+        let _values = {...values, [name]: value}
+        if(rules[name]){
+          const error = validate({
+            name: rules[name]
+          }, _values)
+          setError(prev => ({...prev, [name]: error[name] || '' }))
+        }
+        setValues((prev) => ({...prev, [name]: value}))
+      },
     };
   };
 

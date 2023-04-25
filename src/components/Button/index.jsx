@@ -1,11 +1,19 @@
-export const Button = ({ children }) => {
+import { cn } from "@/utils";
+import { LoadingOutlined } from "@ant-design/icons";
+
+export const Button = ({ children, loading, ...props }) => {
   return (
     <div className="col-12">
       <button
-        href="./account-personal-info.html"
-        className="btn btn-sm btn-dark"
-        type="submit"
+        className={cn(
+          "btn btn-sm btn-dark flex items-center justify-center gap-2",
+          {
+            "disabled pointer-events-none": loading,
+          }
+        )}
+        {...props}
       >
+        {loading && <LoadingOutlined className="mr-2"></LoadingOutlined>}
         {children}
       </button>
     </div>

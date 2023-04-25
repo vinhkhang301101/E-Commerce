@@ -54,3 +54,11 @@ export const regexp = (pattern, message) => {
     message,
   };
 };
+
+export const minMax = (min, max, message) => {
+  min, max, message;
+};
+
+export const confirm = (field) => ({
+  confirm: field,
+});
