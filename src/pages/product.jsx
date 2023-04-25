@@ -17,11 +17,6 @@ export const Product = () => {
         `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count&page=${currentPage}`
       ),
   });
-
-  const { data: categories, loading: categoryLoading } = useQuery({
-    queryFn: () => productService.getCategories()
-  })
-
   return (
     <section className="py-11">
       <div className="container">
@@ -51,15 +46,12 @@ export const Product = () => {
                           ? Array.from(Array(10)).map((_, i) => (
                               <li key={i} className="list-styled-item">
                                 {/* Toggle */}
-                                <a
-                                  className="list-styled-link"
-                                  href="#"
-                                >
+                                <a className="list-styled-link" href="#">
                                   <Skeleton height={24} />
                                 </a>
                               </li>
                             ))
-                          : categories.data.map(e => {
+                          : categories.data.map((e) => {
                               <li key={e.id} className="list-styled-item">
                                 {/* Toggle */}
                                 <Link
@@ -69,6 +61,7 @@ export const Product = () => {
                                   {e.title}
                                 </Link>
                               </li>;
+                              console.log(e.title);
                             })}
                       </ul>
                     </div>
@@ -403,123 +396,123 @@ export const Product = () => {
           <div className="col-12 col-md-8 col-lg-9">
             {/* Slider */}
             <div className="flickity-page-dots-inner mb-9" data-flickity="{&quot;pageDots&quot;: true}">
-                {/* Item */}
-                <div className="w-100">
-                  <div className="card bg-h-100 bg-left" style={{backgroundImage: 'url(./img/covers/cover-24.jpg)'}}>
-                    <div className="row" style={{minHeight: '400px'}}>
-                      <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
-                        <div className="card-body px-md-10 py-11">
-                          {/* Heading */}
-                          <h4>
-                            2019 Best Seller
-                          </h4>
-                          {/* Button */}
-                          <a className="btn btn-link px-0 text-body" href="shop.html">
-                            View Collection <i className="fe fe-arrow-right ml-2" />
-                          </a>
+                  {/* Item */}
+                  <div className="w-100">
+                    <div className="card bg-h-100 bg-left" style={{backgroundImage: 'url(./img/covers/cover-24.jpg)'}}>
+                      <div className="row" style={{minHeight: '400px'}}>
+                        <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
+                          <div className="card-body px-md-10 py-11">
+                            {/* Heading */}
+                            <h4>
+                              2019 Best Seller
+                            </h4>
+                            {/* Button */}
+                            <a className="btn btn-link px-0 text-body" href="shop.html">
+                              View Collection <i className="fe fe-arrow-right ml-2" />
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover" style={{backgroundImage: 'url(./img/covers/cover-23.jpg)'}} />
-                    </div>
-                  </div>
-                </div>
-                {/* Item */}
-                <div className="w-100">
-                  <div
-                    className="card bg-cover"
-                    style={{ backgroundImage: "url(./img/covers/cover-29.jpg)" }}
-                  >
-                    <div
-                      className="row align-items-center"
-                      style={{ minHeight: "400px" }}
-                    >
-                      <div className="col-12 col-md-10 col-lg-8 col-xl-6">
-                        <div className="card-body px-md-10 py-11">
-                          {/* Heading */}
-                          <h4 className="mb-5">
-                            Get -50% from Summer Collection
-                          </h4>
-                          {/* Text */}
-                          <p className="mb-7">
-                            New functions, features and experiences. <br />
-                            <strong className="text-primary">
-                              Use code 4GF5SD
-                            </strong>
-                          </p>
-                          {/* Button */}
-                          <a className="btn btn-outline-dark" href="shop.html">
-                            Shop Now <i className="fe fe-arrow-right ml-2" />
-                          </a>
-                        </div>
+                        <div className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover" style={{backgroundImage: 'url(./img/covers/cover-23.jpg)'}} />
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* Item */}
-                <div className="w-100">
-                  <div
-                    className="card bg-cover"
-                    style={{ backgroundImage: "url(./img/covers/cover-30.jpg)" }}
-                  >
-                    <div
-                      className="row align-items-center"
-                      style={{ minHeight: "400px" }}
-                    >
-                      <div className="col-12">
-                        <div className="card-body px-md-10 py-11 text-center text-white">
-                          {/* Preheading */}
-                          <p className="text-uppercase">Enjoy an extra</p>
-                          {/* Heading */}
-                          <h1 className="display-4 text-uppercase">50% off</h1>
-                          {/* Link */}
-                          <a
-                            className="link-underline text-reset"
-                            href="shop.html"
-                          >
-                            Shop Collection
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              {/* Header */}
-              <div className="row align-items-center mb-7">
-                <div className="col-12 col-md">
-                  {/* Heading */}
-                  <h3 className="mb-1">Mouse</h3>
-                  {/* Breadcrumb */}
-                  <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
-                    <li className="breadcrumb-item">
-                      <a className="text-gray-400" href="/">
-                        Home
-                      </a>
-                    </li>
-                    <li className="breadcrumb-item active">Mouse</li>
-                  </ol>
-                </div>
-                <div className="col-12 col-md-auto">
-                  {/* Select */}
-                  <select className="custom-select custom-select-xs">
-                    <option selected>Price Decrease</option>
-                    <option selected>Price Increase</option>
-                    <option selected>Newest</option>
-                    <option selected>Most Discount</option>
-                  </select>
                 </div>
               </div>
-              <h4 className="mb-5">Searching for `Mouse`</h4>
-              {/* Products */}
-              <div className="row">
-                {loading
-                  ? Array.from(Array(15)).map((_, i) => (
-                      <ProductCardLoading key={i} />
-                    ))
-                  : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
-              </div>
-              {/* Pagination */}
-              <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
+              {/* Item */}
+              <div className="w-100">
+                <div
+                  className="card bg-cover"
+                  style={{ backgroundImage: "url(./img/covers/cover-29.jpg)" }}
+                >
+                  <div
+                    className="row align-items-center"
+                    style={{ minHeight: "400px" }}
+                  >
+                    <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+                      <div className="card-body px-md-10 py-11">
+                        {/* Heading */}
+                        <h4 className="mb-5">
+                          Get -50% from Summer Collection
+                        </h4>
+                        {/* Text */}
+                        <p className="mb-7">
+                          Appear, dry there darkness they're seas. <br />
+                          <strong className="text-primary">
+                            Use code 4GF5SD
+                          </strong>
+                        </p>
+                        {/* Button */}
+                        <a className="btn btn-outline-dark" href="shop.html">
+                          Shop Now <i className="fe fe-arrow-right ml-2" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              {/* Item */}
+              <div className="w-100">
+                <div
+                  className="card bg-cover"
+                  style={{ backgroundImage: "url(./img/covers/cover-30.jpg)" }}
+                >
+                  <div
+                    className="row align-items-center"
+                    style={{ minHeight: "400px" }}
+                  >
+                    <div className="col-12">
+                      <div className="card-body px-md-10 py-11 text-center text-white">
+                        {/* Preheading */}
+                        <p className="text-uppercase">Enjoy an extra</p>
+                        {/* Heading */}
+                        <h1 className="display-4 text-uppercase">50% off</h1>
+                        {/* Link */}
+                        <a
+                          className="link-underline text-reset"
+                          href="shop.html"
+                        >
+                          Shop Collection
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {/* Header */}
+            <div className="row align-items-center mb-7">
+              <div className="col-12 col-md">
+                {/* Heading */}
+                <h3 className="mb-1">Womens' Clothing</h3>
+                {/* Breadcrumb */}
+                <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
+                  <li className="breadcrumb-item">
+                    <a className="text-gray-400" href="/">
+                      Home
+                    </a>
+                  </li>
+                  <li className="breadcrumb-item active">Women's Clothing</li>
+                </ol>
+              </div>
+              <div className="col-12 col-md-auto">
+                {/* Select */}
+                <select className="custom-select custom-select-xs">
+                  <option selected>Giá giãm</option>
+                  <option selected>Giá tăng</option>
+                  <option selected>Mới nhất</option>
+                  <option selected>Giảm giá nhiều nhất</option>
+                </select>
+              </div>
             </div>
+            <h4 className="mb-5">Searching for `Clothing`</h4>
+            {/* Products */}
+            <div className="row">
+              {loading
+                ? Array.from(Array(15)).map((_, i) => (
+                    <ProductCardLoading key={i} />
+                  ))
+                : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
+            </div>
+            {/* Pagination */}
+            <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
           </div>
         </div>
       </div>

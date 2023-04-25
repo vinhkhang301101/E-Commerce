@@ -2,24 +2,33 @@ import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
 import { useBodyClass } from "@/hooks/useBodyClass";
 import { useForm } from "@/hooks/useForm";
-import { regexp, required } from "@/utils";
+import { useQuery } from "@/hooks/useQuery";
+import { userService } from "@/services/user";
+import { confirm, regexp, required } from "@/utils";
 import React from "react";
 
 export const Auth = () => {
-  useBodyClass("bg-light")
-
+  useBodyClass("bg-light");
+  const { loading, refetch: registerService } = useQuery({
+    enabled: false,
+    queryFn: () => userService.register(formRegister.values),
+  });
   const formRegister = useForm({
-    name: [
-        required()
-    ],
-    username: [
-        required(),
-        regexp('email')
-    ],
-    password: [
-        required(),  
-    ]
-  })
+    name: [required()],
+    username: [required(), regexp("email")],
+    password: [required()],
+    confirmPassword: [confirm("password")],
+  });
+
+  const onRegister = async () => {
+    if (formRegister.validate()) {
+      try {
+        await registerService();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <section className="py-12">
@@ -36,8 +45,7 @@ export const Auth = () => {
                   <div className="row">
                     <div className="col-12">
                       {/* Email */}
-                      <Field placeholder="Email Address *" >
-                      </Field>
+                      <Field placeholder="Email Address *"></Field>
                     </div>
                     <div className="col-12">
                       {/* Password */}
@@ -75,13 +83,7 @@ export const Auth = () => {
                     </div>
                     <div className="col-12">
                       {/* Button */}
-                      <a
-                        href="./account-personal-info.html"
-                        className="btn btn-sm btn-dark"
-                        type="submit"
-                      >
-                        Sign In
-                      </a>
+                      <Button className="btn btn-sm btn-dark">Sign In</Button>
                     </div>
                   </div>
                 </form>
@@ -98,19 +100,33 @@ export const Auth = () => {
                 <div>
                   <div className="row">
                     <div className="col-12">
-                      <Field placeholder="Fullname *" {...formRegister.register('name')}></Field>
+                      <Field
+                        placeholder="Fullname *"
+                        {...formRegister.register("name")}
+                      ></Field>
                     </div>
                     <div className="col-12">
                       {/* Email */}
-                      <Field placeholder="Email Address *" {...formRegister.register('username')}></Field>
+                      <Field
+                        placeholder="Email Address *"
+                        {...formRegister.register("username")}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-6">
                       {/* Password */}
-                      <Field placeholder="Password *" type="password" {...formRegister.register('password')}></Field>
+                      <Field
+                        placeholder="Password *"
+                        type="password"
+                        {...formRegister.register("password")}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-6">
                       {/* Password */}
-                      <Field placeholder="Confirm Password *" type="password" {...formRegister.register('confirmPassword')}></Field>
+                      <Field
+                        placeholder="Confirm Password *"
+                        type="password"
+                        {...formRegister.register("confirmPassword")}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-auto">
                       {/* Link */}
@@ -139,7 +155,9 @@ export const Auth = () => {
                     </div>
                     <div className="col-12">
                       {/* Button */}
-                      <Button>Register</Button>
+                      <Button loading={loading} onClick={onRegister}>
+                        Register
+                      </Button>
                     </div>
                   </div>
                 </div>
