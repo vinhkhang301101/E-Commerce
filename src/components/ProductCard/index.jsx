@@ -57,7 +57,7 @@ export const ProductCard = ({
         <div className="card-body px-0">
           {/* Category */}
           <div className="font-size-xs">
-            <a className="text-muted" href="shop.html">
+            <a className="text-muted" href="/product">
               {categories}
             </a>
           </div>
@@ -157,7 +157,7 @@ export const ProductCard = ({
                 </span>
               </>
             ) : (
-              <span className="font-size-xs text-gray-350 text-decoration-line-through">
+              <span className="text-primary sale">
                 {currency(real_price)}
               </span>
             )}
@@ -204,7 +204,7 @@ export const ProductCardLoading = () => {
         <div className="card-body px-0">
           {/* Category */}
           <div className="font-size-xs">
-            <a className="text-muted" href="shop.html">
+            <a className="text-muted" href="/product">
               <Skeleton width={150} height="100%" />
             </a>
           </div>

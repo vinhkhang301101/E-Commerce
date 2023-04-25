@@ -1,3 +1,5 @@
+import { Counter } from '@/components/Counter';
+import { FlickitySlider } from '@/components/Flickity';
 import React from 'react'
 
 export const Home = () => {
@@ -12,7 +14,7 @@ export const Home = () => {
           {/* Item */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-1.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/computer-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -20,12 +22,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Women</h1>
+                <h1 className="mb-0 font-weight-bolder">Computer</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Women <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Computer Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -33,7 +35,7 @@ export const Home = () => {
           {/* Card */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-2.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/smartphone-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -41,12 +43,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Men</h1>
+                <h1 className="mb-0 font-weight-bolder">Smartphone</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Men <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Smartphone Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -54,7 +56,7 @@ export const Home = () => {
           {/* Card */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-3.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/mouse-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -62,12 +64,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Kids</h1>
+                <h1 className="mb-0 font-weight-bolder">Mouse</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Kids <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Mouse Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -183,11 +185,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto text-center">
                   {/* Heading */}
-                  <h4 className="mb-0">Bags Collection</h4>
+                  <h4 className="mb-0">Gaming Mouse's Collection</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -217,11 +219,11 @@ export const Home = () => {
                     <span className="font-size-h4 font-weight-bold">30%</span>
                   </div>
                   {/* Heading */}
-                  <h4 className="mb-0">Printed men’s Shirts</h4>
+                  <h4 className="mb-0">IPad's</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -246,11 +248,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto px-md-10 text-center text-md-left">
                   {/* Heading */}
-                  <h4 className="mb-0">Basic women’s Dresses</h4>
+                  <h4 className="mb-0">Computer For Work / Gaming</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -272,11 +274,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto text-center">
                   {/* Heading */}
-                  <h4 className="mb-0">Sweatshirts</h4>
+                  <h4 className="mb-0">Laptop</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -300,13 +302,13 @@ export const Home = () => {
                   href="#topSellersTab"
                   data-toggle="tab"
                 >
-                  Women
+                  Computer
                 </a>
                 <a className="nav-link" href="#topSellersTab" data-toggle="tab">
-                  Men
+                  Smartphone
                 </a>
                 <a className="nav-link" href="#topSellersTab" data-toggle="tab">
-                  Kids
+                  Mouse
                 </a>
               </div>
             </div>
@@ -361,7 +363,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -419,7 +421,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Dresses
                         </a>
                       </div>
@@ -481,7 +483,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -539,7 +541,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Tops
                         </a>
                       </div>
@@ -592,7 +594,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Dresses
                         </a>
                       </div>
@@ -654,7 +656,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Bags
                         </a>
                       </div>
@@ -717,7 +719,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Skirts
                         </a>
                       </div>
@@ -774,7 +776,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -818,65 +820,9 @@ export const Home = () => {
                 Summer Collection
               </h3>
               {/* Counter */}
-              <div
-                className="d-flex mb-9"
-                data-countdown
-                data-date="Jan 5, 2021 15:37:25"
-              >
-                <div className="text-center">
-                  <div
-                    className="font-size-h1 font-weight-bolder text-primary"
-                    data-days
-                  >
-                    00
-                  </div>
-                  <div className="heading-xxs text-muted">Days</div>
-                </div>
-                <div className="px-1 px-md-4">
-                  <div className="font-size-h2 font-weight-bolder text-primary">
-                    :
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div
-                    className="font-size-h1 font-weight-bolder text-primary"
-                    data-hours
-                  >
-                    00
-                  </div>
-                  <div className="heading-xxs text-muted">Hours</div>
-                </div>
-                <div className="px-1 px-md-4">
-                  <div className="font-size-h2 font-weight-bolder text-primary">
-                    :
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div
-                    className="font-size-h1 font-weight-bolder text-primary"
-                    data-minutes
-                  >
-                    00
-                  </div>
-                  <div className="heading-xxs text-muted">Minutes</div>
-                </div>
-                <div className="px-1 px-md-4">
-                  <div className="font-size-h2 font-weight-bolder text-primary">
-                    :
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div
-                    className="font-size-h1 font-weight-bolder text-primary"
-                    data-seconds
-                  >
-                    00
-                  </div>
-                  <div className="heading-xxs text-muted">Seconds</div>
-                </div>
-              </div>
+              <Counter />
               {/* Button */}
-              <a className="btn btn-dark" href="/shop">
+              <a className="btn btn-dark" href="/product">
                 Shop Now <i className="fe fe-arrow-right ml-2" />
               </a>
             </div>
@@ -899,278 +845,7 @@ export const Home = () => {
           <div className="row">
             <div className="col-12">
               {/* Slider */}
-              <div data-flickity='{"pageDots": true}'>
-                <div className="col-12 col-sm-8 col-md-6 col-lg-4">
-                  {/* Card */}
-                  <div className="card-lg card border">
-                    <div className="card-body">
-                      {/* Header */}
-                      <div className="row align-items-center mb-6">
-                        <div className="col-4">
-                          {/* Image */}
-                          <img
-                            src="./img/products/product-13.jpg"
-                            alt="..."
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className="col-8 ml-n2">
-                          {/* Preheading */}
-                          <a
-                            className="font-size-xs text-muted"
-                            href="/shop"
-                          >
-                            Shoes
-                          </a>
-                          {/* Heading */}
-                          <a
-                            className="d-block font-weight-bold text-body"
-                            href="product.html"
-                          >
-                            Low top Sneakers
-                          </a>
-                          {/* Rating */}
-                          <div
-                            className="rating font-size-xxs text-warning"
-                            data-value={3}
-                          >
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Blockquote */}
-                      <blockquote className="mb-0">
-                        <p className="text-muted">
-                          From creepeth said moved given divide make multiply of
-                          him shall itself also above second doesn't unto
-                          created saying land herb sea midst night wherein.
-                        </p>
-                        <footer className="font-size-xs text-muted">
-                          Logan Edwards,{" "}
-                          <time dateTime="2019-06-01">01 Jun 2019</time>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12 col-sm-8 col-md-6 col-lg-4">
-                  {/* Card */}
-                  <div className="card-lg card border">
-                    <div className="card-body">
-                      {/* Header */}
-                      <div className="row align-items-center mb-6">
-                        <div className="col-4">
-                          {/* Image */}
-                          <img
-                            src="./img/products/product-14.jpg"
-                            alt="..."
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className="col-8 ml-n2">
-                          {/* Preheading */}
-                          <a
-                            className="font-size-xs text-muted"
-                            href="/shop"
-                          >
-                            Dresses
-                          </a>
-                          {/* Heading */}
-                          <a
-                            className="d-block font-weight-bold text-body"
-                            href="product.html"
-                          >
-                            Cotton print Dress
-                          </a>
-                          {/* Rating */}
-                          <div
-                            className="rating font-size-xxs text-warning"
-                            data-value={5}
-                          >
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Blockquote */}
-                      <blockquote className="mb-0">
-                        <p className="text-muted">
-                          God every fill great replenish darkness unto. Very
-                          open. Likeness their that light. Given under image to.
-                          Subdue of shall cattle day fish form saw spirit and
-                          given stars, us you whales may, land, saw fill unto.
-                        </p>
-                        <footer className="font-size-xs text-muted">
-                          Jane Jefferson,{" "}
-                          <time dateTime="2019-05-29">29 May 2019</time>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12 col-sm-8 col-md-6 col-lg-4">
-                  {/* Card */}
-                  <div className="card-lg card border">
-                    <div className="card-body">
-                      {/* Header */}
-                      <div className="row align-items-center mb-6">
-                        <div className="col-4">
-                          {/* Image */}
-                          <img
-                            src="./img/products/product-15.jpg"
-                            alt="..."
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className="col-8 ml-n2">
-                          {/* Preheading */}
-                          <a
-                            className="font-size-xs text-muted"
-                            href="/shop"
-                          >
-                            T-shirts
-                          </a>
-                          {/* Heading */}
-                          <a
-                            className="d-block font-weight-bold text-body"
-                            href="product.html"
-                          >
-                            Oversized print T-shirt
-                          </a>
-                          {/* Rating */}
-                          <div
-                            className="rating font-size-xxs text-warning"
-                            data-value={4}
-                          >
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Blockquote */}
-                      <blockquote className="mb-0">
-                        <p className="text-muted">
-                          Fill his waters wherein signs likeness waters. Second
-                          light gathered appear sixth fourth, seasons behold
-                          creeping female.
-                        </p>
-                        <footer className="font-size-xs text-muted">
-                          Darrell Baker,{" "}
-                          <time dateTime="2019-05-18">18 May 2019</time>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12 col-sm-8 col-md-6 col-lg-4">
-                  {/* Card */}
-                  <div className="card-lg card border">
-                    <div className="card-body">
-                      {/* Header */}
-                      <div className="row align-items-center mb-6">
-                        <div className="col-4">
-                          {/* Image */}
-                          <img
-                            src="./img/products/product-10.jpg"
-                            alt="..."
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className="col-8 ml-n2">
-                          {/* Preheading */}
-                          <a
-                            className="font-size-xs text-muted"
-                            href="/shop"
-                          >
-                            Bags &amp; Accessories
-                          </a>
-                          {/* Heading */}
-                          <a
-                            className="d-block font-weight-bold text-body"
-                            href="product.html"
-                          >
-                            Suede cross body Bag
-                          </a>
-                          {/* Rating */}
-                          <div
-                            className="rating font-size-xxs text-warning"
-                            data-value={4}
-                          >
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                            <div className="rating-item">
-                              <i className="fas fa-star" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Blockquote */}
-                      <blockquote className="mb-0">
-                        <p className="text-muted">
-                          God every fill great replenish darkness unto. Very
-                          open. Likeness their that light. Given under image to.
-                          Subdue of shall cattle day fish form saw spirit and
-                          given stars.
-                        </p>
-                        <footer className="font-size-xs text-muted">
-                          Pavel Doe,{" "}
-                          <time dateTime="2019-05-29">29 May 2019</time>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <FlickitySlider />
             </div>
           </div>
         </div>
@@ -1201,7 +876,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -1222,7 +897,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -1243,7 +918,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -1264,7 +939,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -1285,7 +960,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -1306,7 +981,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}

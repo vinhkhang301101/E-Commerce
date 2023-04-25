@@ -1,56 +1,95 @@
-import { cache } from "@/utils/cache";
-import { useEffect, useState } from "react";
+import { localStorageCache, sessionStorageCache } from "@/utils/cache";
+import { useEffect, useRef, useState } from "react";
 
-export const useQuery = (options = {}) => {
-  const {
+const _cache = {
+  'localStorage': localStorageCache,
+  'sessionStorage':sessionStorageCache,
+};
+
+export const useQuery = ({
     queryKey,
     queryFn,
     cacheTime,
     enabled = true,
+    keepPreviousData = false,
     dependencyList = [],
-  } = options;
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(() => {
-    if (queryKey) {
-      return cache.get(queryKey);
-    }
-  });
-  const [error, setError] = useState();
-  const [status, setStatus] = useState("idle");
+    storeDriver = 'localStorage'
+  } = {}) => {
+    const dataRef = useRef({
 
-  useEffect(() => {
-    if (enabled) {
-      fetchData();
-    }
-  }, dependencyList);
+    })
+    const cache = _cache[storeDriver]
+    const refetchRef = useRef();
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState();
+    const [error, setError] = useState();
+    const [status, setStatus] = useState("idle");
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setStatus("pending");
-      const res = await queryFn();
-      setData(res.data);
-      if (queryKey) {
-        let expired = Date.now();
-        if (cacheTime) {
-          expired += cacheTime;
-        } else {
-          expired = undefined;
-        }
-        cache.set(queryKey, res.data, expired);
+    const cacheName = Array.isArray(queryKey) ? queryKey[0] : queryKey
+
+    // useEffect(() => {
+    //   if (typeof refetchRef.current === "boolean") {
+    //     refetchRef.current = true;
+    //   }
+    // }, dependencyList);
+
+    useEffect(() => {
+      if (enabled) {
+        fetchData();
       }
-      setStatus("success");
-    } catch (err) {
-      setError(err);
-      setStatus("error");
-    } finally {
-      setLoading(false);
+    }, [enabled].concat(queryKey));
+
+    const getCacheDataOrPreviousData = async () => {
+      if (keepPreviousData && dataRef[cacheName]) {
+        return dataRef[cacheName];
+      }
+
+      if (queryKey && !refetchRef.current) {
+        return cache.get(queryKey);
+      }
     }
+
+    const setCacheDataOrPreviousData = (data) => {
+      if(keepPreviousData) {
+        dataRef[cacheName] = data
+      }
+
+      if (cacheName) {
+        let expired = cacheTime;
+        if (cacheTime) {
+          expired += Date.now();
+        }
+        cache.set(cacheName, res, expired);
+      }
+    }
+
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setStatus("pending");
+
+        let res = await getCacheDataOrPreviousData()
+
+        if (!res) {
+          res = await queryFn();
+        }
+
+        setStatus("success");
+        setData(res);
+
+        setCacheDataOrPreviousData(res);
+        refetchRef.current = false;
+      } catch (err) {
+        setError(err);
+        setStatus("error");
+      } finally {
+        setLoading(false);
+      }
+    };
+    return {
+      loading,
+      error,
+      data,
+      status,
+    };
   };
-  return {
-    loading,
-    error,
-    data,
-    status,
-  };
-};

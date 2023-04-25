@@ -2,22 +2,21 @@ import { Paginate } from "@/components/Paginate";
 import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
+import { Skeleton } from "antd";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const Product = () => {
   const [search] = useSearchParams();
   const currentPage = parseInt(search.get("page") || 1);
-  const { data, loading, error } = useQuery({
-    dependencyList: [currentPage],
+  const { data, loading } = useQuery({
+    queryKey: [currentPage],
+    keepPreviousData: true,
     queryFn: () =>
       productService.getProduct(
-        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count`
+        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count&page=${currentPage}`
       ),
   });
-
-  if (loading) return null;
-
   return (
     <section className="py-11">
       <div className="container">
@@ -43,70 +42,27 @@ export const Product = () => {
                             All Products
                           </a>
                         </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#blousesCollapse"
-                          >
-                            Blouses and Shirts
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#coatsCollapse">
-                            Coats and Jackets
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#dressesCollapse"
-                            aria-expanded="true"
-                          >
-                            Dresses
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#hoodiesCollapse"
-                          >
-                            Hoodies and Sweats
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#denimCollapse">
-                            Denim
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#jeansCollapse">
-                            Jeans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#jumpersCollapse"
-                          >
-                            Jumpers and Cardigans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#legginsCollapse"
-                          >
-                            Leggings
-                          </a>
-                        </li>
+                        {categoryLoading
+                          ? Array.from(Array(10)).map((_, i) => (
+                              <li key={i} className="list-styled-item">
+                                {/* Toggle */}
+                                <a className="list-styled-link" href="#">
+                                  <Skeleton height={24} />
+                                </a>
+                              </li>
+                            ))
+                          : categories.data.map((e) => {
+                              <li key={e.id} className="list-styled-item">
+                                {/* Toggle */}
+                                <Link
+                                  className="list-styled-link font-bold"
+                                  to="#"
+                                >
+                                  {e.title}
+                                </Link>
+                              </li>;
+                              console.log(e.title);
+                            })}
                       </ul>
                     </div>
                   </div>
@@ -453,9 +409,12 @@ export const Product = () => {
                     <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
                       <div className="card-body px-md-10 py-11">
                         {/* Heading */}
-                        <h4>2019 Summer Collection</h4>
+                        <h4>2019 Best Seller</h4>
                         {/* Button */}
-                        <a className="btn btn-link px-0 text-body" href="/shop">
+                        <a
+                          className="btn btn-link px-0 text-body"
+                          href="shop.html"
+                        >
                           View Collection{" "}
                           <i className="fe fe-arrow-right ml-2" />
                         </a>
@@ -464,7 +423,7 @@ export const Product = () => {
                     <div
                       className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover"
                       style={{
-                        backgroundImage: "url(./img/covers/cover-16.jpg)",
+                        backgroundImage: "url(./img/covers/cover-23.jpg)",
                       }}
                     />
                   </div>
@@ -559,14 +518,11 @@ export const Product = () => {
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {loading
-                ? Array.from(Array(15)).map((_, i) => (
-                    <ProductCardLoading key={i} />
-                  ))
-                : data.map((e) => <ProductCard key={e.id} {...e} />)}
+              {
+                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
+                data.map((e) => (<ProductCard key={e.id} {...e} />))
+              }
             </div>
-            {/* Pagination */}
-            <Paginate totalPAge={10}></Paginate>
           </div>
         </div>
       </div>
