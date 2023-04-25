@@ -937,7 +937,7 @@ export const Header = () => {
               </a>
               <a
                 className="btn btn-block btn-outline-dark"
-                href="./productping-cart.html"
+                href="./shopping-cart"
               >
                 View Cart
               </a>
@@ -1020,7 +1020,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-classic.html"
+                          href="/product"
                         >
                           Classic
                         </a>
@@ -1028,7 +1028,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-fashion.html"
+                          href="/product"
                         >
                           Fashion
                         </a>
@@ -1036,7 +1036,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-boxed.html"
+                          href="/product"
                         >
                           Boxed
                         </a>
@@ -1044,7 +1044,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-simple.html"
+                          href="/product"
                         >
                           Simple
                         </a>
@@ -1052,7 +1052,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-asymmetric.html"
+                          href="/product"
                         >
                           Asymmetric
                         </a>
@@ -1060,7 +1060,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-sidenav.html"
+                          href="/product"
                         >
                           Sidenav
                         </a>
@@ -1068,7 +1068,7 @@ export const Header = () => {
                       <li className="list-styled-item">
                         <a
                           className="list-styled-link"
-                          href="./index-landing.html"
+                          href="/product"
                         >
                           Landing
                         </a>

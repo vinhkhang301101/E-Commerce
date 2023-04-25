@@ -1,5 +1,10 @@
-import { cache } from "@/utils/cache";
+import { localStorageCache, sessionStorageCache } from "@/utils/cache";
 import { useEffect, useRef, useState } from "react";
+
+const _cache = {
+  'localStorage': localStorageCache,
+  'sessionStorage':sessionStorageCache,
+};
 
 export const useQuery = ({
     queryKey,
@@ -13,7 +18,7 @@ export const useQuery = ({
     const dataRef = useRef({
 
     })
-    // const cache = _cache[storeDriver]
+    const cache = _cache[storeDriver]
     const refetchRef = useRef();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();

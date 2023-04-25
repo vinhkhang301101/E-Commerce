@@ -2,8 +2,9 @@ import { Paginate } from "@/components/Paginate";
 import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
+import { Skeleton } from "antd";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const Product = () => {
   const [search] = useSearchParams();
@@ -17,7 +18,11 @@ export const Product = () => {
       ),
   });
 
-  if (loading) return null;
+  const { data: categories, loading: categoryLoading } = useQuery({
+    queryFn: () => productService.getCategories()
+  })
+
+  console.log(categories);
 
   return (
     <section className="py-11">
@@ -44,70 +49,29 @@ export const Product = () => {
                             All Products
                           </a>
                         </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#blousesCollapse"
-                          >
-                            Blouses and Shirts
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#coatsCollapse">
-                            Coats and Jackets
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#dressesCollapse"
-                            aria-expanded="true"
-                          >
-                            Dresses
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#hoodiesCollapse"
-                          >
-                            Hoodies and Sweats
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#denimCollapse">
-                            Denim
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#jeansCollapse">
-                            Jeans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#jumpersCollapse"
-                          >
-                            Jumpers and Cardigans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#legginsCollapse"
-                          >
-                            Leggings
-                          </a>
-                        </li>
+                        {categoryLoading
+                          ? Array.from(Array(10)).map((_, i) => (
+                              <li key={i} className="list-styled-item">
+                                {/* Toggle */}
+                                <a
+                                  className="list-styled-link"
+                                  href="#"
+                                >
+                                  <Skeleton height={24} />
+                                </a>
+                              </li>
+                            ))
+                          : categories.data.map(e => {
+                              <li key={e.id} className="list-styled-item">
+                                {/* Toggle */}
+                                <Link
+                                  className="list-styled-link font-bold"
+                                  to="#"
+                                >
+                                  {e.title}
+                                </Link>
+                              </li>;
+                            })}
                       </ul>
                     </div>
                   </div>
@@ -495,7 +459,7 @@ export const Product = () => {
                           </strong>
                         </p>
                         {/* Button */}
-                        <a className="btn btn-outline-dark" href="shop.html">
+                        <a className="btn btn-outline-dark" href="/product">
                           Shop Now <i className="fe fe-arrow-right ml-2" />
                         </a>
                       </div>
@@ -522,7 +486,7 @@ export const Product = () => {
                         {/* Link */}
                         <a
                           className="link-underline text-reset"
-                          href="shop.html"
+                          href="/product"
                         >
                           Shop Collection
                         </a>
@@ -540,7 +504,7 @@ export const Product = () => {
                 {/* Breadcrumb */}
                 <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
                   <li className="breadcrumb-item">
-                    <a className="text-gray-400" href="index.html">
+                    <a className="text-gray-400" href="/">
                       Home
                     </a>
                   </li>
