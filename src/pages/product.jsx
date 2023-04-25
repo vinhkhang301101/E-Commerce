@@ -2,8 +2,9 @@ import { Paginate } from "@/components/Paginate";
 import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
+import { Skeleton } from "antd";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const Product = () => {
   const [search] = useSearchParams();
@@ -17,7 +18,9 @@ export const Product = () => {
       ),
   });
 
-  if (loading) return null;
+  const { data: categories, loading: categoryLoading } = useQuery({
+    queryFn: () => productService.getCategories()
+  })
 
   return (
     <section className="py-11">
@@ -44,70 +47,29 @@ export const Product = () => {
                             All Products
                           </a>
                         </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#blousesCollapse"
-                          >
-                            Blouses and Shirts
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#coatsCollapse">
-                            Coats and Jackets
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#dressesCollapse"
-                            aria-expanded="true"
-                          >
-                            Dresses
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#hoodiesCollapse"
-                          >
-                            Hoodies and Sweats
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#denimCollapse">
-                            Denim
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a className="list-styled-link" href="#jeansCollapse">
-                            Jeans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#jumpersCollapse"
-                          >
-                            Jumpers and Cardigans
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          {/* Toggle */}
-                          <a
-                            className="list-styled-link"
-                            href="#legginsCollapse"
-                          >
-                            Leggings
-                          </a>
-                        </li>
+                        {categoryLoading
+                          ? Array.from(Array(10)).map((_, i) => (
+                              <li key={i} className="list-styled-item">
+                                {/* Toggle */}
+                                <a
+                                  className="list-styled-link"
+                                  href="#"
+                                >
+                                  <Skeleton height={24} />
+                                </a>
+                              </li>
+                            ))
+                          : categories.data.map(e => {
+                              <li key={e.id} className="list-styled-item">
+                                {/* Toggle */}
+                                <Link
+                                  className="list-styled-link font-bold"
+                                  to="#"
+                                >
+                                  {e.title}
+                                </Link>
+                              </li>;
+                            })}
                       </ul>
                     </div>
                   </div>
@@ -461,42 +423,63 @@ export const Product = () => {
                       </div>
                     </div>
                   </div>
-                  {/* Item */}
-                  <div className="w-100">
-                    <div className="card bg-cover" style={{backgroundImage: 'url(./img/covers/cover-29.jpg)'}}>
-                      <div className="row align-items-center" style={{minHeight: '400px'}}>
-                        <div className="col-12 col-md-10 col-lg-8 col-xl-6">
-                          <div className="card-body px-md-10 py-11">
-                            {/* Heading */}
-                            <h4 className="mb-5">Get -50% from Best Choose Collection</h4>
-                            {/* Text */}
-                            <p className="mb-7">
-                              Appear, dry there darkness they're seas. <br />
-                              <strong className="text-primary">Use code 4GF5SD</strong>
-                            </p>
-                            {/* Button */}
-                            <a className="btn btn-outline-dark" href="shop.html">
-                              Shop Now <i className="fe fe-arrow-right ml-2" />
-                            </a>
-                          </div>
-                        </div>
+                </div>
+              </div>
+              {/* Item */}
+              <div className="w-100">
+                <div
+                  className="card bg-cover"
+                  style={{ backgroundImage: "url(./img/covers/cover-29.jpg)" }}
+                >
+                  <div
+                    className="row align-items-center"
+                    style={{ minHeight: "400px" }}
+                  >
+                    <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+                      <div className="card-body px-md-10 py-11">
+                        {/* Heading */}
+                        <h4 className="mb-5">
+                          Get -50% from Summer Collection
+                        </h4>
+                        {/* Text */}
+                        <p className="mb-7">
+                          Appear, dry there darkness they're seas. <br />
+                          <strong className="text-primary">
+                            Use code 4GF5SD
+                          </strong>
+                        </p>
+                        {/* Button */}
+                        <a className="btn btn-outline-dark" href="shop.html">
+                          Shop Now <i className="fe fe-arrow-right ml-2" />
+                        </a>
                       </div>
                     </div>
                   </div>
-                  {/* Item */}
-                  <div className="w-100">
-                    <div className="card bg-cover" style={{backgroundImage: 'url(./img/covers/cover-30.jpg)'}}>
-                      <div className="row align-items-center" style={{minHeight: '400px'}}>
-                        <div className="col-12">
-                          <div className="card-body px-md-10 py-11 text-center text-white">
-                            {/* Preheading */}
-                            <p className="text-uppercase">Enjoy an extra</p>
-                            {/* Heading */}
-                            <h1 className="display-4 text-uppercase">50% off</h1>
-                            {/* Link */}
-                            <a className="link-underline text-reset" href="shop.html">Shop Collection</a>
-                          </div>
-                        </div>
+                </div>
+              </div>
+              {/* Item */}
+              <div className="w-100">
+                <div
+                  className="card bg-cover"
+                  style={{ backgroundImage: "url(./img/covers/cover-30.jpg)" }}
+                >
+                  <div
+                    className="row align-items-center"
+                    style={{ minHeight: "400px" }}
+                  >
+                    <div className="col-12">
+                      <div className="card-body px-md-10 py-11 text-center text-white">
+                        {/* Preheading */}
+                        <p className="text-uppercase">Enjoy an extra</p>
+                        {/* Heading */}
+                        <h1 className="display-4 text-uppercase">50% off</h1>
+                        {/* Link */}
+                        <a
+                          className="link-underline text-reset"
+                          href="shop.html"
+                        >
+                          Shop Collection
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -509,7 +492,7 @@ export const Product = () => {
                 {/* Breadcrumb */}
                 <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
                   <li className="breadcrumb-item">
-                    <a className="text-gray-400" href="index.html">
+                    <a className="text-gray-400" href="/">
                       Home
                     </a>
                   </li>

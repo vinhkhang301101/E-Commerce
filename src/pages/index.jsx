@@ -876,7 +876,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -897,7 +897,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -918,7 +918,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -939,7 +939,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -960,7 +960,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
@@ -981,7 +981,7 @@ export const Home = () => {
                 {/* Overlay */}
                 <a
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="blog-post.html"
+                  href="/blog-post"
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
