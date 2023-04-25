@@ -19,8 +19,8 @@ export const Product = () => {
   });
 
   const { data: categories, loading: categoryLoading } = useQuery({
-    queryFn: () => productService.getCategories()
-  })
+    queryFn: () => productService.getCategories(),
+  });
 
   return (
     <section className="py-11">
@@ -51,15 +51,12 @@ export const Product = () => {
                           ? Array.from(Array(10)).map((_, i) => (
                               <li key={i} className="list-styled-item">
                                 {/* Toggle */}
-                                <a
-                                  className="list-styled-link"
-                                  href="#"
-                                >
+                                <a className="list-styled-link" href="#">
                                   <Skeleton height={24} />
                                 </a>
                               </li>
                             ))
-                          : categories.data.map(e => {
+                          : categories.data.map((e) => {
                               <li key={e.id} className="list-styled-item">
                                 {/* Toggle */}
                                 <Link
@@ -69,6 +66,7 @@ export const Product = () => {
                                   {e.title}
                                 </Link>
                               </li>;
+                              console.log(e.title);
                             })}
                       </ul>
                     </div>
@@ -402,26 +400,37 @@ export const Product = () => {
           </div>
           <div className="col-12 col-md-8 col-lg-9">
             {/* Slider */}
-            <div className="flickity-page-dots-inner mb-9" data-flickity="{&quot;pageDots&quot;: true}">
-                  {/* Item */}
-                  <div className="w-100">
-                    <div className="card bg-h-100 bg-left" style={{backgroundImage: 'url(./img/covers/cover-24.jpg)'}}>
-                      <div className="row" style={{minHeight: '400px'}}>
-                        <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
-                          <div className="card-body px-md-10 py-11">
-                            {/* Heading */}
-                            <h4>
-                              2019 Best Seller
-                            </h4>
-                            {/* Button */}
-                            <a className="btn btn-link px-0 text-body" href="shop.html">
-                              View Collection <i className="fe fe-arrow-right ml-2" />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover" style={{backgroundImage: 'url(./img/covers/cover-23.jpg)'}} />
+            <div
+              className="flickity-page-dots-inner mb-9"
+              data-flickity='{"pageDots": true}'
+            >
+              {/* Item */}
+              <div className="w-100">
+                <div
+                  className="card bg-h-100 bg-left"
+                  style={{ backgroundImage: "url(./img/covers/cover-24.jpg)" }}
+                >
+                  <div className="row" style={{ minHeight: "400px" }}>
+                    <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
+                      <div className="card-body px-md-10 py-11">
+                        {/* Heading */}
+                        <h4>2019 Best Seller</h4>
+                        {/* Button */}
+                        <a
+                          className="btn btn-link px-0 text-body"
+                          href="shop.html"
+                        >
+                          View Collection{" "}
+                          <i className="fe fe-arrow-right ml-2" />
+                        </a>
                       </div>
                     </div>
+                    <div
+                      className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover"
+                      style={{
+                        backgroundImage: "url(./img/covers/cover-23.jpg)",
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -484,42 +493,46 @@ export const Product = () => {
                     </div>
                   </div>
                 </div>
-            {/* Header */}
-            <div className="row align-items-center mb-7">
-              <div className="col-12 col-md">
-                {/* Heading */}
-                <h3 className="mb-1">Womens' Clothing</h3>
-                {/* Breadcrumb */}
-                <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
-                  <li className="breadcrumb-item">
-                    <a className="text-gray-400" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li className="breadcrumb-item active">Women's Clothing</li>
-                </ol>
-              </div>
-              <div className="col-12 col-md-auto">
-                {/* Select */}
-                <select className="custom-select custom-select-xs">
-                  <option selected>Giá giãm</option>
-                  <option selected>Giá tăng</option>
-                  <option selected>Mới nhất</option>
-                  <option selected>Giảm giá nhiều nhất</option>
-                </select>
+                {/* Header */}
+                <div className="row align-items-center mb-7">
+                  <div className="col-12 col-md">
+                    {/* Heading */}
+                    <h3 className="mb-1">Womens' Clothing</h3>
+                    {/* Breadcrumb */}
+                    <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
+                      <li className="breadcrumb-item">
+                        <a className="text-gray-400" href="/">
+                          Home
+                        </a>
+                      </li>
+                      <li className="breadcrumb-item active">
+                        Women's Clothing
+                      </li>
+                    </ol>
+                  </div>
+                  <div className="col-12 col-md-auto">
+                    {/* Select */}
+                    <select className="custom-select custom-select-xs">
+                      <option selected>Giá giãm</option>
+                      <option selected>Giá tăng</option>
+                      <option selected>Mới nhất</option>
+                      <option selected>Giảm giá nhiều nhất</option>
+                    </select>
+                  </div>
+                </div>
+                <h4 className="mb-5">Searching for `Clothing`</h4>
+                {/* Products */}
+                <div className="row">
+                  {loading
+                    ? Array.from(Array(15)).map((_, i) => (
+                        <ProductCardLoading key={i} />
+                      ))
+                    : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
+                </div>
+                {/* Pagination */}
+                <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
               </div>
             </div>
-            <h4 className="mb-5">Searching for `Clothing`</h4>
-            {/* Products */}
-            <div className="row">
-              {loading
-                ? Array.from(Array(15)).map((_, i) => (
-                    <ProductCardLoading key={i} />
-                  ))
-                : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
-            </div>
-            {/* Pagination */}
-            <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
           </div>
         </div>
       </div>
