@@ -169,7 +169,7 @@ export const Shop = () => {
                           <div className="card-body px-md-10 py-11">
                             {/* Heading */}
                             <h4>
-                              2019 Summer Collection
+                              2019 Best Seller
                             </h4>
                             {/* Button */}
                             <a className="btn btn-link px-0 text-body" href="shop.html">
@@ -177,7 +177,7 @@ export const Shop = () => {
                             </a>
                           </div>
                         </div>
-                        <div className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover" style={{backgroundImage: 'url(./img/covers/cover-16.jpg)'}} />
+                        <div className="col-12 col-md-2 col-lg-4 col-xl-6 d-none d-md-block bg-cover" style={{backgroundImage: 'url(./img/covers/cover-23.jpg)'}} />
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ export const Shop = () => {
                         <div className="col-12 col-md-10 col-lg-8 col-xl-6">
                           <div className="card-body px-md-10 py-11">
                             {/* Heading */}
-                            <h4 className="mb-5">Get -50% from Summer Collection</h4>
+                            <h4 className="mb-5">Get -50% from Best Choose Collection</h4>
                             {/* Text */}
                             <p className="mb-7">
                               Appear, dry there darkness they're seas. <br />

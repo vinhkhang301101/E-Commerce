@@ -14,7 +14,7 @@ export const Home = () => {
           {/* Item */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-1.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/computer-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -22,12 +22,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Women</h1>
+                <h1 className="mb-0 font-weight-bolder">Computer</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Women <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Computer Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -35,7 +35,7 @@ export const Home = () => {
           {/* Card */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-2.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/smartphone-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -43,12 +43,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Men</h1>
+                <h1 className="mb-0 font-weight-bolder">Smartphone</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Men <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Smartphone Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -56,7 +56,7 @@ export const Home = () => {
           {/* Card */}
           <div
             className="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
-            style={{ backgroundImage: "url(./img/covers/cover-3.jpg)" }}
+            style={{ backgroundImage: "url(./img/covers/mouse-1.jpg)" }}
           >
             <div
               className="card bg-dark-5 bg-hover text-white text-center"
@@ -64,12 +64,12 @@ export const Home = () => {
             >
               <div className="card-body mt-auto mb-n11 py-8">
                 {/* Heading */}
-                <h1 className="mb-0 font-weight-bolder">Kids</h1>
+                <h1 className="mb-0 font-weight-bolder">Mouse</h1>
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/shop">
-                  Shop Kids <i className="fe fe-arrow-right ml-2" />
+                <a className="btn btn-white stretched-link" href="/product">
+                  Mouse Shop <i className="fe fe-arrow-right ml-2" />
                 </a>
               </div>
             </div>
@@ -185,11 +185,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto text-center">
                   {/* Heading */}
-                  <h4 className="mb-0">Bags Collection</h4>
+                  <h4 className="mb-0">Gaming Mouse's Collection</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -219,11 +219,11 @@ export const Home = () => {
                     <span className="font-size-h4 font-weight-bold">30%</span>
                   </div>
                   {/* Heading */}
-                  <h4 className="mb-0">Printed men’s Shirts</h4>
+                  <h4 className="mb-0">IPad's</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -248,11 +248,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto px-md-10 text-center text-md-left">
                   {/* Heading */}
-                  <h4 className="mb-0">Basic women’s Dresses</h4>
+                  <h4 className="mb-0">Computer For Work / Gaming</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -274,11 +274,11 @@ export const Home = () => {
                 {/* Body */}
                 <div className="card-body my-auto text-center">
                   {/* Heading */}
-                  <h4 className="mb-0">Sweatshirts</h4>
+                  <h4 className="mb-0">Laptop</h4>
                   {/* Link */}
                   <a
                     className="btn btn-link stretched-link text-reset"
-                    href="/shop"
+                    href="/product"
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
                   </a>
@@ -302,13 +302,13 @@ export const Home = () => {
                   href="#topSellersTab"
                   data-toggle="tab"
                 >
-                  Women
+                  Computer
                 </a>
                 <a className="nav-link" href="#topSellersTab" data-toggle="tab">
-                  Men
+                  Smartphone
                 </a>
                 <a className="nav-link" href="#topSellersTab" data-toggle="tab">
-                  Kids
+                  Mouse
                 </a>
               </div>
             </div>
@@ -363,7 +363,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -421,7 +421,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Dresses
                         </a>
                       </div>
@@ -483,7 +483,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -541,7 +541,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Tops
                         </a>
                       </div>
@@ -594,7 +594,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Dresses
                         </a>
                       </div>
@@ -656,7 +656,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Bags
                         </a>
                       </div>
@@ -719,7 +719,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Skirts
                         </a>
                       </div>
@@ -776,7 +776,7 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/shop">
+                        <a className="text-muted" href="/product">
                           Shoes
                         </a>
                       </div>
@@ -822,7 +822,7 @@ export const Home = () => {
               {/* Counter */}
               <Counter />
               {/* Button */}
-              <a className="btn btn-dark" href="/shop">
+              <a className="btn btn-dark" href="/product">
                 Shop Now <i className="fe fe-arrow-right ml-2" />
               </a>
             </div>
