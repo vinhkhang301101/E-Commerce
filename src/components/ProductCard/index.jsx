@@ -1,5 +1,5 @@
 import { currency } from "@/utils/currency";
-import { Skeleton } from "antd";
+import { Skeleton } from "../SkeletonLoading";
 
 export const ProductCard = ({
   images,
@@ -68,7 +68,7 @@ export const ProductCard = ({
             </a>
           </div>
           <div className="card-product-rating">
-            {review_count > 0 && 
+            {review_count > 0 && (
               <>
                 {rating_average}
                 <svg
@@ -143,7 +143,7 @@ export const ProductCard = ({
                 </svg>
                 ({review_count} reviews)
               </>
-            }
+            )}
           </div>
           {/* Price */}
           <div className="card-product-price">
@@ -157,9 +157,7 @@ export const ProductCard = ({
                 </span>
               </>
             ) : (
-              <span className="text-primary sale">
-                {currency(real_price)}
-              </span>
+              <span className="text-primary sale">{currency(real_price)}</span>
             )}
           </div>
         </div>

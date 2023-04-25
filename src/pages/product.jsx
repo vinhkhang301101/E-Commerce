@@ -2,7 +2,7 @@ import { Paginate } from "@/components/Paginate";
 import { ProductCard, ProductCardLoading } from "@/components/ProductCard";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
-import { Skeleton } from "antd";
+import { Skeleton } from "../components/SkeletonLoading";
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -17,6 +17,11 @@ export const Product = () => {
         `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count&page=${currentPage}`
       ),
   });
+
+  const { data: categories, loading: categoryLoading } = useQuery({
+    queryFn: () => productService.getCategories(),
+  });
+
   return (
     <section className="py-11">
       <div className="container">
@@ -37,21 +42,23 @@ export const Product = () => {
                   <div>
                     <div className="form-group">
                       <ul className="list-styled mb-0" id="productsNav">
-                        <li className="list-styled-item">
-                          <a className="list-styled-link" href="#">
-                            All Products
-                          </a>
-                        </li>
-                        {categoryLoading
-                          ? Array.from(Array(10)).map((_, i) => (
-                              <li key={i} className="list-styled-item">
-                                {/* Toggle */}
-                                <a className="list-styled-link" href="#">
-                                  <Skeleton height={24} />
-                                </a>
-                              </li>
-                            ))
-                          : categories.data.map((e) => {
+                        {categoryLoading ? (
+                          Array.from(Array(10)).map((_, i) => (
+                            <li key={i} className="list-styled-item">
+                              {/* Toggle */}
+                              <a className="list-styled-link" href="#">
+                                <Skeleton height={24} />
+                              </a>
+                            </li>
+                          ))
+                        ) : (
+                          <>
+                            <li className="list-styled-item">
+                              <a className="list-styled-link" href="#">
+                                All Products
+                              </a>
+                            </li>
+                            {categories.data.map((e) => (
                               <li key={e.id} className="list-styled-item">
                                 {/* Toggle */}
                                 <Link
@@ -60,9 +67,10 @@ export const Product = () => {
                                 >
                                   {e.title}
                                 </Link>
-                              </li>;
-                              console.log(e.title);
-                            })}
+                              </li>
+                            ))}
+                          </>
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -488,40 +496,45 @@ export const Product = () => {
                     </div>
                   </div>
                 </div>
+                {/* Header */}
+                <div className="row align-items-center mb-7">
+                  <div className="col-12 col-md">
+                    {/* Heading */}
+                    <h3 className="mb-1">Womens' Clothing</h3>
+                    {/* Breadcrumb */}
+                    <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
+                      <li className="breadcrumb-item">
+                        <a className="text-gray-400" href="/">
+                          Home
+                        </a>
+                      </li>
+                      <li className="breadcrumb-item active">
+                        Women's Clothing
+                      </li>
+                    </ol>
+                  </div>
+                  <div className="col-12 col-md-auto">
+                    {/* Select */}
+                    <select className="custom-select custom-select-xs">
+                      <option selected>Giá giãm</option>
+                      <option selected>Giá tăng</option>
+                      <option selected>Mới nhất</option>
+                      <option selected>Giảm giá nhiều nhất</option>
+                    </select>
+                  </div>
+                </div>
+                <h4 className="mb-5">Searching for `Clothing`</h4>
+                {/* Products */}
+                <div className="row">
+                  {loading
+                    ? Array.from(Array(15)).map((_, i) => (
+                        <ProductCardLoading key={i} />
+                      ))
+                    : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
+                </div>
+                {/* Pagination */}
+                <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
               </div>
-            </div>
-            {/* Header */}
-            <div className="row align-items-center mb-7">
-              <div className="col-12 col-md">
-                {/* Heading */}
-                <h3 className="mb-1">Womens' Clothing</h3>
-                {/* Breadcrumb */}
-                <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
-                  <li className="breadcrumb-item">
-                    <a className="text-gray-400" href="index.html">
-                      Home
-                    </a>
-                  </li>
-                  <li className="breadcrumb-item active">Women's Clothing</li>
-                </ol>
-              </div>
-              <div className="col-12 col-md-auto">
-                {/* Select */}
-                <select className="custom-select custom-select-xs">
-                  <option selected>Giá giãm</option>
-                  <option selected>Giá tăng</option>
-                  <option selected>Mới nhất</option>
-                  <option selected>Giảm giá nhiều nhất</option>
-                </select>
-              </div>
-            </div>
-            <h4 className="mb-5">Searching for `Clothing`</h4>
-            {/* Products */}
-            <div className="row">
-              {
-                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
-                data.map((e) => (<ProductCard key={e.id} {...e} />))
-              }
             </div>
           </div>
         </div>
