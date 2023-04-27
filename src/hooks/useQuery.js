@@ -20,7 +20,7 @@ export const useQuery = ({
     })
     const cache = _cache[storeDriver]
     const refetchRef = useRef();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(enabled);
     const [data, setData] = useState();
     const [error, setError] = useState();
     const [status, setStatus] = useState("idle");
