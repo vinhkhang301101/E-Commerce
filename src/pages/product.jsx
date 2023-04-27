@@ -4,18 +4,28 @@ import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
 import { Skeleton } from "../components/SkeletonLoading";
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, generatePath, useParams, useSearchParams } from "react-router-dom";
+import { PATH } from "@/config/path";
+import { cn, slugify } from "@/utils";
+import queryString from "query-string";
 
 export const Product = () => {
+
+  const { id } = useParams()
+
   const [search] = useSearchParams();
   const currentPage = parseInt(search.get("page") || 1);
+  const qs = queryString.stringify({
+    page: currentPage,
+    fields: "name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count",
+    categories: id
+  })
+
   const { data, loading } = useQuery({
-    queryKey: [currentPage],
+    queryKey: [qs],
     keepPreviousData: true,
-    queryFn: () =>
-      productService.getProduct(
-        `?fields=name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count&page=${currentPage}`
-      ),
+    queryFn: ({ signal }) =>
+      productService.getProduct(`?${qs}`, signal),
   });
 
   const { data: categories, loading: categoryLoading } = useQuery({
@@ -42,31 +52,38 @@ export const Product = () => {
                   <div>
                     <div className="form-group">
                       <ul className="list-styled mb-0" id="productsNav">
-                        <li className="list-styled-item">
-                          <a className="list-styled-link" href="#">
-                            All Products
-                          </a>
-                        </li>
-                        {categoryLoading
-                          ? Array.from(Array(10)).map((_, i) => (
-                              <li key={i} className="list-styled-item">
-                                {/* Toggle */}
-                                <a className="list-styled-link" href="#">
-                                  <Skeleton height={24} />
-                                </a>
-                              </li>
-                            ))
-                          : categories.data.map((e) => {
+                        {categoryLoading ? (
+                          Array.from(Array(10)).map((_, i) => (
+                            <li key={i} className="list-styled-item">
+                              {/* Toggle */}
+                              <a className="list-styled-link" href="#">
+                                <Skeleton height={24} />
+                              </a>
+                            </li>
+                          ))
+                        ) : (
+                          <>
+                            <li className="list-styled-item">
+                              <Link className={cn('list-styled-link', {'font-bold': !id})} tp={PATH.Product}>
+                                All Products
+                              </Link>
+                            </li>
+                            {categories.data.map((e) => (
                               <li key={e.id} className="list-styled-item">
                                 {/* Toggle */}
                                 <Link
-                                  className="list-styled-link font-bold"
-                                  to="#"
+                                  className={cn('list-styled-link', {'font-bold': e.id == id})}
+                                  to={generatePath(PATH.Category, {
+                                    slug: slugify(e.title), 
+                                    id: e.id,
+                                  })}
                                 >
                                   {e.title}
                                 </Link>
-                              </li>;
-                            })}
+                              </li>
+                            ))}
+                          </>
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -399,11 +416,10 @@ export const Product = () => {
           </div>
           <div className="col-12 col-md-8 col-lg-9">
             {/* Slider */}
-            <div
+            {/* <div
               className="flickity-page-dots-inner mb-9"
               data-flickity='{"pageDots": true}'
             >
-              {/* Item */}
               <div className="w-100">
                 <div
                   className="card bg-h-100 bg-left"
@@ -412,9 +428,7 @@ export const Product = () => {
                   <div className="row" style={{ minHeight: "400px" }}>
                     <div className="col-12 col-md-10 col-lg-8 col-xl-6 align-self-center">
                       <div className="card-body px-md-10 py-11">
-                        {/* Heading */}
                         <h4>2019 Best Seller</h4>
-                        {/* Button */}
                         <a
                           className="btn btn-link px-0 text-body"
                           href="shop.html"
@@ -433,7 +447,6 @@ export const Product = () => {
                   </div>
                 </div>
               </div>
-              {/* Item */}
               <div className="w-100">
                 <div
                   className="card bg-cover"
@@ -445,18 +458,15 @@ export const Product = () => {
                   >
                     <div className="col-12 col-md-10 col-lg-8 col-xl-6">
                       <div className="card-body px-md-10 py-11">
-                        {/* Heading */}
                         <h4 className="mb-5">
                           Get -50% from Summer Collection
                         </h4>
-                        {/* Text */}
                         <p className="mb-7">
                           Appear, dry there darkness they're seas. <br />
                           <strong className="text-primary">
                             Use code 4GF5SD
                           </strong>
                         </p>
-                        {/* Button */}
                         <a className="btn btn-outline-dark" href="shop.html">
                           Shop Now <i className="fe fe-arrow-right ml-2" />
                         </a>
@@ -465,7 +475,6 @@ export const Product = () => {
                   </div>
                 </div>
               </div>
-              {/* Item */}
               <div className="w-100">
                 <div
                   className="card bg-cover"
@@ -477,11 +486,8 @@ export const Product = () => {
                   >
                     <div className="col-12">
                       <div className="card-body px-md-10 py-11 text-center text-white">
-                        {/* Preheading */}
                         <p className="text-uppercase">Enjoy an extra</p>
-                        {/* Heading */}
                         <h1 className="display-4 text-uppercase">50% off</h1>
-                        {/* Link */}
                         <a
                           className="link-underline text-reset"
                           href="shop.html"
@@ -493,7 +499,7 @@ export const Product = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Header */}
             <div className="row align-items-center mb-7">
               <div className="col-12 col-md">
@@ -522,11 +528,10 @@ export const Product = () => {
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {loading
-                ? Array.from(Array(15)).map((_, i) => (
-                    <ProductCardLoading key={i} />
-                  ))
-                : data.map((e) => <ProductCard key={e.id} {...e} />)}
+              {
+                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
+                data.map((e) => (<ProductCard key={e.id} {...e} />))
+              }
             </div>
             {/* Pagination */}
             <Paginate totalPage={data?.paginate?.totalPage}></Paginate>
