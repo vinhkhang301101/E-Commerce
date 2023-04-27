@@ -11,7 +11,7 @@ export const Button = ({ children, loading, ...props }) => {
         }
       )}
       {...props}
-    >
+    > 
       {loading && <LoadingOutlined />}
       {children}
     </button>
