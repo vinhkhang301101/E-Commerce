@@ -1,5 +1,8 @@
 import { currency } from "@/utils/currency";
 import { Skeleton } from "../SkeletonLoading";
+import { useCategory } from "@/hooks/useCategories";
+import { useDispatch } from "react-redux";
+import { addCartItemAction } from "@/store/cart";
 
 export const ProductCard = ({
   images,
@@ -12,8 +15,18 @@ export const ProductCard = ({
   review_count,
   categories,
 }) => {
+
   const img1 = images[0]?.thumbnail_url;
   const img2 = images[1] ? images?.[1].thumbnail_url : img1;
+  const category = useCategory(categories)
+  const dispatch = useDispatch()
+
+  const onAddCartItem = () => {
+    dispatch(addCartItemAction({
+      productId: id,
+      quantity: 1,
+    }))
+  }
 
   return (
     <div className="col-6 col-md-4">
@@ -37,6 +50,7 @@ export const ProductCard = ({
             <span className="card-action"></span>
             <span className="card-action">
               <button
+                onClick={onAddCartItem}
                 className="btn btn-xs btn-circle btn-white-primary"
                 data-toggle="button"
               >
@@ -57,9 +71,11 @@ export const ProductCard = ({
         <div className="card-body px-0">
           {/* Category */}
           <div className="font-size-xs">
-            <a className="text-muted" href="/product">
-              {categories}
-            </a>
+            {category && (
+              <a className="text-muted" href="/product">
+                {category.title}
+              </a>
+            )}
           </div>
           {/* Title */}
           <div className="font-weight-bold">
