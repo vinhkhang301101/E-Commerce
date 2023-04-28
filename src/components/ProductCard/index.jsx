@@ -49,7 +49,7 @@ export const ProductCard = ({
   const onAddCartItem = () => {
     dispatch(addCartItemAction({
       productId: id,
-      quantity: 1,
+      quantity: 1
     }))
   }
 

@@ -22,10 +22,11 @@ export const Auth = () => {
 
   const onRegister = async () => {
     if (formRegister.validate()) {
+      console.log("clicked")
       try {
         await registerService();
       } catch (error) {
-        handleError(error)
+        console.log(error)
       }
     }
   };
@@ -103,6 +104,7 @@ export const Auth = () => {
                       <Field
                         placeholder="Fullname *"
                         {...formRegister.register("name")}
+                        value={formRegister.values.name || ''}
                       ></Field>
                     </div>
                     <div className="col-12">
@@ -110,6 +112,7 @@ export const Auth = () => {
                       <Field
                         placeholder="Email Address *"
                         {...formRegister.register("username")}
+                        value={formRegister.values.username || ''}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-6">
@@ -118,6 +121,7 @@ export const Auth = () => {
                         placeholder="Password *"
                         type="password"
                         {...formRegister.register("password")}
+                        value={formRegister.values.password || ''}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-6">
@@ -126,6 +130,7 @@ export const Auth = () => {
                         placeholder="Confirm Password *"
                         type="password"
                         {...formRegister.register("confirmPassword")}
+                        value={formRegister.values.confirmPassword || ''}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-auto">

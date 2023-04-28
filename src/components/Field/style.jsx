@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const FieldStyle = styled.div`
@@ -12,7 +11,6 @@ export const FieldStyle = styled.div`
         }
     }
 `
-
 export const ErrorText = styled.span`
     color: red;
     position: relative;
