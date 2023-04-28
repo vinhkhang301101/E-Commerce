@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const addCartItemAction = createAsyncThunk('cart/addCartItem', async (data, thunkAPI) => {
     try {
         await cartService.addItem(data.productId, data.quantity)
-        const cart = cartService.getCart()
+        const cart = await cartService.getCart()
         thunkAPI.dispatch(cartActions.setCart(cart.data))
     } catch(err) {
         throw err.response.data

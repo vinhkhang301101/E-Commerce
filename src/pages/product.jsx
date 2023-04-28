@@ -4,28 +4,32 @@ import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
 import { Skeleton } from "../components/SkeletonLoading";
 import React from "react";
-import { Link, generatePath, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  generatePath,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { PATH } from "@/config/path";
 import { cn, slugify } from "@/utils";
 import queryString from "query-string";
 
 export const Product = () => {
-
-  const { id } = useParams()
+  const { id } = useParams();
 
   const [search] = useSearchParams();
   const currentPage = parseInt(search.get("page") || 1);
   const qs = queryString.stringify({
     page: currentPage,
-    fields: "name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count",
-    categories: id
-  })
+    fields:
+      "name,real_price,price,categories,slug,id,images,discount_rate,rating_average,review_count",
+    categories: id,
+  });
 
   const { data, loading } = useQuery({
     queryKey: [qs],
     keepPreviousData: true,
-    queryFn: ({ signal }) =>
-      productService.getProduct(`?${qs}`, signal),
+    queryFn: ({ signal }) => productService.getProduct(`?${qs}`, signal),
   });
 
   const { data: categories, loading: categoryLoading } = useQuery({
@@ -64,7 +68,12 @@ export const Product = () => {
                         ) : (
                           <>
                             <li className="list-styled-item">
-                              <Link className={cn('list-styled-link', {'font-bold': !id})} tp={PATH.Product}>
+                              <Link
+                                className={cn("list-styled-link", {
+                                  "font-bold": !id,
+                                })}
+                                tp={PATH.Product}
+                              >
                                 All Products
                               </Link>
                             </li>
@@ -72,9 +81,11 @@ export const Product = () => {
                               <li key={e.id} className="list-styled-item">
                                 {/* Toggle */}
                                 <Link
-                                  className={cn('list-styled-link', {'font-bold': e.id == id})}
+                                  className={cn("list-styled-link", {
+                                    "font-bold": e.id == id,
+                                  })}
                                   to={generatePath(PATH.Category, {
-                                    slug: slugify(e.title), 
+                                    slug: slugify(e.title),
                                     id: e.id,
                                   })}
                                 >
@@ -498,9 +509,7 @@ export const Product = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div> */}
-            {/* Header */}
+                {/* Header */}
             <div className="row align-items-center mb-7">
               <div className="col-12 col-md">
                 {/* Heading */}
@@ -508,7 +517,7 @@ export const Product = () => {
                 {/* Breadcrumb */}
                 <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
                   <li className="breadcrumb-item">
-                    <a className="text-gray-400" href="index.html">
+                    <a className="text-gray-400" href="/">
                       Home
                     </a>
                   </li>
@@ -518,20 +527,21 @@ export const Product = () => {
               <div className="col-12 col-md-auto">
                 {/* Select */}
                 <select className="custom-select custom-select-xs">
-                  <option selected>Giá giãm</option>
-                  <option selected>Giá tăng</option>
-                  <option selected>Mới nhất</option>
-                  <option selected>Giảm giá nhiều nhất</option>
+                  <option selected>Price decrease</option>
+                  <option selected>Price increase</option>
+                  <option selected>Newest</option>
+                  <option selected>Most discount</option>
                 </select>
               </div>
             </div>
             <h4 className="mb-5">Searching for `Clothing`</h4>
             {/* Products */}
             <div className="row">
-              {
-                loading ? Array.from(Array(15)).map((_, i) => <ProductCardLoading key={i} />) :
-                data.map((e) => (<ProductCard key={e.id} {...e} />))
-              }
+              {loading
+                ? Array.from(Array(15)).map((_, i) => (
+                    <ProductCardLoading key={i} />
+                  ))
+                : data.data.map((e) => <ProductCard key={e.id} {...e} />)}
             </div>
             {/* Pagination */}
             <Paginate totalPage={data?.paginate?.totalPage}></Paginate>

@@ -3,8 +3,11 @@ import { Skeleton } from "../SkeletonLoading";
 import { useCategory } from "@/hooks/useCategories";
 import { useDispatch } from "react-redux";
 import { addCartItemAction } from "@/store/cart";
+import { productService } from "@/services/product";
+import { message } from "antd";
 
 export const ProductCard = ({
+  id,
   images,
   name,
   price,
@@ -21,10 +24,32 @@ export const ProductCard = ({
   const category = useCategory(categories)
   const dispatch = useDispatch()
 
+  const onAddWishlist = async () => {
+    
+    const key = 'add-wishlist-$(id)'
+
+    try {
+
+      message.loading({
+        key,
+        content: 'Adding product "$(name)" into Wishlist',
+        duration: 0
+    })
+      await productService.addWishlist(id) //tien hanh add wishlist
+      await delay(6000)
+      message.success({ 
+        key,
+        content: 'Adding "$(name)" to Wishlist Successfully!'
+    })
+    } catch (err) {
+      handleError(err, key)
+    }
+  }
+
   const onAddCartItem = () => {
     dispatch(addCartItemAction({
       productId: id,
-      quantity: 1,
+      quantity: 1
     }))
   }
 
@@ -58,7 +83,7 @@ export const ProductCard = ({
               </button>
             </span>
             <span className="card-action">
-              <button
+              <button onClick={onAddWishlist}
                 className="btn btn-xs btn-circle btn-white-primary"
                 data-toggle="button"
               >

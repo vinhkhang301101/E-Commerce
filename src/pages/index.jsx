@@ -158,8 +158,7 @@ export const Home = () => {
               <h2 className="mb-4">Best Picks 2019</h2>
               {/* Subheading */}
               <p className="mb-10 text-gray-500">
-                Appear, dry there darkness they're seas, dry waters thing fly
-                midst. Beast, above fly brought Very green.
+                Explode many new features, functions, applications, and experiences.
               </p>
             </div>
           </div>
@@ -859,7 +858,7 @@ export const Home = () => {
               <h2 className="mb-3">@shopper</h2>
               {/* Subheading */}
               <p className="mb-10 font-size-lg text-gray-500">
-                Appear, dry there darkness they're seas, dry waters.
+              Explode many new features, functions, applications, and experiences.
               </p>
             </div>
           </div>
