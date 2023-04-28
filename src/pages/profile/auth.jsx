@@ -5,28 +5,39 @@ import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
 import { userService } from "@/services/user";
 import { confirm, regexp, required } from "@/utils";
+import { handleError } from "@/utils/handleError";
+import { message } from "antd";
 import React from "react";
 
 export const Auth = () => {
   useBodyClass("bg-light");
   const { loading, refetch: registerService } = useQuery({
     enabled: false,
-    queryFn: () => userService.register(formRegister.values),
+    queryFn: () => userService.register({
+      ...formRegister.values,
+      redirect: window.location.origin + window.location.pathname,
+    }),
+    limitDuration: 3000
   });
+  
   const formRegister = useForm({
     name: [required()],
     username: [required(), regexp("email")],
     password: [required()],
     confirmPassword: [confirm("password")],
+  }, {
+    dependencies: {
+      password: ['confirmPassword']
+    }
   });
 
   const onRegister = async () => {
     if (formRegister.validate()) {
-      console.log("clicked")
       try {
-        await registerService();
+        const res = await registerService()
+        message.success(res.message)
       } catch (error) {
-        console.log(error)
+        handleError(error)
       }
     }
   };

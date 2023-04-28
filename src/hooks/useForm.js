@@ -7,22 +7,32 @@
 import { validate } from "@/utils/validate";
 import { useState } from "react";
 
-export const useForm = (rules) => {
-  const [form, setForm] = useState({});
+export const useForm = (rules, {initialValue = {}, dependencies = {}}) => {
   const [error, setError] = useState({});
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState(initialValue);
+
   const register = (name) => {
     return {
       error: error[name],
-      value: form[name] || "",
+      value: values[name] || "",
       onChange: (value) => {
         let _values = {...values, [name]: value}
+        const _errorObj = {}
+
         if(rules[name]){
-          const error = validate({
-            name: rules[name]
-          }, _values)
-          setError(prev => ({...prev, [name]: error[name] || '' }))
+          _errorObj[name] = validate({
+            [name]: rules[name]
+          }, _values)[name]
         }
+        if(dependencies[name]){
+          for(let dependency of dependencies[name]){
+            _errorObj[dependency] = validate({
+              [dependency]: rules[dependency]
+            }, _values)[dependency]
+          }
+        }
+        
+        setError(prev => ({...prev, ..._errorObj }))
         setValues((prev) => ({...prev, [name]: value}))
       },
     };

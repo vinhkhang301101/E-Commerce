@@ -5,7 +5,7 @@ export const Button = ({ children, loading, ...props }) => {
   return (
     <button
       className={cn(
-        "btn btn-sm btn-dark flex items-center justify-center gap-2",
+        "btn btn-sm btn-dark flex items-center justify-center gap-3",
         {
           "disabled pointer-events-none": loading
         }
