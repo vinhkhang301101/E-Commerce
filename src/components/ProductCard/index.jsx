@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addCartItemAction } from "@/store/cart";
 
 export const ProductCard = ({
+  id,
   images,
   name,
   price,
@@ -24,7 +25,7 @@ export const ProductCard = ({
   const onAddCartItem = () => {
     dispatch(addCartItemAction({
       productId: id,
-      quantity: 1,
+      quantity: 1
     }))
   }
 

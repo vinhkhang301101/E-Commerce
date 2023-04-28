@@ -3,8 +3,10 @@ import { useCart } from "@/hooks/useCart";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "../CartDrawer";
+import { useDispatch } from "react-redux";
 
 export const Header = () => {
+  const dispatch = useDispatch()
   const [openCartDrawer, setOpenCartDrawer] = useState(false)
   const { cart } = useCart()
   return (
