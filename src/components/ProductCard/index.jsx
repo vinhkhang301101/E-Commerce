@@ -1,7 +1,13 @@
 import { currency } from "@/utils/currency";
-import { Skeleton } from "antd";
+import { Skeleton } from "../SkeletonLoading";
+import { useCategory } from "@/hooks/useCategories";
+import { useDispatch } from "react-redux";
+import { addCartItemAction } from "@/store/cart";
+import { productService } from "@/services/product";
+import { message } from "antd";
 
 export const ProductCard = ({
+  id,
   images,
   name,
   price,
@@ -12,8 +18,40 @@ export const ProductCard = ({
   review_count,
   categories,
 }) => {
+
   const img1 = images[0]?.thumbnail_url;
   const img2 = images[1] ? images?.[1].thumbnail_url : img1;
+  const category = useCategory(categories)
+  const dispatch = useDispatch()
+
+  const onAddWishlist = async () => {
+    
+    const key = 'add-wishlist-$(id)'
+
+    try {
+
+      message.loading({
+        key,
+        content: 'Adding product "$(name)" into Wishlist',
+        duration: 0
+    })
+      await productService.addWishlist(id) //tien hanh add wishlist
+      await delay(6000)
+      message.success({ 
+        key,
+        content: 'Adding "$(name)" to Wishlist Successfully!'
+    })
+    } catch (err) {
+      handleError(err, key)
+    }
+  }
+
+  const onAddCartItem = () => {
+    dispatch(addCartItemAction({
+      productId: id,
+      quantity: 1,
+    }))
+  }
 
   return (
     <div className="col-6 col-md-4">
@@ -37,6 +75,7 @@ export const ProductCard = ({
             <span className="card-action"></span>
             <span className="card-action">
               <button
+                onClick={onAddCartItem}
                 className="btn btn-xs btn-circle btn-white-primary"
                 data-toggle="button"
               >
@@ -44,7 +83,7 @@ export const ProductCard = ({
               </button>
             </span>
             <span className="card-action">
-              <button
+              <button onClick={onAddWishlist}
                 className="btn btn-xs btn-circle btn-white-primary"
                 data-toggle="button"
               >
@@ -57,9 +96,11 @@ export const ProductCard = ({
         <div className="card-body px-0">
           {/* Category */}
           <div className="font-size-xs">
-            <a className="text-muted" href="/product">
-              {categories}
-            </a>
+            {category && (
+              <a className="text-muted" href="/product">
+                {category.title}
+              </a>
+            )}
           </div>
           {/* Title */}
           <div className="font-weight-bold">
@@ -68,7 +109,7 @@ export const ProductCard = ({
             </a>
           </div>
           <div className="card-product-rating">
-            {review_count > 0 && 
+            {review_count > 0 && (
               <>
                 {rating_average}
                 <svg
@@ -143,7 +184,7 @@ export const ProductCard = ({
                 </svg>
                 ({review_count} reviews)
               </>
-            }
+            )}
           </div>
           {/* Price */}
           <div className="card-product-price">
@@ -157,9 +198,7 @@ export const ProductCard = ({
                 </span>
               </>
             ) : (
-              <span className="text-primary sale">
-                {currency(real_price)}
-              </span>
+              <span className="text-primary sale">{currency(real_price)}</span>
             )}
           </div>
         </div>
