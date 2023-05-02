@@ -70,12 +70,12 @@ export const useQuery = ({
       dataRef[cacheName] = data;
     }
 
-    if (cacheName) {
+    if (cacheName && cacheTime) {
       let expired = cacheTime;
       if (cacheTime) {
         expired += Date.now();
       }
-      cache.set(cacheName, res, expired);
+      cache.set(cacheName, data, expired);
     }
   };
 
