@@ -14,8 +14,8 @@ import { useDispatch } from "react-redux";
 
 export const Auth = () => {
   useBodyClass("bg-light");
-  const dispatch = useDispatch()
-  const { loginLoading } = useAuth()
+  const dispatch = useDispatch();
+  const { loginLoading } = useAuth();
   const { loading, refetch: registerService } = useQuery({
     enabled: false,
     queryFn: () =>
@@ -63,15 +63,15 @@ export const Auth = () => {
   };
 
   const onLogin = async () => {
-    if(formLogin.validate()){
+    if (formLogin.validate()) {
       try {
-        const res = await dispatch(loginAction(formLogin.values)).unwrap()
-        message.success('Login success')
+        const res = await dispatch(loginAction(formLogin.values)).unwrap();
+        message.success("Login success");
       } catch (err) {
-        handleError(err)
+        handleError(err);
       }
     }
-  }
+  };
 
   return (
     <section className="py-12">
@@ -131,9 +131,17 @@ export const Auth = () => {
                         </a>
                       </div>
                     </div>
+                    <div className="col-12 col-md">
+                      <div>
+                        <p>Tài khoản demo: demo@spacedev.com</p>
+                        <p>Mật khẩu demo: Spacedev@123</p>
+                      </div>
+                    </div>
                     <div className="col-12">
                       {/* Button */}
-                      <Button onClick={onLogin} loading={loginLoading}>Sign In</Button>
+                      <Button onClick={onLogin} loading={loginLoading}>
+                        Sign In
+                      </Button>
                     </div>
                   </div>
                 </div>
