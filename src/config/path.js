@@ -1,4 +1,4 @@
-const PROFILE = '/profile'
+const PROFILE = "/profile";
 
 export const PATH = {
   Home: "/",
@@ -22,5 +22,5 @@ export const PATH = {
   Faq: "/faq",
   Shipping_and_returns: "/shipping-and-returns",
   Auth: "/auth",
-  Store_locator: "/store-locator"
+  Store_locator: "/store-locator",
 };

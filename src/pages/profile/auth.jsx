@@ -1,43 +1,74 @@
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
+import { useAuth } from "@/hooks/useAuth";
 import { useBodyClass } from "@/hooks/useBodyClass";
 import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
 import { userService } from "@/services/user";
+import { loginAction } from "@/store/auth";
 import { confirm, regexp, required } from "@/utils";
 import { handleError } from "@/utils/handleError";
 import { message } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 export const Auth = () => {
   useBodyClass("bg-light");
+  const dispatch = useDispatch();
+  const { loginLoading } = useAuth();
   const { loading, refetch: registerService } = useQuery({
     enabled: false,
-    queryFn: () => userService.register({
-      ...formRegister.values,
-      redirect: window.location.origin + window.location.pathname,
-    }),
-    limitDuration: 3000
+    queryFn: () =>
+      userService.register({
+        ...formRegister.values,
+        redirect: window.location.origin + window.location.pathname,
+      }),
+    limitDuration: 1000,
   });
-  
-  const formRegister = useForm({
-    name: [required()],
+
+  // const {loading: loginLoading, refetch: loginService} = useQuery({
+  //   enabled: false,
+  //   queryFn: () => authService.login(formLogin.values),
+  //   limitDuration: 1000,
+  // })
+
+  const formLogin = useForm({
     username: [required(), regexp("email")],
     password: [required()],
-    confirmPassword: [confirm("password")],
-  }, {
-    dependencies: {
-      password: ['confirmPassword']
-    }
   });
+
+  const formRegister = useForm(
+    {
+      name: [required()],
+      username: [required(), regexp("email")],
+      password: [required()],
+      confirmPassword: [confirm("password")],
+    },
+    {
+      dependencies: {
+        password: ["confirmPassword"],
+      },
+    }
+  );
 
   const onRegister = async () => {
     if (formRegister.validate()) {
       try {
-        const res = await registerService()
-        message.success(res.message)
+        const res = await registerService();
+        message.success(res.message);
       } catch (error) {
-        handleError(error)
+        handleError(error);
+      }
+    }
+  };
+
+  const onLogin = async () => {
+    if (formLogin.validate()) {
+      try {
+        const res = await dispatch(loginAction(formLogin.values)).unwrap();
+        message.success("Login success");
+      } catch (err) {
+        handleError(err);
       }
     }
   };
@@ -53,15 +84,22 @@ export const Auth = () => {
                 {/* Heading */}
                 <h6 className="mb-7">Returning Customer</h6>
                 {/* Form */}
-                <form>
+                <div>
                   <div className="row">
                     <div className="col-12">
                       {/* Email */}
-                      <Field placeholder="Email Address *"></Field>
+                      <Field
+                        placeholder="Email Address *"
+                        {...formLogin.register("username")}
+                      ></Field>
                     </div>
                     <div className="col-12">
                       {/* Password */}
-                      <Field placeholder="Password *" type="password"></Field>
+                      <Field
+                        placeholder="Password *"
+                        type="password"
+                        {...formLogin.register("password")}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md">
                       {/* Remember */}
@@ -93,12 +131,20 @@ export const Auth = () => {
                         </a>
                       </div>
                     </div>
+                    <div className="col-12 col-md">
+                      <div>
+                        <p>Tài khoản demo: demo@spacedev.com</p>
+                        <p>Mật khẩu demo: Spacedev@123</p>
+                      </div>
+                    </div>
                     <div className="col-12">
                       {/* Button */}
-                      <Button className="btn btn-sm btn-dark">Sign In</Button>
+                      <Button onClick={onLogin} loading={loginLoading}>
+                        Sign In
+                      </Button>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -115,7 +161,7 @@ export const Auth = () => {
                       <Field
                         placeholder="Fullname *"
                         {...formRegister.register("name")}
-                        value={formRegister.values.name || ''}
+                        value={formRegister.values.name || ""}
                       ></Field>
                     </div>
                     <div className="col-12">
@@ -123,7 +169,7 @@ export const Auth = () => {
                       <Field
                         placeholder="Email Address *"
                         {...formRegister.register("username")}
-                        value={formRegister.values.username || ''}
+                        value={formRegister.values.username || ""}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-6">
@@ -132,7 +178,7 @@ export const Auth = () => {
                         placeholder="Password *"
                         type="password"
                         {...formRegister.register("password")}
-                        value={formRegister.values.password || ''}
+                        value={formRegister.values.password || ""}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-6">
@@ -141,7 +187,7 @@ export const Auth = () => {
                         placeholder="Confirm Password *"
                         type="password"
                         {...formRegister.register("confirmPassword")}
-                        value={formRegister.values.confirmPassword || ''}
+                        value={formRegister.values.confirmPassword || ""}
                       ></Field>
                     </div>
                     <div className="col-12 col-md-auto">
