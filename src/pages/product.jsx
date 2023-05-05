@@ -26,6 +26,10 @@ export const Product = () => {
     categories: id,
   });
 
+  const clickTitle = () => {
+    
+  }
+
   const { data, loading } = useQuery({
     queryKey: [qs],
     keepPreviousData: true,

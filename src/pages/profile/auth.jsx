@@ -6,7 +6,7 @@ import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
 import { userService } from "@/services/user";
 import { loginAction } from "@/store/auth";
-import { confirm, regexp, required } from "@/utils";
+import { confirm, minMax, regexp, required } from "@/utils";
 import { handleError } from "@/utils/handleError";
 import { message } from "antd";
 import React from "react";
@@ -41,8 +41,8 @@ export const Auth = () => {
     {
       name: [required()],
       username: [required(), regexp("email")],
-      password: [required()],
-      confirmPassword: [confirm("password")],
+      password: [required(), minMax(6, 32)],
+      confirmPassword: [required(), confirm("password")],
     },
     {
       dependencies: {
@@ -65,7 +65,7 @@ export const Auth = () => {
   const onLogin = async () => {
     if (formLogin.validate()) {
       try {
-        const res = await dispatch(loginAction(formLogin.values)).unwrap();
+        await dispatch(loginAction(formLogin.values)).unwrap();
         message.success("Login success");
       } catch (err) {
         handleError(err);

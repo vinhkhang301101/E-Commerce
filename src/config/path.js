@@ -23,4 +23,5 @@ export const PATH = {
   Shipping_and_returns: "/shipping-and-returns",
   Auth: "/auth",
   Store_locator: "/store-locator",
+  Info: "/info",
 };
