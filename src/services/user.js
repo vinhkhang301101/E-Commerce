@@ -7,4 +7,7 @@ export const userService = {
   getUser() {
     return http.get(`${USER_API}`);
   },
+  resendEmail(data) {
+    return http.post(`${USER_API}/resend-email`, data)
+  }
 };

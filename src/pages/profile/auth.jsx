@@ -26,12 +26,6 @@ export const Auth = () => {
     limitDuration: 1000,
   });
 
-  // const {loading: loginLoading, refetch: loginService} = useQuery({
-  //   enabled: false,
-  //   queryFn: () => authService.login(formLogin.values),
-  //   limitDuration: 1000,
-  // })
-
   const formLogin = useForm({
     username: [required(), regexp("email")],
     password: [required()],
@@ -41,7 +35,7 @@ export const Auth = () => {
     {
       name: [required()],
       username: [required(), regexp("email")],
-      password: [required(), minMax(6, 32)],
+      password: [required()],
       confirmPassword: [required(), confirm("password")],
     },
     {

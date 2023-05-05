@@ -20,6 +20,7 @@ export const useForm = (rules, {initialValue = {}, dependencies = {}} = {}) => {
         const _errorObj = {}
 
         if(rules[name]){
+          console.log("rules: ...", rules)
           _errorObj[name] = validate({
             [name]: rules[name]
           }, _values)[name]

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addCartItemAction } from "@/store/cart";
 import { productService } from "@/services/product";
 import { message } from "antd";
+import { handleError } from "@/utils";
 
 export const ProductCard = ({
   id,
