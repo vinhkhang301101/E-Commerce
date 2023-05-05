@@ -83,12 +83,20 @@ export const useQuery = ({
     controllerRef.current.abort();
     controllerRef.current = new AbortController();
     const startTime = Date.now();
+    const endTime = Date.now();
 
     let res;
     let error;
     try {
       setLoading(true);
       setStatus("pending");
+
+      if (limitDuration) {
+        let timeOut = endTime - startTime;
+        if (timeOut < limitDuration) {
+          await delay(limitDuration - timeOut);
+        }
+      }
 
       res = getCacheDataOrPreviousData();
 
@@ -98,43 +106,32 @@ export const useQuery = ({
           _asyncFunction[cacheName] = res;
         }
       }
+
       if (res instanceof Promise) {
         res = await res;
       }
-      
-    } catch (err) {
-      console.log(err);
-      error = err;
-    }
 
-    const endTime = Date.now();
-
-    if(limitDuration){
-      let timeOut = endTime - startTime;
-      if(timeOut < limitDuration){
-        await delay(limitDuration - timeOut)
+      if(res) {
+        res = await res;
       }
-    }
 
-    if(res){
       setStatus("success");
       setData(res);
 
       setCacheDataOrPreviousData(res);
       refetchRef.current = false;
       setLoading(false);
-      return res
-    }
+    } catch (err) {
+      if (error instanceof CanceledError) {
 
-    if (error instanceof CanceledError) {
-
-    } else {
-      setError(err);
-      setStatus("error");
-      setLoading(false);
-      throw err;
+      } else {
+        console.log(err);
+        error = err;
+        setError(err);
+        setStatus("error");
+        setLoading(false);
+      }
     }
-    return res;
   };
   return {
     loading,
