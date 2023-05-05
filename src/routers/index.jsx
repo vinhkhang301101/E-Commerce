@@ -18,6 +18,7 @@ import { Faq } from "@/pages/faq";
 import { Shipping_and_returns } from "@/pages/shipping-and-returns";
 import { Auth } from "@/pages/profile/auth";
 import { Store_locator } from "../pages/store-locator";
+import { Info } from "@/pages/profile/info";
 
 export const routers = [
   {
@@ -59,19 +60,22 @@ export const routers = [
 
       {
         path: PATH.Faq,
-        element: <Faq/>,
+        element: <Faq />,
+      },
+      {
+        path: PATH.Info,
+        element: <Info />,
       },
 
       {
         path: PATH.Store_locator,
-        element: <Store_locator/>,
+        element: <Store_locator />,
       },
 
       {
         path: PATH.Shipping_and_returns,
-        element: <Shipping_and_returns/>,
+        element: <Shipping_and_returns />,
       },
-
 
       {
         path: PATH.ShoppingCart,

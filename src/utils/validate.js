@@ -7,6 +7,8 @@
 const ERROR_MESSAGE = {
   required: "Please fill in this field",
   regexp: "Invalid format",
+  minMax: (min, max) => `Please input from ${min}-${max} characteristic`,
+  confirm: (field) => `Please enter the same as ${field}`
 };
 
 const REGEXP = {
@@ -22,6 +24,7 @@ export const validate = (rules, forms) => {
       if (rule.required) {
         if (!forms[name]?.trim()) {
           errorObject[name] = rule.message || ERROR_MESSAGE.required;
+          break;
         }
       }
       if (rule.regexp && forms[name]) {
@@ -34,6 +37,18 @@ export const validate = (rules, forms) => {
 
         if (!regexp.test(forms[name])) {
           errorObject[name] = rule.message || ERROR_MESSAGE.regexp;
+        }
+      }
+
+      if(rule.min || rule.max){
+        if(forms[name]?.length < rule.min || forms[name]?.length > rule.max){
+          errorObject[name] = rule.message || ERROR_MESSAGE.minMax(rule.min, rule.max)
+        }
+      }
+
+      if(rule.confirm){
+        if(forms[rule.confirm] != forms[name]){
+          errorObject[name] = rule.message || ERROR_MESSAGE.confirm(rule.confirm)
         }
       }
     }
