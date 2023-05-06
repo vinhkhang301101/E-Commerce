@@ -65,7 +65,6 @@ function* fetchCardItem(action) {
     yield put(getCartAction())
     if (action.payload.showPopover) {
       thunkApi.dispatch(cartActions.togglePopover(true));
-
       window.scroll({
         top: 0,
         behavior: "smooth",
@@ -79,7 +78,7 @@ function* fetchCardItem(action) {
 
 function* fetchRemoveItem() {
   try {
-    
+    yield call(cartService.removeItem(action.payload))
   } catch (err) {
     console.log(err);
   }

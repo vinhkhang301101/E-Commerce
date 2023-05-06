@@ -1,4 +1,4 @@
-import { updateCartItemAction } from "@/store/cart";
+import { removeCartItemAction, updateCartItemAction } from "@/store/cart";
 import { currency } from "@/utils";
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -32,6 +32,12 @@ export const CartItem = ({ productId, product, quantity }) => {
       })
     );
   };
+
+  onRemoveCartItem = () => {
+    dispatch(removeCartItemAction({
+      productId: id
+    }))
+  }
 
   return (
     <li className="list-group-item">
@@ -72,7 +78,7 @@ export const CartItem = ({ productId, product, quantity }) => {
               </button>
             </div>
             {/* Remove */}
-            <a className="font-size-xs text-gray-400 ml-auto" href="#!">
+            <a onClick={onRemoveCartItem} className="font-size-xs text-gray-400 ml-auto" href="#!">
               <i className="fe fe-x" /> Remove
             </a>
           </div>
