@@ -2,10 +2,12 @@ import { currency } from "@/utils/currency";
 import { Skeleton } from "../SkeletonLoading";
 import { useCategory } from "@/hooks/useCategories";
 import { useDispatch } from "react-redux";
-import { addCartItemAction } from "@/store/cart";
+import { updateCartItemAction } from "@/store/cart";
 import { productService } from "@/services/product";
 import { message } from "antd";
 import { handleError } from "@/utils";
+import { PATH } from "@/config/path";
+import { useCart } from "@/hooks/useCart";
 
 export const ProductCard = ({
   id,
@@ -24,6 +26,7 @@ export const ProductCard = ({
   const img2 = images[1] ? images?.[1].thumbnail_url : img1;
   const category = useCategory(categories)
   const dispatch = useDispatch()
+  const { cart } = useCart()
 
   const onAddWishlist = async () => {
     
@@ -48,10 +51,19 @@ export const ProductCard = ({
   }
 
   const onAddCartItem = () => {
-    dispatch(addCartItemAction({
-      productId: id,
-      quantity: 1
-    }))
+    // if(user) {
+      const { listItems } = cart
+      const product = listItems.find(e => e.product.id === id)
+      dispatch(
+        updateCartItemAction({
+          productId: id,
+          quantity: product ? product.quantity + 1 : 1,
+          showPopover: true
+        })
+      );
+    // } else {
+      // navigate(PATH.Account)
+    // }
   }
 
   return (
