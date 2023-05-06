@@ -27,20 +27,20 @@ export const ProductCard = ({
 
   const onAddWishlist = async () => {
     
-    const key = 'add-wishlist-$(id)'
+    const key = `add-wishlist-${id}`
 
     try {
 
       message.loading({
         key,
-        content: 'Adding product "$(name)" into Wishlist',
+        content: `Adding product "${name}" into Wishlist`,
         duration: 0
     })
       await productService.addWishlist(id) //tien hanh add wishlist
       await delay(6000)
       message.success({ 
         key,
-        content: 'Adding "$(name)" to Wishlist Successfully!'
+        content: `Adding "${name}" to Wishlist Successfully!`
     })
     } catch (err) {
       handleError(err, key)
