@@ -6,26 +6,6 @@ import { takeLatest, call, put, delay } from "redux-saga/effects"
 export const updateCartItemAction = createAction("cart/addCartItem")
 export const removeCartItemAction = createAction("cart/removeItem")
 
-// export const updateCartItemAction = createAsyncThunk(
-//   "cart/addCartItem",
-//   async (data, thunkApi) => {
-//     try {
-//       await cartService.addItem(data.productId, data.quantity);
-//       thunkApi.dispatch(getCartAction());
-//       if(data.showPopover) {
-//         thunkApi.dispatch(cartActions.togglePopover(true));
-
-//         window.scroll({
-//           top: 0,
-//           behavior: "smooth",
-//         });
-//       }
-//     } catch (err) {
-//       throw err.response.data;
-//     }
-//   }
-// );
-
 export const getCartAction = createAsyncThunk(
   "cart/getCart",
   async (_, thunkApi) => {
