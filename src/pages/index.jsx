@@ -806,49 +806,46 @@ export const Home = () => {
         </div>
       </section>
       {/* COUNTDOWN */}
-      <section
+      {/* <section
         className="py-13 bg-cover"
         style={{ backgroundImage: "url(./img/covers/cover-4.jpg)" }}
       >
         <div className="container">
           <div className="row justify-content-end">
             <div className="col-12 col-md-8 col-lg-6">
-              {/* Heading */}
               <h3 className="mb-7">
                 Get -50% from <br />
                 Summer Collection
               </h3>
-              {/* Counter */}
               <Counter />
-              {/* Button */}
               <a className="btn btn-dark" href="/product">
                 Shop Now <i className="fe fe-arrow-right ml-2" />
               </a>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* REVIEWS */}
-      <section className="py-12">
+      {/* <section className="py-12">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
-              {/* Preheading */}
+              Preheading
               <h6 className="heading-xxs mb-3 text-gray-400">
                 What buyers say
               </h6>
-              {/* Heading */}
+              Heading
               <h2 className="mb-10">Latest buyers Reviews</h2>
             </div>
           </div>
           <div className="row">
             <div className="col-12">
-              {/* Slider */}
+              Slider
               <FlickitySlider />
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* BRANDS */}
       <section className="py-12 bg-light">
         <div className="container">

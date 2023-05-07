@@ -8,16 +8,18 @@ import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
 import { userService } from "@/services/user";
 import { loginAction } from "@/store/auth";
-import { confirm, minMax, regexp, required } from "@/utils";
+import { cn, confirm, minMax, regexp, required } from "@/utils";
 import { handleError } from "@/utils/handleError";
 import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { generatePath, useNavigate } from "react-router-dom";
 
 export const Account = () => {
   useBodyClass("bg-light");
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const {search} = useSearch()
   const { loading: resendEmailLoading, excute: resendEmailService } = useAsync(
     userService.resendEmail
@@ -56,9 +58,9 @@ export const Account = () => {
   const onRegister = async () => {
     if (formRegister.validate()) {
       try {
-        const res = await registerService();
+        await registerService();
         setIsRegisterSuccess(true);
-        message.success(res.message);
+        message.success("Register Success");
       } catch (error) {
         handleError(error);
       }
@@ -70,6 +72,8 @@ export const Account = () => {
       try {
         await dispatch(loginAction(formLogin.values)).unwrap();
         message.success("Login success");
+        // window.location.href = window.location.origin + "/info";
+        navigate(PATH.Info)
       } catch (err) {
         handleError(err);
       }

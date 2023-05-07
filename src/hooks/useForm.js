@@ -44,10 +44,15 @@ export const useForm = (rules, {initialValue = {}, dependencies = {}} = {}) => {
     return Object.keys(errorObject).length === 0;
   };
 
+  const reset = () => {
+    setValues({})
+  }
+
   return {
     values,
     error,
     register,
     validate: _validate,
+    reset
   };
 };
