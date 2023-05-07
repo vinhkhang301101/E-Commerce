@@ -1,6 +1,72 @@
+import { Button } from "@/components/Button";
+import { Field } from "@/components/Field";
+import { useAuth } from "@/hooks/useAuth";
+import { useBodyClass } from "@/hooks/useBodyClass";
+import { useForm } from "@/hooks/useForm";
+import { useQuery } from "@/hooks/useQuery";
+import { userService } from "@/services/user";
+import { loginAction } from "@/store/auth";
+import { confirm, minMax, regexp, required } from "@/utils";
+import { handleError } from "@/utils/handleError";
+import { message } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 export const Account = () => {
+  useBodyClass("bg-light");
+  const dispatch = useDispatch();
+  const { loginLoading } = useAuth();
+  const { loading, refetch: registerService } = useQuery({
+    enabled: false,
+    queryFn: () =>
+      userService.register({
+        ...formRegister.values,
+        redirect: window.location.origin + window.location.pathname,
+      }),
+    limitDuration: 1000,
+  });
+
+  const formLogin = useForm({
+    username: [required(), regexp("email")],
+    password: [required()],
+  });
+
+  const formRegister = useForm(
+    {
+      name: [required()],
+      username: [required(), regexp("email")],
+      password: [required()],
+      confirmPassword: [required(), confirm("password")],
+    },
+    {
+      dependencies: {
+        password: ["confirmPassword"],
+      },
+    }
+  );
+
+  const onRegister = async () => {
+    if (formRegister.validate()) {
+      try {
+        const res = await registerService();
+        message.success(res.message);
+      } catch (error) {
+        handleError(error);
+      }
+    }
+  };
+
+  const onLogin = async () => {
+    if (formLogin.validate()) {
+      try {
+        await dispatch(loginAction(formLogin.values)).unwrap();
+        message.success("Login success");
+      } catch (err) {
+        handleError(err);
+      }
+    }
+  };
+
   return (
     <section className="py-12">
       <div className="container">
@@ -12,37 +78,22 @@ export const Account = () => {
                 {/* Heading */}
                 <h6 className="mb-7">Returning Customer</h6>
                 {/* Form */}
-                <form>
+                <div>
                   <div className="row">
                     <div className="col-12">
                       {/* Email */}
-                      <div className="form-group">
-                        <label className="sr-only" htmlFor="loginEmail">
-                          Email Address *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="loginEmail"
-                          type="email"
-                          placeholder="Email Address *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Email Address *"
+                        {...formLogin.register("username")}
+                      ></Field>
                     </div>
                     <div className="col-12">
                       {/* Password */}
-                      <div className="form-group">
-                        <label className="sr-only" htmlFor="loginPassword">
-                          Password *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="loginPassword"
-                          type="password"
-                          placeholder="Password *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Password *"
+                        type="password"
+                        {...formLogin.register("password")}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md">
                       {/* Remember */}
@@ -74,18 +125,20 @@ export const Account = () => {
                         </a>
                       </div>
                     </div>
+                    <div className="col-12 col-md">
+                      <div>
+                        <p>Tài khoản demo: demo@spacedev.com</p>
+                        <p>Mật khẩu demo: Spacedev@123</p>
+                      </div>
+                    </div>
                     <div className="col-12">
                       {/* Button */}
-                      <a
-                        href="./account-personal-info.html"
-                        className="btn btn-sm btn-dark"
-                        type="submit"
-                      >
+                      <Button onClick={onLogin} loading={loginLoading}>
                         Sign In
-                      </a>
+                      </Button>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -96,70 +149,40 @@ export const Account = () => {
                 {/* Heading */}
                 <h6 className="mb-7">New Customer</h6>
                 {/* Form */}
-                <form>
+                <div>
                   <div className="row">
                     <div className="col-12">
-                      {/* Email */}
-                      <div className="form-group">
-                        <label className="sr-only" htmlFor="registerFirstName">
-                          Full Name *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="registerFirstName"
-                          type="text"
-                          placeholder="Full Name *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Fullname *"
+                        {...formRegister.register("name")}
+                        value={formRegister.values.name || ""}
+                      ></Field>
                     </div>
                     <div className="col-12">
                       {/* Email */}
-                      <div className="form-group">
-                        <label className="sr-only" htmlFor="registerEmail">
-                          Email Address *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="registerEmail"
-                          type="email"
-                          placeholder="Email Address *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Email Address *"
+                        {...formRegister.register("username")}
+                        value={formRegister.values.username || ""}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-6">
                       {/* Password */}
-                      <div className="form-group">
-                        <label className="sr-only" htmlFor="registerPassword">
-                          Password *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="registerPassword"
-                          type="password"
-                          placeholder="Password *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Password *"
+                        type="password"
+                        {...formRegister.register("password")}
+                        value={formRegister.values.password || ""}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-6">
                       {/* Password */}
-                      <div className="form-group">
-                        <label
-                          className="sr-only"
-                          htmlFor="registerPasswordConfirm"
-                        >
-                          Confirm Password *
-                        </label>
-                        <input
-                          className="form-control form-control-sm"
-                          id="registerPasswordConfirm"
-                          type="password"
-                          placeholder="Confrm Password *"
-                          required
-                        />
-                      </div>
+                      <Field
+                        placeholder="Confirm Password *"
+                        type="password"
+                        {...formRegister.register("confirmPassword")}
+                        value={formRegister.values.confirmPassword || ""}
+                      ></Field>
                     </div>
                     <div className="col-12 col-md-auto">
                       {/* Link */}
@@ -188,16 +211,12 @@ export const Account = () => {
                     </div>
                     <div className="col-12">
                       {/* Button */}
-                      <a
-                        href="./account-personal-info.html"
-                        className="btn btn-sm btn-dark"
-                        type="submit"
-                      >
+                      <Button loading={loading} onClick={onRegister}>
                         Register
-                      </a>
+                      </Button>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>

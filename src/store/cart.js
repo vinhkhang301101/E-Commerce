@@ -45,14 +45,22 @@ export const { reducer: cartReducer, actions: cartActions } = createSlice({
   name: "cart",
   initialState: {
     cart: null,
-    openCartOver: false
+    openCartOver: false,
+    loading: {
+      // 223344: true,
+    }
   },
   reducers: {
     setCart(state, action) {
       state.cart = action.payload;
     },
+    
     togglePopover(state, action) {
       state.openCartOver = action.payload
+    },
+    
+    toggleProductLoading(state, action) {
+      state.loading[action.payload.productId] = action.payload.loading
     }
   },
 });
@@ -60,25 +68,33 @@ export const { reducer: cartReducer, actions: cartActions } = createSlice({
 function* fetchCardItem(action) {
   try {
     yield delay(300)
-    yield call(cartService.addItem, action.payload.productId, action.payload.quantity);
-    // thunkApi.dispatch(getCartAction());
-    yield put(getCartAction())
-    if (action.payload.showPopover) {
-      thunkApi.dispatch(cartActions.togglePopover(true));
-      window.scroll({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+    if(action.payload.quantity >= 1) {
+      yield call(cartService.addItem, action.payload.productId, action.payload.quantity);
+      // thunkApi.dispatch(getCartAction());
+      yield put(getCartAction())
+
+      if (action.payload.showPopover) {
+       yield put(cartActions.togglePopover(true));
+        window.scroll({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      yield put(removeCartItemAction(action.payload.productId))
+    }    
   } catch (err) {
     // throw err.response.data;
     console.log(err);
   }
 }
 
-function* fetchRemoveItem() {
+function* fetchRemoveItem(action) {
   try {
-    yield call(cartService.removeItem(action.payload))
+    yield put(cartActions.toggleProductLoading({ productId: action.payload, loading: true }))
+    yield call(cartService.removeItem, action.payload);
+    yield put(getCartAction());
+    yield put(cartActions.toggleProductLoading({ productId: action.payload, loading: false }))
   } catch (err) {
     console.log(err);
   }

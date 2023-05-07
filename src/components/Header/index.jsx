@@ -2063,14 +2063,9 @@ export const Header = () => {
                   </a>
                 </li>
                 <li className="nav-item ml-lg-n4">
-                  <Link className="nav-link" to={PATH.Auth}>
-                    <i className="fe fe-user" />
-                  </Link>
-                </li>
-                <li className="nav-item ml-lg-n4">
-                  <a className="nav-link" href="./account-wishlist">
+                  <Link className="nav-link" to={PATH.Profile.Wishlist}>
                     <i className="fe fe-heart" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item ml-lg-n4">
                   <Popover
@@ -2114,6 +2109,11 @@ export const Header = () => {
                       </span>
                     </a>
                   </Popover>
+                </li>
+                <li className="nav-item ml-lg-n4">
+                  <Link className="nav-link" to={PATH.Account}>
+                    <i className="fe fe-user" />
+                  </Link>
                 </li>
               </ul>
             </div>
