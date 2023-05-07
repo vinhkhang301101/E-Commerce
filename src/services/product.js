@@ -6,6 +6,10 @@ export const productService = {
     return http.get(`${PRODUCT_API}${query}`);
   },
 
+  getProductDetail(id) {
+    return http.get(`${PRODUCT_API}/${id}`);
+  },
+
   getCategories() {
     return http.get(`${PRODUCT_API}/categories`);
   },

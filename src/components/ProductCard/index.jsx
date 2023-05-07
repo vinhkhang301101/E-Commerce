@@ -8,6 +8,7 @@ import { message } from "antd";
 import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
+import { Link, generatePath } from "react-router-dom";
 
 export const ProductCard = ({
   id,
@@ -79,10 +80,10 @@ export const ProductCard = ({
         {/* Image */}
         <div className="card-img">
           {/* Image */}
-          <a className="card-img-hover" href="product.html">
+          <Link className="card-img-hover" to={`/${slug}`}>
             <img className="card-img-top card-img-back" src={img1} alt="..." />
             <img className="card-img-top card-img-front" src={img2} alt="..." />
-          </a>
+          </Link>
           {/* Actions */}
           <div className="card-actions">
             <span className="card-action"></span>
