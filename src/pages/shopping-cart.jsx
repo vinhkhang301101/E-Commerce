@@ -19,7 +19,7 @@ export const ViewCart = () => {
                 <li className="list-group-item product-view-cart">
                   <div className="row align-items-center">
                     <div className="col-4 d-flex flex items-center gap-2">
-                      <div className="custom-control custom-checkbox align-center">
+                      <div className="custom-control custom-checkbox mr-2">
                         <input
                           className="custom-control-input"
                           id="loginRemember"
@@ -76,7 +76,7 @@ export const ViewCart = () => {
                 <li className="list-group-item product-view-cart">
                   <div className="row align-items-center">
                     <div className="col-4 d-flex items-center gap-2">
-                      <div className="custom-control custom-checkbox">
+                      <div className="custom-control custom-checkbox mr-2">
                         <input
                           className="custom-control-input"
                           id="loginRemember"
@@ -210,8 +210,7 @@ export const ViewCart = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4 items-center">
-          <img width={300} src="./img/empty-cart.png" />
-          <p className="mb-0">Không có sản phẩm nào trong giỏ hàng của bạn.</p>
+          <h6 className="mb-7 text-center">Your cart is empty 😞</h6>
           <a href="#" className="btn btn-dark min-w-[300px] text-center">
             Tiếp tục mua sắm
           </a>
