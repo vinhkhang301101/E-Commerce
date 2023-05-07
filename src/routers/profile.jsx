@@ -1,3 +1,4 @@
+import { PrivateRoute } from "@/components/PrivateRoute";
 import { PATH } from "@/config/path";
 import { Profile } from "@/pages/profile";
 import { Address } from "@/pages/profile/address";
@@ -5,6 +6,7 @@ import { Info } from "@/pages/profile/info";
 import { Order } from "@/pages/profile/order";
 import { Payment } from "@/pages/profile/payment";
 import { Wishlist } from "@/pages/profile/wishlist";
+import { Children } from "react";
 
 export const profile = [
     {
@@ -31,4 +33,5 @@ export const profile = [
         element: <Payment/>,
         path: PATH.Profile.Payment
     },
+
 ]
