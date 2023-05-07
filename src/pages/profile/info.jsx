@@ -71,7 +71,7 @@ export const Info = () => {
                   <a
                     onClick={(ev) => {
                       ev.preventDefault();
-                      dispatch(logoutAction);
+                      dispatch(logoutAction());
                     }}
                     className="list-group-item list-group-item-action dropright-toggle"
                     href="#!"

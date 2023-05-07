@@ -14,7 +14,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { generatePath, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Account = () => {
   useBodyClass("bg-light");
@@ -71,8 +71,7 @@ export const Account = () => {
     if (formLogin.validate()) {
       try {
         await dispatch(loginAction(formLogin.values)).unwrap();
-        message.success("Login success");
-        // window.location.href = window.location.origin + "/info";
+        message.success("Login Success");
         navigate(PATH.Info)
       } catch (err) {
         handleError(err);

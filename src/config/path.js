@@ -10,7 +10,7 @@ export const PATH = {
   Profile: {
     index: PROFILE,
     Order: PROFILE + "/order",
-    Wishlist: PROFILE + "/wishlist",
+    // Wishlist: PROFILE + "/wishlist",
     Address: PROFILE + "/address",
     Payment: PROFILE + "/payment",
     // Info: PROFILE + "/info",
@@ -25,5 +25,6 @@ export const PATH = {
   Shipping_and_returns: "/shipping-and-returns",
   Store_locator: "/store-locator",
   Info: "/info",
+  Wishlist: "/wishlist"
 
 };
