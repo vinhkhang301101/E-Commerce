@@ -33,7 +33,6 @@ http.interceptors.response.use(
           const res = await refreshTokenPromise
   
           setToken(res.data);
-          refreshTokenPromise = null
         }
         return http(error.config);
       }

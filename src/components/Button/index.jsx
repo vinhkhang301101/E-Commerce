@@ -12,7 +12,7 @@ export const Button = ({ children, loading, ...props }) => {
       )}
       {...props}
     > 
-      {loading && <LoadingOutlined />}
+      {loading && <LoadingOutlined className="mr-1"/>}
       {children}
     </button>
   );

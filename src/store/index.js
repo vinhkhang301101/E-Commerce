@@ -2,6 +2,15 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./authReducer";
 import { cartReducer, cartSaga, getCartAction } from "./cart";
 import createSagaMiddleware from "redux-saga"
+import { all } from "redux-saga/effects";
+import { authSaga } from "./auth";
+
+function* rootSaga() {
+  yield all([
+    cartSaga(),
+    authSaga()
+  ])
+}
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -14,6 +23,6 @@ export const store = configureStore({
   middleware: getMiddleware => getMiddleware().concat(sagaMiddleware)
 });
 
-sagaMiddleware.run(cartSaga);
+sagaMiddleware.run(rootSaga);
 
 store.dispatch(getCartAction());

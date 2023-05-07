@@ -2054,19 +2054,18 @@ export const Header = () => {
                     className="nav-link"
                     data-toggle="modal"
                     href="#modalSearch"
+                    onClick={(ev) => {
+                      ev.preventDefault()
+                      setOpenSearchDrawer(true)
+                    }}
                   >
                     <i className="fe fe-search" />
                   </a>
                 </li>
                 <li className="nav-item ml-lg-n4">
-                  <Link className="nav-link" to={PATH.Auth}>
-                    <i className="fe fe-user" />
-                  </Link>
-                </li>
-                <li className="nav-item ml-lg-n4">
-                  <a className="nav-link" href="./account-wishlist">
+                  <Link className="nav-link" to={PATH.Profile.Wishlist}>
                     <i className="fe fe-heart" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item ml-lg-n4">
                   <Popover
@@ -2110,6 +2109,11 @@ export const Header = () => {
                       </span>
                     </a>
                   </Popover>
+                </li>
+                <li className="nav-item ml-lg-n4">
+                  <Link className="nav-link" to={PATH.Account}>
+                    <i className="fe fe-user" />
+                  </Link>
                 </li>
               </ul>
             </div>
