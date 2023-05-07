@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
+import { PATH } from "@/config/path";
 import { useAsync } from "@/hooks/useAsync";
 import { useAuth } from "@/hooks/useAuth";
 import { useBodyClass } from "@/hooks/useBodyClass";
@@ -13,10 +14,12 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Account = () => {
   useBodyClass("bg-light");
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const {search} = useSearch()
   const { loading: resendEmailLoading, excute: resendEmailService } = useAsync(
     userService.resendEmail
@@ -68,7 +71,8 @@ export const Account = () => {
     if (formLogin.validate()) {
       try {
         await dispatch(loginAction(formLogin.values)).unwrap();
-        message.success("Login success");
+        message.success("Login Success");
+        navigate(PATH.Info)
       } catch (err) {
         handleError(err);
       }
