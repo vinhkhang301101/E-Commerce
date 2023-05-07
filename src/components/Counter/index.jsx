@@ -6,19 +6,22 @@ export const Counter = () => {
       var t = document.querySelectorAll("[data-countdown]");
 
       function n(t, e) {
-        var a = t - new Date().getTime(),
-          o = Math.floor(a / 864e5);
-          o = o < 10 ? "0" + o : o;
-          var n = Math.floor((a % 864e5) / 36e5);
-          n = n < 10 ? "0" + n : n;
-          var l = Math.floor((a % 36e5) / 6e4);
-          l = l < 10 ? "0" + l : l;
-          var i = Math.floor((a % 6e4) / 1e3);
-          (i = i < 10 ? "0" + i : i),
-          (e.querySelector("[data-days]").innerHTML = o),
-          (e.querySelector("[data-hours]").innerHTML = n),
-          (e.querySelector("[data-minutes]").innerHTML = l),
-          (e.querySelector("[data-seconds]").innerHTML = i);
+        var a = new Date(t) - new Date().getTime();
+        if (a < 0) {
+          a = -a;
+        }
+        var o = Math.floor(a / 864e5);
+        o = (o < 10 ? "0" : "") + o;
+        var n = Math.floor((a % 864e5) / 36e5);
+        n = (n < 10 ? "0" : "") + n;
+        var l = Math.floor((a % 36e5) / 6e4);
+        l = (l < 10 ? "0" : "") + l;
+        var i = Math.floor((a % 6e4) / 1e3);
+        i = (i < 10 ? "0" : "") + i;
+        (e.querySelector("[data-days]").innerHTML = (t < new Date().getTime() ? "-" : "") + o),
+        (e.querySelector("[data-hours]").innerHTML = (t < new Date().getTime() ? "-" : "") + n),
+        (e.querySelector("[data-minutes]").innerHTML = (t < new Date().getTime() ? "-" : "") + l),
+        (e.querySelector("[data-seconds]").innerHTML = (t < new Date().getTime() ? "-" : "") + i);
       }
       t.length &&
         [].forEach.call(t, function (t) {
@@ -36,7 +39,7 @@ export const Counter = () => {
     <div
       className="d-flex mb-9"
       data-countdown
-      data-date="Jan 5, 2021 15:37:25"
+      data-date="May 15, 2023 15:37:25"
     >
       <div className="text-center">
         <div className="font-size-h1 font-weight-bolder text-primary" data-days>
