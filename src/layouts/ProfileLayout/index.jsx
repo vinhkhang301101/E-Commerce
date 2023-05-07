@@ -12,7 +12,7 @@ export const Checkout = () => {
           <div className="row">
             <div className="col-12 text-center">
               {/* Heading */}
-              <h3 className="mb-10">My Account</h3>
+              <h3 className="mb-10"></h3>
             </div>
           </div>
           <div className="row">

@@ -11,12 +11,15 @@ export const useAsync = (promise) => {
       setLoading(true);
       setStatus("pending");
       const res = await promise(...data);
-      setData(res.data);
+      if (res && res.data) {
+        setData(res.data);
+      }
       setStatus("success");
       return res;
     } catch (err) {
       setError(err);
       setStatus("error");
+      throw err
     } finally {
       setLoading(false);
     }

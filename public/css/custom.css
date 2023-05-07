@@ -1,9 +1,14 @@
+<<<<<<< HEAD
+.navbar-light .navbar-nav .nav-link {
+    font-weight: 600;
+=======
 /* .navbar-light .navbar-nav .nav-link {
     font-weight: 600;
 } */
 
 * {
     box-sizing: border-box;
+>>>>>>> 45c09eaca4dd549fb69af22538eb5315ea5b49a7
 }
 
 .card-sale {
@@ -17,6 +22,8 @@
     font-weight: bold;
 }
 
+<<<<<<< HEAD
+=======
 .card-product-title {
     height: 66px;
     padding: 5px 0;
@@ -27,13 +34,17 @@
     padding: 5px 0;
 }
 
+>>>>>>> 45c09eaca4dd549fb69af22538eb5315ea5b49a7
 .card-product-rating {
     display: flex;
     align-items: center;
     font-size: 0.875rem;
+<<<<<<< HEAD
+=======
     margin-top: .5rem;
     height: 21px;
     padding: 5px 0;
+>>>>>>> 45c09eaca4dd549fb69af22538eb5315ea5b49a7
 }
 
 .card-product-rating svg {
@@ -43,8 +54,11 @@
 
 .card-product-price {
     font-weight: bold;
+<<<<<<< HEAD
+=======
     height: 43px;
     padding: 5px 0;
+>>>>>>> 45c09eaca4dd549fb69af22538eb5315ea5b49a7
 }
 
 .card-product-price .sale {
@@ -73,6 +87,9 @@
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+/* .promotion-code-card .code {} */
+=======
 .navbar-brand {
     display: flex;
     gap: 10px;
@@ -283,3 +300,4 @@ input[type=number] {
     font-family: unset;
     font-size: unset;
 }
+>>>>>>> 45c09eaca4dd549fb69af22538eb5315ea5b49a7

@@ -2054,6 +2054,10 @@ export const Header = () => {
                     className="nav-link"
                     data-toggle="modal"
                     href="#modalSearch"
+                    onClick={(ev) => {
+                      ev.preventDefault()
+                      setOpenSearchDrawer(true)
+                    }}
                   >
                     <i className="fe fe-search" />
                   </a>
