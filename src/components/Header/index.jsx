@@ -5,16 +5,25 @@ import { Link } from "react-router-dom";
 import { CartDrawer } from "../CartDrawer";
 import { useDispatch } from "react-redux";
 import { SearchDrawer } from "../SearchDrawer";
+import { Button, Popover } from "antd";
+import { CheckCircleTwoTone } from "@ant-design/icons";
+import { cartActions } from "@/store/cart";
 
 export const Header = () => {
   const dispatch = useDispatch()
   const [openCartDrawer, setOpenCartDrawer] = useState(false)
-  const { cart } = useCart()
+  const { cart, openCartOver } = useCart();
   const [openSearchDrawer, setOpenSearchDrawer] = useState(false)
   return (
     <>
-      <SearchDrawer open={openSearchDrawer} onClose={() => setOpenSearchDrawer(false)}></SearchDrawer>
-      <CartDrawer open={openCartDrawer} onClose={() => setOpenCartDrawer(false)}/>
+      <SearchDrawer
+        open={openSearchDrawer}
+        onClose={() => setOpenSearchDrawer(false)}
+      ></SearchDrawer>
+      <CartDrawer
+        open={openCartDrawer}
+        onClose={() => setOpenCartDrawer(false)}
+      />
       <div>
         {/* MODALS */}
         {/* Newsletter: Horizontal */}
@@ -2045,6 +2054,10 @@ export const Header = () => {
                     className="nav-link"
                     data-toggle="modal"
                     href="#modalSearch"
+                    onClick={(ev) => {
+                      ev.preventDefault()
+                      setOpenSearchDrawer(true)
+                    }}
                   >
                     <i className="fe fe-search" />
                   </a>
@@ -2060,18 +2073,47 @@ export const Header = () => {
                   </a>
                 </li>
                 <li className="nav-item ml-lg-n4">
-                  <a
-                    onClick={ev => {
-                      ev.preventDefault()
-                      setOpenCartDrawer(true)
+                  <Popover
+                    onOpenChange={(visible) => {
+                      if (!visible) {
+                        dispatch(cartActions.togglePopover(false));
+                      }
                     }}
-                    className="nav-link"
-                    href="#modalShoppingCart"
+                    trigger={["click"]}
+                    open={openCartOver}
+                    placement="bottomRight"
+                    content={
+                      <>
+                        <p className="mb-0 flex gap-2 items-center justify-center align-center">
+                          <CheckCircleTwoTone
+                            twoToneColor={"green"}
+                            style={{
+                              margin: "5px",
+                              verticalAlign: "middle",
+                              display: "inline",
+                            }}
+                          />
+                          Add to cart successfully!
+                        </p>
+                        <Button className="w-full btn-dark mt-2">
+                          Check cart and checkout
+                        </Button>
+                      </>
+                    }
                   >
-                    <span data-cart-items={cart?.totalQuantity}>
-                      <i className="fe fe-shopping-cart" />
-                    </span>
-                  </a>
+                    <a
+                      onClick={(ev) => {
+                        ev.preventDefault();
+                        setOpenCartDrawer(true);
+                      }}
+                      className="nav-link"
+                      href="#modalShoppingCart"
+                    >
+                      <span data-cart-items={cart?.totalQuantity || undefined}>
+                        <i className="fe fe-shopping-cart" />
+                      </span>
+                    </a>
+                  </Popover>
                 </li>
               </ul>
             </div>

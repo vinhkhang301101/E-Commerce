@@ -2,6 +2,7 @@ import { authService } from "@/services/auth";
 import { userService } from "@/services/user";
 import { clearToken, clearUser, getUser, setToken, setUser } from "@/utils";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { cartActions, getCartAction } from "./cart";
 
 const initialState = {
   user: getUser(),
@@ -17,6 +18,7 @@ export const loginAction = createAsyncThunk("auth/login", async (data, thunkApi)
     const user = await userService.getUser();
     setUser(user.data);
 
+    thunkApi.dispatch(getCartAction())
     return user.data;
   } catch (err) {
     console.log(err);
@@ -26,6 +28,7 @@ export const loginAction = createAsyncThunk("auth/login", async (data, thunkApi)
 
 export const logoutAction = createAsyncThunk('auth/logout', (_, thunkApi) => {
     thunkApi.dispatch(authActions.logout())
+    thunkApi.dispatch(cartActions.setCart(null))
     clearUser()
     clearToken()
 })

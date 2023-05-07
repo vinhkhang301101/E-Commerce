@@ -5,7 +5,9 @@ import { getToken, setToken } from "@/utils/token";
 export const PRODUCT_API = import.meta.env.VITE_PRODUCT_API;
 export const AUTHEN_API = import.meta.env.VITE_AUTHEN_API;
 export const USER_API = import.meta.env.VITE_USER_API;
-export const CART_API = import.meta.env.VITE_CART_API;
+export const CART_API = import.meta.env.VITE_CART_API
+
+let refreshTokenPromise = null
 
 export const http = axios.create();
 http.interceptors.response.use(
@@ -18,15 +20,20 @@ http.interceptors.response.use(
         (error.response.status === error.response.data.error_code) ===
         "TOKEN_EXPIRED"
       ) {
-        // refresh token
-        console.log("refreshToken");
-        const token = getToken();
-        const res = await authService.refreshToken({
-          refreshToken: token.refreshToken,
-        });
-
-        setToken(res.data);
-
+        if(refreshTokenPromise) {
+          await refreshTokenPromise
+        } else {
+          // refresh token
+          console.log("refreshToken");
+          const token = getToken();
+          const refreshTokenPromise = await authService.refreshToken({
+            refreshToken: token.refreshToken,
+          });
+  
+          const res = await refreshTokenPromise
+  
+          setToken(res.data);
+        }
         return http(error.config);
       }
     } catch (error) {}
