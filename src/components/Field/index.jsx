@@ -19,7 +19,7 @@ export const Field = ({ label, error, onChange, ...props }) => {
         className="form-control form-control-sm"
         id={id}
         
-      ></input>
+      />
       {error && <ErrorText>{error}</ErrorText>}
     </FieldStyle>
   );

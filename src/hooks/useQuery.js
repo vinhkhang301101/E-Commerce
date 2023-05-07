@@ -121,15 +121,18 @@ export const useQuery = ({
       setCacheDataOrPreviousData(res);
       refetchRef.current = false;
       setLoading(false);
+
+      return res
     } catch (err) {
+      console.log(err);
       if (error instanceof CanceledError) {
 
       } else {
-        console.log(err);
-        error = err;
+        // error = err;
         setError(err);
         setStatus("error");
         setLoading(false);
+        throw err
       }
     }
   };
