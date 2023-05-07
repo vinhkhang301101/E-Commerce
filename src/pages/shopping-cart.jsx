@@ -1,26 +1,8 @@
-import React from 'react'
+import React from "react";
 
-export const ShoppingCart = () => {
+export const ViewCart = () => {
   return (
     <div>
-      {/* BREADCRUMB */}
-      <nav className="py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              {/* Breadcrumb */}
-              <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="index.html">
-                    Home
-                  </a>
-                </li>
-                <li className="breadcrumb-item active">Shopping Cart</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </nav>
       {/* CONTENT */}
       <section className="pt-7 pb-12">
         <div className="container">
@@ -34,9 +16,20 @@ export const ShoppingCart = () => {
             <div className="col-12 col-md-7">
               {/* List group */}
               <ul className="list-group list-group-lg list-group-flush-x mb-6">
-                <li className="list-group-item">
+                <li className="list-group-item product-view-cart">
                   <div className="row align-items-center">
-                    <div className="col-3">
+                    <div className="col-4 d-flex flex items-center gap-2">
+                      <div className="custom-control custom-checkbox align-center">
+                        <input
+                          className="custom-control-input"
+                          id="loginRemember"
+                          type="checkbox"
+                        />
+                        <label
+                          className="custom-control-label"
+                          htmlFor="loginRemember"
+                        />
+                      </div>
                       {/* Image */}
                       <a href="product.html">
                         <img
@@ -51,8 +44,7 @@ export const ShoppingCart = () => {
                       <div className="d-flex mb-2 font-weight-bold">
                         <a className="text-body" href="product.html">
                           Cotton floral print
-                        </a>{" "}
-                        <span className="ml-auto">$40.00</span>
+                        </a>
                       </div>
                       {/* Text */}
                       <p className="mb-7 font-size-sm text-muted">
@@ -62,25 +54,39 @@ export const ShoppingCart = () => {
                       {/*Footer */}
                       <div className="d-flex align-items-center">
                         {/* Select */}
-                        <select className="custom-select custom-select-xxs w-auto">
-                          <option value={1}>1</option>
-                          <option value={1}>2</option>
-                          <option value={1}>3</option>
-                        </select>
+                        <div className="d-flex align-items-center mb-2 font-weight-bold">
+                          <span className="mr-2">$40.00</span>
+                          <div className="btn-group btn-quantity ">
+                            <button className="btn">-</button>
+                            <input defaultValue={1} />
+                            <button className="btn">+</button>
+                          </div>
+                        </div>
                         {/* Remove */}
                         <a
                           className="font-size-xs text-gray-400 ml-auto"
                           href="#!"
                         >
-                          <i className="fe fe-x" /> Remove
+                          <i className="fe fe-x" /> Xóa
                         </a>
                       </div>
                     </div>
                   </div>
                 </li>
-                <li className="list-group-item">
+                <li className="list-group-item product-view-cart">
                   <div className="row align-items-center">
-                    <div className="col-3">
+                    <div className="col-4 d-flex items-center gap-2">
+                      <div className="custom-control custom-checkbox">
+                        <input
+                          className="custom-control-input"
+                          id="loginRemember"
+                          type="checkbox"
+                        />
+                        <label
+                          className="custom-control-label"
+                          htmlFor="loginRemember"
+                        />
+                      </div>
                       {/* Image */}
                       <a href="product.html">
                         <img
@@ -95,8 +101,7 @@ export const ShoppingCart = () => {
                       <div className="d-flex mb-2 font-weight-bold">
                         <a className="text-body" href="product.html">
                           Suede cross body Bag
-                        </a>{" "}
-                        <span className="ml-auto">$49.00</span>
+                        </a>
                       </div>
                       {/* Text */}
                       <p className="mb-7 font-size-sm text-muted">
@@ -105,17 +110,21 @@ export const ShoppingCart = () => {
                       {/*Footer */}
                       <div className="d-flex align-items-center">
                         {/* Select */}
-                        <select className="custom-select custom-select-xxs w-auto">
-                          <option value={1}>1</option>
-                          <option value={1}>2</option>
-                          <option value={1}>3</option>
-                        </select>
+                        <div className="d-flex align-items-center mb-2 font-weight-bold">
+                          <span className="mr-2">$40.00</span>
+                          <div className="btn-group btn-quantity ">
+                            <button className="btn">-</button>
+                            <input defaultValue={2} />
+                            <button className="btn">+</button>
+                          </div>
+                          <span className="ml-2">$80.00</span>
+                        </div>
                         {/* Remove */}
                         <a
                           className="font-size-xs text-gray-400 ml-auto"
                           href="#!"
                         >
-                          <i className="fe fe-x" /> Remove
+                          <i className="fe fe-x" /> Xóa
                         </a>
                       </div>
                     </div>
@@ -126,8 +135,8 @@ export const ShoppingCart = () => {
               <div className="row align-items-end justify-content-between mb-10 mb-md-0">
                 <div className="col-12 col-md-7">
                   <div className="promotion-code-card mb-5">
-                    <div className="title">Promotion (-50%)</div>
-                    <div className="Code">SALE50</div>
+                    <div className="font-bold">SALE50</div>
+                    <div className="text-sm">Promotion (-50%)</div>
                     <i className="fe fe-x close" />
                   </div>
                   {/* Coupon */}
@@ -161,7 +170,7 @@ export const ShoppingCart = () => {
             </div>
             <div className="col-12 col-md-5 col-lg-4 offset-lg-1">
               {/* Total */}
-              <div className="card mb-7 bg-light">
+              <div className="product-card card mb-7 bg-light">
                 <div className="card-body">
                   <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
                     <li className="list-group-item d-flex">
@@ -169,15 +178,19 @@ export const ShoppingCart = () => {
                       <span className="ml-auto font-size-sm">$89.00</span>
                     </li>
                     <li className="list-group-item d-flex">
+                      <span>Promotion</span>{" "}
+                      <span className="ml-auto font-size-sm">-$44.50</span>
+                    </li>
+                    <li className="list-group-item d-flex">
                       <span>Tax</span>{" "}
                       <span className="ml-auto font-size-sm">$00.00</span>
                     </li>
                     <li className="list-group-item d-flex font-size-lg font-weight-bold">
                       <span>Total</span>{" "}
-                      <span className="ml-auto font-size-sm">$89.00</span>
+                      <span className="ml-auto font-size-sm">$44.50</span>
                     </li>
                     <li className="list-group-item font-size-sm text-center text-gray-500">
-                      Shipping cost calculated at Checkout *
+                      Giá vận chuyển sẽ được tính khi checkout *
                     </li>
                   </ul>
                 </div>
@@ -196,7 +209,14 @@ export const ShoppingCart = () => {
             </div>
           </div>
         </div>
+        <div className="flex flex-col gap-4 items-center">
+          <img width={300} src="./img/empty-cart.png" />
+          <p className="mb-0">Không có sản phẩm nào trong giỏ hàng của bạn.</p>
+          <a href="#" className="btn btn-dark min-w-[300px] text-center">
+            Tiếp tục mua sắm
+          </a>
+        </div>
       </section>
     </div>
   );
-}
+};

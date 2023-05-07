@@ -50,12 +50,13 @@ export const CartDrawer = ({ open, onClose }) => {
               <a className="btn btn-block btn-dark" href="./checkout">
                 Continue to Checkout
               </a>
-              <a
+              <Link
                 className="btn btn-block btn-outline-dark"
-                href="./shopping-cart"
+                to={PATH.ShoppingCart}
+                onClick={onClose}
               >
                 View Cart
-              </a>
+              </Link>
             </div>
           </div>
         ) : (

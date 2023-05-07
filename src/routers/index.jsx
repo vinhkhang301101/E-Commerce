@@ -3,7 +3,7 @@ import { MainLayouts } from "../layouts/MainLayouts";
 import { Page404 } from "@/pages/404";
 import { PATH } from "@/config/path";
 import { Product } from "@/pages/product";
-import { ShoppingCart } from "@/pages/shopping-cart";
+import { ViewCart } from "@/pages/shopping-cart";
 import { Checkout } from "@/pages/checkout";
 import { Account } from "@/pages/account";
 import { ProductDetailPages } from "@/pages/[slug]";
@@ -75,7 +75,7 @@ export const routers = [
 
       {
         path: PATH.ShoppingCart,
-        element: <ShoppingCart />,
+        element: <ViewCart />,
       },
 
       {
