@@ -1,7 +1,7 @@
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { CartDrawer } from "../CartDrawer";
 import { useDispatch } from "react-redux";
 import { SearchDrawer } from "../SearchDrawer";
@@ -1956,41 +1956,53 @@ export const Header = () => {
               {/* Nav */}
               <ul className="nav navbar-nav mr-8">
                 <li className="nav-item">
-                  <a className="nav-link" href="./shipping-and-returns">
+                  <Link className="nav-link" to={PATH.ShippingAndReturns}>
                     Shipping
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./faq">
+                  <Link className="nav-link" to={PATH.Faq}>
                     FAQ
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./contact-us">
+                  <Link className="nav-link" to={PATH.ContactUs}>
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
               {/* Nav */}
               <ul className="nav navbar-nav flex-row">
                 <li className="nav-item">
-                  <a className="nav-link text-gray-350" href="#!">
+                  <a
+                    className="nav-link text-gray-350"
+                    href="https://www.facebook.com/"
+                  >
                     <i className="fab fa-facebook-f" />
                   </a>
                 </li>
                 <li className="nav-item ml-xl-n4">
-                  <a className="nav-link text-gray-350" href="#!">
+                  <a
+                    className="nav-link text-gray-350"
+                    href="https://twitter.com/"
+                  >
                     <i className="fab fa-twitter" />
                   </a>
                 </li>
                 <li className="nav-item ml-xl-n4">
-                  <a className="nav-link text-gray-350" href="#!">
+                  <a
+                    className="nav-link text-gray-350"
+                    href="https://www.instagram.com/"
+                  >
                     <i className="fab fa-instagram" />
                   </a>
                 </li>
                 <li className="nav-item ml-xl-n4">
-                  <a className="nav-link text-gray-350" href="#!">
-                    <i className="fab fa-medium" />
+                  <a
+                    className="nav-link text-gray-350"
+                    href="https://www.linkedin.com/"
+                  >
+                    <i className="fab fa-linkedin" />
                   </a>
                 </li>
               </ul>
@@ -2001,10 +2013,10 @@ export const Header = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
           <div className="container">
             {/* Brand */}
-            <a className="navbar-brand" href="./">
+            <Link className="navbar-brand" to={PATH.Home}>
               <img style={{ width: "50px" }} src="/img/logo.svg" />
               Shopper.
-            </a>
+            </Link>
             {/* Toggler */}
             <button
               className="navbar-toggler"
@@ -2022,29 +2034,29 @@ export const Header = () => {
               {/* Nav */}
               <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
-                  <a className="nav-link" href="./">
+                  <Link className="nav-link" to={PATH.Home}>
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./product">
+                  <Link className="nav-link" to={PATH.Product}>
                     Product
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to={PATH.Product}>
                     Laptop
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to={PATH.Product}>
                     Computer
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="docs/getting-started.html">
+                  <Link className="nav-link" to={PATH.Product}>
                     Sale Product
-                  </a>
+                  </Link>
                 </li>
               </ul>
               {/* Nav */}
@@ -2055,8 +2067,8 @@ export const Header = () => {
                     data-toggle="modal"
                     href="#modalSearch"
                     onClick={(ev) => {
-                      ev.preventDefault()
-                      setOpenSearchDrawer(true)
+                      ev.preventDefault();
+                      setOpenSearchDrawer(true);
                     }}
                   >
                     <i className="fe fe-search" />
@@ -2090,9 +2102,15 @@ export const Header = () => {
                           />
                           Add to cart successfully!
                         </p>
-                        <Button className="w-full btn-dark mt-2">
+                        <Link
+                          to={PATH.ShoppingCart}
+                          onClick={() =>
+                            dispatch(cartActions.togglePopover(false))
+                          }
+                          className="btn btn-xs btn-dark flex items-center justify-center gap-3 mt-2"
+                        >
                           Check cart and checkout
-                        </Button>
+                        </Link>
                       </>
                     }
                   >

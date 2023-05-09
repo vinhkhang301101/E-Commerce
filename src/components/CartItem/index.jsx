@@ -4,8 +4,9 @@ import { currency } from "@/utils";
 import { Popconfirm, Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Checkbox } from "../Checkbox";
 
-export const CartItem = ({ productId, product, quantity }) => {
+export const CartItem = ({ allowSelect, productId, product, quantity }) => {
   const dispatch = useDispatch()
   const [_quantity, setQuantity] = useState(quantity);
   const { loading } = useCart()
@@ -58,6 +59,7 @@ export const CartItem = ({ productId, product, quantity }) => {
         <div className="row align-items-center">
           <div className="col-4">
             {/* Image */}
+            {allowSelect && <Checkbox />}
             <a href="./product">
               <img
                 className="img-fluid"
@@ -116,15 +118,15 @@ export const CartItem = ({ productId, product, quantity }) => {
                 <input
                   value={_quantity}
                   onChange={(ev) => setQuantity(ev.target.value)}
-                  onBlur={ev => {
-                    let val = parseInt(ev.target.value)
+                  onBlur={(ev) => {
+                    let val = parseInt(ev.target.value);
                     if (!val) {
-                      val = 1
-                      setQuantity(val)
+                      val = 1;
+                      setQuantity(val);
                     }
 
                     if (val !== quantity) {
-                      onUpdateQuantity(val)
+                      onUpdateQuantity(val);
                     }
                   }}
                 />

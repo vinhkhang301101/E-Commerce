@@ -13,9 +13,9 @@ import { GuestRoute } from "@/components/GuestRoute";
 import { OrderCompleted } from "@/pages/order-completed";
 import { ContactUs } from "@/pages/contact-us";
 import { Blog } from "@/pages/blog";
-import { Blog_post } from "@/pages/blog-post";
+import { BlogPost } from "@/pages/blog-post";
 import { Faq } from "@/pages/faq";
-import { Shipping_and_returns } from "@/pages/shipping-and-returns";
+import { ShippingAndReturns } from "@/pages/shipping-and-returns";
 import { Store_locator } from "../pages/store-locator";
 import { Info } from "@/pages/profile/info";
 import { Wishlist } from "@/pages/profile/wishlist";
@@ -50,15 +50,15 @@ export const routers = [
       },
 
       {
-        path: PATH.Blog_post,
-        element: <Blog_post />,
+        path: PATH.BlogPost,
+        element: <BlogPost />,
       },
 
       {
         path: PATH.Faq,
         element: <Faq />,
       },
-      
+
       {
         path: PATH.Info,
         element: <Info />,
@@ -74,8 +74,8 @@ export const routers = [
       },
 
       {
-        path: PATH.Shipping_and_returns,
-        element: <Shipping_and_returns />,
+        path: PATH.ShippingAndReturns,
+        element: <ShippingAndReturns />,
       },
 
       {

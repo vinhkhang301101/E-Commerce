@@ -1,8 +1,17 @@
+import { CartItem } from "@/components/CartItem";
+import { PATH } from "@/config/path";
+import { useCart } from "@/hooks/useCart";
+import { useScrollTop } from "@/hooks/useScrollTop";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const ViewCart = () => {
+  useScrollTop();
+  const { cart } = useCart()
+  const { listItems } = cart
+
   return (
-    <div>
+    <>
       {/* CONTENT */}
       <section className="pt-7 pb-12">
         <div className="container">
@@ -16,127 +25,14 @@ export const ViewCart = () => {
             <div className="col-12 col-md-7">
               {/* List group */}
               <ul className="list-group list-group-lg list-group-flush-x mb-6">
-                <li className="list-group-item product-view-cart">
-                  <div className="row align-items-center">
-                    <div className="col-4 d-flex flex items-center gap-2">
-                      <div className="custom-control custom-checkbox mr-2">
-                        <input
-                          className="custom-control-input"
-                          id="loginRemember"
-                          type="checkbox"
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor="loginRemember"
-                        />
-                      </div>
-                      {/* Image */}
-                      <a href="product.html">
-                        <img
-                          src="./img/products/product-6.jpg"
-                          alt="..."
-                          className="img-fluid"
-                        />
-                      </a>
-                    </div>
-                    <div className="col">
-                      {/* Title */}
-                      <div className="d-flex mb-2 font-weight-bold">
-                        <a className="text-body" href="product.html">
-                          Cotton floral print
-                        </a>
-                      </div>
-                      {/* Text */}
-                      <p className="mb-7 font-size-sm text-muted">
-                        Size: M <br />
-                        Color: Red
-                      </p>
-                      {/*Footer */}
-                      <div className="d-flex align-items-center">
-                        {/* Select */}
-                        <div className="d-flex align-items-center mb-2 font-weight-bold">
-                          <span className="mr-2">$40.00</span>
-                          <div className="btn-group btn-quantity ">
-                            <button className="btn">-</button>
-                            <input defaultValue={1} />
-                            <button className="btn">+</button>
-                          </div>
-                        </div>
-                        {/* Remove */}
-                        <a
-                          className="font-size-xs text-gray-400 ml-auto"
-                          href="#!"
-                        >
-                          <i className="fe fe-x" /> Xóa
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="list-group-item product-view-cart">
-                  <div className="row align-items-center">
-                    <div className="col-4 d-flex items-center gap-2">
-                      <div className="custom-control custom-checkbox mr-2">
-                        <input
-                          className="custom-control-input"
-                          id="loginRemember"
-                          type="checkbox"
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor="loginRemember"
-                        />
-                      </div>
-                      {/* Image */}
-                      <a href="product.html">
-                        <img
-                          src="./img/products/product-10.jpg"
-                          alt="..."
-                          className="img-fluid"
-                        />
-                      </a>
-                    </div>
-                    <div className="col">
-                      {/* Title */}
-                      <div className="d-flex mb-2 font-weight-bold">
-                        <a className="text-body" href="product.html">
-                          Suede cross body Bag
-                        </a>
-                      </div>
-                      {/* Text */}
-                      <p className="mb-7 font-size-sm text-muted">
-                        Color: Brown
-                      </p>
-                      {/*Footer */}
-                      <div className="d-flex align-items-center">
-                        {/* Select */}
-                        <div className="d-flex align-items-center mb-2 font-weight-bold">
-                          <span className="mr-2">$40.00</span>
-                          <div className="btn-group btn-quantity ">
-                            <button className="btn">-</button>
-                            <input defaultValue={2} />
-                            <button className="btn">+</button>
-                          </div>
-                          <span className="ml-2">$80.00</span>
-                        </div>
-                        {/* Remove */}
-                        <a
-                          className="font-size-xs text-gray-400 ml-auto"
-                          href="#!"
-                        >
-                          <i className="fe fe-x" /> Xóa
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                {listItems.map(e => <CartItem key={e.productId} {...e} allowSelect />)}
               </ul>
               {/* Footer */}
               <div className="row align-items-end justify-content-between mb-10 mb-md-0">
                 <div className="col-12 col-md-7">
                   <div className="promotion-code-card mb-5">
-                    <div className="font-bold">SALE50</div>
-                    <div className="text-sm">Promotion (-50%)</div>
+                    <div className="title">Promotion (-50%)</div>
+                    <div className="Code">SALE50</div>
                     <i className="fe fe-x close" />
                   </div>
                   {/* Coupon */}
@@ -170,7 +66,7 @@ export const ViewCart = () => {
             </div>
             <div className="col-12 col-md-5 col-lg-4 offset-lg-1">
               {/* Total */}
-              <div className="product-card card mb-7 bg-light">
+              <div className="card mb-7 bg-light">
                 <div className="card-body">
                   <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
                     <li className="list-group-item d-flex">
@@ -178,19 +74,15 @@ export const ViewCart = () => {
                       <span className="ml-auto font-size-sm">$89.00</span>
                     </li>
                     <li className="list-group-item d-flex">
-                      <span>Promotion</span>{" "}
-                      <span className="ml-auto font-size-sm">-$44.50</span>
-                    </li>
-                    <li className="list-group-item d-flex">
                       <span>Tax</span>{" "}
                       <span className="ml-auto font-size-sm">$00.00</span>
                     </li>
                     <li className="list-group-item d-flex font-size-lg font-weight-bold">
                       <span>Total</span>{" "}
-                      <span className="ml-auto font-size-sm">$44.50</span>
+                      <span className="ml-auto font-size-sm">$89.00</span>
                     </li>
                     <li className="list-group-item font-size-sm text-center text-gray-500">
-                      Giá vận chuyển sẽ được tính khi checkout *
+                      Shipping cost calculated at Checkout *
                     </li>
                   </ul>
                 </div>
@@ -209,13 +101,78 @@ export const ViewCart = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 items-center">
-          <h6 className="mb-7 text-center">Your cart is empty 😞</h6>
-          <a href="#" className="btn btn-dark min-w-[300px] text-center">
-            Tiếp tục mua sắm
-          </a>
+      </section>
+      {/* FEATURES */}
+      <section className="bg-light py-9">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-6 col-lg-3">
+              {/* Item */}
+              <div className="d-flex mb-6 mb-lg-0">
+                {/* Icon */}
+                <i className="fe fe-truck font-size-lg text-primary" />
+                {/* Body */}
+                <div className="ml-6">
+                  {/* Heading */}
+                  <h6 className="heading-xxs mb-1">Free shipping</h6>
+                  {/* Text */}
+                  <p className="mb-0 font-size-sm text-muted">
+                    From all orders over $100
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              {/* Item */}
+              <div className="d-flex mb-6 mb-lg-0">
+                {/* Icon */}
+                <i className="fe fe-repeat font-size-lg text-primary" />
+                {/* Body */}
+                <div className="ml-6">
+                  {/* Heading */}
+                  <h6 className="mb-1 heading-xxs">Free returns</h6>
+                  {/* Text */}
+                  <p className="mb-0 font-size-sm text-muted">
+                    Return money within 30 days
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              {/* Item */}
+              <div className="d-flex mb-6 mb-md-0">
+                {/* Icon */}
+                <i className="fe fe-lock font-size-lg text-primary" />
+                {/* Body */}
+                <div className="ml-6">
+                  {/* Heading */}
+                  <h6 className="mb-1 heading-xxs">Secure shopping</h6>
+                  {/* Text */}
+                  <p className="mb-0 font-size-sm text-muted">
+                    You're in safe hands
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              {/* Item */}
+              <div className="d-flex">
+                {/* Icon */}
+                <i className="fe fe-tag font-size-lg text-primary" />
+                {/* Body */}
+                <div className="ml-6">
+                  {/* Heading */}
+                  <h6 className="mb-1 heading-xxs">Over 10,000 Styles</h6>
+                  {/* Text */}
+                  <p className="mb-0 font-size-sm text-muted">
+                    We have everything you need
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };

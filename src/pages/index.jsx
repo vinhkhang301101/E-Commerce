@@ -1,6 +1,8 @@
 import { Counter } from '@/components/Counter';
 import { FlickitySlider } from '@/components/Flickity';
+import { PATH } from '@/config/path';
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
@@ -26,9 +28,12 @@ export const Home = () => {
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/product">
+                <Link
+                  className="btn btn-white stretched-link"
+                  to={PATH.Product}
+                >
                   Computer Shop <i className="fe fe-arrow-right ml-2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -47,9 +52,12 @@ export const Home = () => {
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/product">
+                <Link
+                  className="btn btn-white stretched-link"
+                  to={PATH.Product}
+                >
                   Smartphone Shop <i className="fe fe-arrow-right ml-2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -68,9 +76,12 @@ export const Home = () => {
               </div>
               <div className="card-body mt-auto py-8">
                 {/* Button */}
-                <a className="btn btn-white stretched-link" href="/product">
+                <Link
+                  className="btn btn-white stretched-link"
+                  to={PATH.Product}
+                >
                   Mouse Shop <i className="fe fe-arrow-right ml-2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -158,7 +169,8 @@ export const Home = () => {
               <h2 className="mb-4">Best Picks 2019</h2>
               {/* Subheading */}
               <p className="mb-10 text-gray-500">
-                Explode many new features, functions, applications, and experiences.
+                Explode many new features, functions, applications, and
+                experiences.
               </p>
             </div>
           </div>
@@ -186,12 +198,12 @@ export const Home = () => {
                   {/* Heading */}
                   <h4 className="mb-0">Gaming Mouse's Collection</h4>
                   {/* Link */}
-                  <a
+                  <Link
                     className="btn btn-link stretched-link text-reset"
-                    href="/product"
+                    to={PATH.Product}
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -220,12 +232,12 @@ export const Home = () => {
                   {/* Heading */}
                   <h4 className="mb-0">IPad's</h4>
                   {/* Link */}
-                  <a
+                  <Link
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/product"
+                    to={PATH.Product}
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -249,12 +261,12 @@ export const Home = () => {
                   {/* Heading */}
                   <h4 className="mb-0">Computer For Work / Gaming</h4>
                   {/* Link */}
-                  <a
+                  <Link
                     className="btn btn-link stretched-link px-0 text-reset"
-                    href="/product"
+                    to={PATH.Product}
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -818,9 +830,9 @@ export const Home = () => {
                 Summer Collection
               </h3>
               <Counter />
-              <a className="btn btn-dark" href="/product">
+              <Link className="btn btn-dark" to={PATH.Product}>
                 Shop Now <i className="fe fe-arrow-right ml-2" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -855,7 +867,8 @@ export const Home = () => {
               <h2 className="mb-3">@shopper</h2>
               {/* Subheading */}
               <p className="mb-10 font-size-lg text-gray-500">
-              Explode many new features, functions, applications, and experiences.
+                Explode many new features, functions, applications, and
+                experiences.
               </p>
             </div>
           </div>
@@ -870,15 +883,15 @@ export const Home = () => {
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-6 col-sm-4 col-md px-1">

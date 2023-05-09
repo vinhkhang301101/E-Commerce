@@ -169,12 +169,6 @@ export const Account = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="col-12 col-md">
-                        <div>
-                          <p>Tài khoản demo: demo@spacedev.com</p>
-                          <p>Mật khẩu demo: Spacedev@123</p>
-                        </div>
-                      </div>
                       <div className="col-12">
                         {/* Button */}
                         <Button onClick={onLogin} loading={loginLoading}>
