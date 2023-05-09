@@ -806,7 +806,7 @@ export const Home = () => {
         </div>
       </section>
       {/* COUNTDOWN */}
-      {/* <section
+      <section
         className="py-13 bg-cover"
         style={{ backgroundImage: "url(./img/covers/cover-4.jpg)" }}
       >
@@ -824,7 +824,7 @@ export const Home = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       {/* REVIEWS */}
       {/* <section className="py-12">
         <div className="container">
