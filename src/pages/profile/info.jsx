@@ -1,9 +1,16 @@
+import { Button } from "@/components/Button";
+import { Field } from "@/components/Field";
+// import { useAuth } from "@/hooks/useAuth";
+// import { useForm } from "@/hooks/useForm";
 import { logoutAction } from "@/store/auth";
 import React from "react";
 import { useDispatch } from "react-redux";
 
 export const Info = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  // const { user } = useAuth();
+  // const userForm = useForm({}, { initialValue: user });
+
   return (
     <div>
       {/* BREADCRUMB */}
@@ -71,7 +78,7 @@ export const Info = () => {
                   <a
                     onClick={(ev) => {
                       ev.preventDefault();
-                      dispatch(logoutAction())
+                      dispatch(logoutAction());
                     }}
                     className="list-group-item list-group-item-action dropright-toggle"
                     href="#!"
@@ -83,10 +90,15 @@ export const Info = () => {
             </div>
             <div className="col-12 col-md-9 col-lg-8 offset-lg-1">
               {/* Form */}
-              <form>
+              <div>
                 <div className="row">
                   <div className="col-12">
                     {/* Email */}
+                    {/* <Field
+                      label="Full Name *"
+                      placeholder="Full Name *"
+                      {...userForm.register("name")}
+                    ></Field> */}
                     <div className="form-group">
                       <label htmlFor="accountFirstName">Full Name *</label>
                       <input
@@ -101,6 +113,12 @@ export const Info = () => {
                   </div>
                   <div className="col-12">
                     {/* Email */}
+                    {/* <Field
+                      label="Email Address *"
+                      placeholder="Email Address *"
+                      {...userForm.register("username")}
+                      disabled
+                    ></Field> */}
                     <div className="form-group">
                       <label htmlFor="accountEmail">Email Address *</label>
                       <input
@@ -113,9 +131,10 @@ export const Info = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-12 col-md-6">
-                    {/* Password */}
-                    <div className="form-group">
+                </div>
+                <div className="col-12 col-md-6">
+                  {/* Password */}
+                  <div className="form-group">
                       <label htmlFor="accountPassword">
                         Current Password *
                       </label>
@@ -127,53 +146,52 @@ export const Info = () => {
                         required
                       />
                     </div>
-                  </div>
-                  <div className="col-12 col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="AccountNewPassword">New Password *</label>
-                      <input
-                        className="form-control form-control-sm"
-                        id="AccountNewPassword"
-                        type="password"
-                        placeholder="New Password *"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-lg-6">
-                    <div className="form-group">
-                      <label>Date of Birth</label>
-                      <input
-                        className="form-control form-control-sm"
-                        type="date"
-                        placeholder="dd/mm/yyyy"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-lg-6">
-                    {/* Gender */}
-                    <div className="form-group mb-8">
-                      <label>Gender</label>
-                      <div className="btn-group-toggle" data-toggle="buttons">
-                        <label className="btn btn-sm btn-outline-border active">
-                          <input type="radio" name="gender" defaultChecked />{" "}
-                          Male
-                        </label>
-                        <label className="btn btn-sm btn-outline-border">
-                          <input type="radio" name="gender" /> Female
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    {/* Button */}
-                    <button className="btn btn-dark" type="submit">
-                      Save Changes
-                    </button>
+                </div>
+                <div className="col-12 col-md-6">
+                  <div className="form-group">
+                    <label htmlFor="AccountNewPassword">New Password *</label>
+                    <input
+                      className="form-control form-control-sm"
+                      id="AccountNewPassword"
+                      type="password"
+                      placeholder="New Password *"
+                      required
+                    />
                   </div>
                 </div>
-              </form>
+                <div className="col-12 col-lg-6">
+                  <div className="form-group">
+                    <label>Date of Birth</label>
+                    <input
+                      className="form-control form-control-sm"
+                      type="date"
+                      placeholder="dd/mm/yyyy"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-12 col-lg-6">
+                  {/* Gender */}
+                  <div className="form-group mb-8">
+                    <label>Gender</label>
+                    <div className="btn-group-toggle" data-toggle="buttons">
+                      <label className="btn btn-sm btn-outline-border active">
+                        <input type="radio" name="gender" defaultChecked /> Male
+                      </label>
+                      <label className="btn btn-sm btn-outline-border">
+                        <input type="radio" name="gender" /> Female
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12">
+                  {/* Button */}
+                  <Button>
+                    Save Changes
+                  </Button>
+                </div>
+              </div>
+              <div></div>
             </div>
           </div>
         </div>
