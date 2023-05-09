@@ -1,10 +1,28 @@
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { PATH } from "@/config/path";
+import { useQuery } from "@/hooks/useQuery";
+import { productService } from "@/services/product";
+import { message } from "antd";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const ProductDetailPages = () => {
   const { slug } = useParams();
-  const [,id] = slug.split("-id");
-    console.log(id);
+  const [ , id ] = slug.split("-p");
+  const navigate = useNavigate();
+  const { data: detail, loading } = useQuery({
+    queryFn: () => productService.getProductDetail(id),
+    enabled: !!id,
+    onError: () => {
+      message.error("Product have not exist");
+      navigate(PATH.Product);
+    },
+  });
+
+  console.log(detail);
+
+  if (loading) return null;
+
   return (
     <div>
       {/* BREADCRUMB */}
@@ -13,7 +31,12 @@ export const ProductDetailPages = () => {
           <div className="row">
             <div className="col-12">
               {/* Breadcrumb */}
-              <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
+              <Breadcrumb>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>Product</Breadcrumb.Item>
+                <Breadcrumb.Item>{detail.data.name}</Breadcrumb.Item>
+              </Breadcrumb>
+              {/* <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
                 <li className="breadcrumb-item">
                   <a className="text-gray-400" href="index.html">
                     Home
@@ -25,7 +48,7 @@ export const ProductDetailPages = () => {
                   </a>
                 </li>
                 <li className="breadcrumb-item active">Leather Sneakers</li>
-              </ol>
+              </ol> */}
             </div>
           </div>
         </div>
