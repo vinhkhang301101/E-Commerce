@@ -4,7 +4,9 @@ import { currency } from "@/utils";
 import { Popconfirm, Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Checkbox } from "../Checkbox";
+// import { Checkbox } from "../Checkbox";
+import { Link } from "react-router-dom";
+import { PATH } from "@/config/path";
 
 export const CartItem = ({ allowSelect, productId, product, quantity }) => {
   const dispatch = useDispatch()
@@ -59,14 +61,14 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
         <div className="row align-items-center">
           <div className="col-4">
             {/* Image */}
-            {allowSelect && <Checkbox />}
-            <a href="./product">
+            {/* {allowSelect && <Checkbox />} */}
+            <Link to={PATH.Product}>
               <img
                 className="img-fluid"
                 src={product.thumbnail_url}
                 alt="..."
               />
-            </a>
+            </Link>
           </div>
           <div className="col-8">
             {/* Title */}

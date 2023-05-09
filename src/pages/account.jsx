@@ -1,18 +1,19 @@
+import { useAuth } from "@/components/AuthContext";
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
 import { PATH } from "@/config/path";
 import { useAsync } from "@/hooks/useAsync";
-import { useAuth } from "@/hooks/useAuth";
 import { useBodyClass } from "@/hooks/useBodyClass";
 import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
+// import { useSearch } from "@/hooks/useSearch";
 import { userService } from "@/services/user";
-import { loginAction } from "@/store/auth";
+import { loginAction, loginByCodeAction } from "@/store/auth";
 import { cn, confirm, minMax, regexp, required } from "@/utils";
 import { handleError } from "@/utils/handleError";
 import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +21,7 @@ export const Account = () => {
   useBodyClass("bg-light");
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const { user } = useAuth()
   // const {search} = useSearch()
   const { loading: resendEmailLoading, excute: resendEmailService } = useAsync(
     userService.resendEmail
@@ -35,6 +37,12 @@ export const Account = () => {
       }),
     limitDuration: 1000,
   });
+
+  // useEffect(() => {
+  //   if(search.code){
+  //     dispatch(loginByCodeAction(search.code))
+  //   }
+  // })
 
   const formLogin = useForm({
     username: [required(), regexp("email")],

@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 export const Info = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   return (
     <div>
       {/* BREADCRUMB */}
@@ -71,7 +71,7 @@ export const Info = () => {
                   <a
                     onClick={(ev) => {
                       ev.preventDefault();
-                      dispatch(logoutAction());
+                      dispatch(logoutAction())
                     }}
                     className="list-group-item list-group-item-action dropright-toggle"
                     href="#!"
@@ -104,7 +104,6 @@ export const Info = () => {
                     <div className="form-group">
                       <label htmlFor="accountEmail">Email Address *</label>
                       <input
-                        disabled
                         className="form-control form-control-sm"
                         id="accountEmail"
                         type="email"

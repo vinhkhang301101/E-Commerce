@@ -1,3 +1,2 @@
-import { useSelector } from "react-redux";
+import { createContext, useContext } from "react";
 
-export const useAuth = () => useSelector(store => store.auth)
