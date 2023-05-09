@@ -1,8 +1,8 @@
+import { useAuth } from "@/components/AuthContext";
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
 import { PATH } from "@/config/path";
 import { useAsync } from "@/hooks/useAsync";
-import { useAuth } from "@/hooks/useAuth";
 import { useBodyClass } from "@/hooks/useBodyClass";
 import { useForm } from "@/hooks/useForm";
 import { useQuery } from "@/hooks/useQuery";
@@ -21,7 +21,7 @@ export const Account = () => {
   useBodyClass("bg-light");
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const {user} = useAuth()
+  const { user } = useAuth()
   // const {search} = useSearch()
   const { loading: resendEmailLoading, excute: resendEmailService } = useAsync(
     userService.resendEmail
@@ -33,7 +33,7 @@ export const Account = () => {
     queryFn: () =>
       userService.register({
         ...formRegister.values,
-        redirect: window.location.origin + window.location.pathname,
+        redirect: PATH.Profile,
       }),
     limitDuration: 1000,
   });
@@ -177,12 +177,6 @@ export const Account = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="col-12 col-md">
-                        <div>
-                          <p>Tài khoản demo: demo@spacedev.com</p>
-                          <p>Mật khẩu demo: Spacedev@123</p>
-                        </div>
-                      </div>
                       <div className="col-12">
                         {/* Button */}
                         <Button onClick={onLogin} loading={loginLoading}>
@@ -273,7 +267,7 @@ export const Account = () => {
               </div>
             </div>
           </div>
-        )}
+        )} 
       </div>
     </section>
   );

@@ -20,9 +20,9 @@ export const PATH = {
   ContactUs: "/contact-us",
   OrderCompleted: "/order-completed",
   Blog: "/blog",
-  Blog_post: "/blog-post",
+  BlogPost: "/blog-post",
   Faq: "/faq",
-  Shipping_and_returns: "/shipping-and-returns",
+  ShippingAndReturns: "/shipping-and-returns",
   Store_locator: "/store-locator",
   Info: "/info",
   Wishlist: "/wishlist"

@@ -3,12 +3,12 @@ import { authReducer } from "./authReducer";
 import { cartReducer, cartSaga, getCartAction } from "./cart";
 import createSagaMiddleware from "redux-saga"
 import { all } from "redux-saga/effects";
-import { authSaga } from "./auth";
+// import { authSaga } from "./auth";
 
 function* rootSaga() {
   yield all([
     cartSaga(),
-    authSaga()
+    // authSaga()
   ])
 }
 

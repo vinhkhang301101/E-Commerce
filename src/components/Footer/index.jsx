@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer
+  <footer
       className="bg-dark bg-cover @@classList"
       style={{ backgroundImage: "url(./img/patterns/pattern-2.svg)" }}
     >

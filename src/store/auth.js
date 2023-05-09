@@ -117,6 +117,6 @@ export const { reducer: authReducer, actions: authActions } = createSlice({
   },
 });
 
-export function* authSaga() {
-  yield takeLatest(loginAction.fulfilled, function* () {});
-}
+// export function* authSaga() {
+//   yield takeLatest(loginAction.fulfilled, function* () {});
+// }

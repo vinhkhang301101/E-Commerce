@@ -47,15 +47,16 @@ export const CartDrawer = ({ open, onClose }) => {
             </div>
             {/* Buttons */}
             <div className="modal-body">
-              <a className="btn btn-block btn-dark" href="./checkout">
+              <Link onClick={onClose} className="btn btn-block btn-dark" to={PATH.Checkout}>
                 Continue to Checkout
-              </a>
-              <a
+              </Link>
+              <Link
                 className="btn btn-block btn-outline-dark"
-                href="./shopping-cart"
+                to={PATH.ShoppingCart}
+                onClick={onClose}
               >
                 View Cart
-              </a>
+              </Link>
             </div>
           </div>
         ) : (
