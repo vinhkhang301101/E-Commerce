@@ -10,7 +10,6 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, _setUser] = useState(getUser);
-  // const navigate = useNavigate();
 
   const login = async (data) => {
     try {
