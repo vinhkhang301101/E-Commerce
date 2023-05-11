@@ -1,18 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./authReducer";
 import { cartReducer, cartSaga, getCartAction } from "./cart";
-import createSagaMiddleware from "redux-saga"
+import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";
-// import { authSaga } from "./auth";
+import { authReducer, authSaga, getUserAction } from "./auth";
 
 function* rootSaga() {
-  yield all([
-    cartSaga(),
-    // authSaga()
-  ])
+  yield all([cartSaga(), authSaga()]);
 }
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
@@ -20,9 +16,10 @@ export const store = configureStore({
     cart: cartReducer,
   },
   devTools: import.meta.env.VITE_NODE_ENV === "development",
-  middleware: getMiddleware => getMiddleware().concat(sagaMiddleware)
+  middleware: (getMiddleware) => getMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);
 
+store.dispatch(getUserAction());
 store.dispatch(getCartAction());

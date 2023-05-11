@@ -1,18 +1,20 @@
-import { logoutAction } from "@/store/auth"
-import { useDispatch } from "react-redux"
-import { Outlet } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom";
+import { PATH } from "@/config/path";
+import { Link } from "react-router-dom";
+import { logoutAction } from "@/store/auth";
+import { useDispatch } from "react-redux";
 
-export const Checkout = () => {
-    const dispatch = useDispatch()
-    return (
-        <div>
+export const ProfileLayout = () => {
+  const dispatch = useDispatch()
+  return (
+    <>
       {/* CONTENT */}
       <section className="pt-7 pb-12">
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
               {/* Heading */}
-              <h3 className="mb-10"></h3>
+              <h3 className="mb-10" id="profile-title"></h3>
             </div>
           </div>
           <div className="row">
@@ -20,37 +22,42 @@ export const Checkout = () => {
               {/* Nav */}
               <nav className="mb-10 mb-md-0">
                 <div className="list-group list-group-sm list-group-strong list-group-flush-x">
-                  <a
+                  <NavLink
                     className="list-group-item list-group-item-action dropright-toggle "
-                    href="account-orders.html"
+                    to={PATH.Profile.Order}
                   >
                     Orders
-                  </a>
-                  <a
+                  </NavLink>
+                  <NavLink
                     className="list-group-item list-group-item-action dropright-toggle "
-                    href="account-wishlist.html"
+                    to={PATH.Profile.Wishlist}
                   >
                     Wishlist
-                  </a>
-                  <a
-                    className="list-group-item list-group-item-action dropright-toggle active"
-                    href="account-personal-info.html"
+                  </NavLink>
+                  <NavLink
+                    className="list-group-item list-group-item-action dropright-toggle"
+                    end
+                    to={PATH.Profile.index}
                   >
                     Personal Info
-                  </a>
-                  <a
+                  </NavLink>
+                  <NavLink
                     className="list-group-item list-group-item-action dropright-toggle "
-                    href="account-address.html"
+                    to={PATH.Profile.Address}
                   >
                     Addresses
-                  </a>
-                  <a
+                  </NavLink>
+                  <NavLink
                     className="list-group-item list-group-item-action dropright-toggle "
-                    href="account-payment.html"
+                    to={PATH.Profile.Payment}
                   >
                     Payment Methods
-                  </a>
+                  </NavLink>
                   <a
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      dispatch(logoutAction());
+                    }}
                     className="list-group-item list-group-item-action dropright-toggle"
                     href="#!"
                   >
@@ -60,11 +67,11 @@ export const Checkout = () => {
               </nav>
             </div>
             <div className="col-12 col-md-9 col-lg-8 offset-lg-1">
-                <Outlet/>
-          </div>
+              <Outlet />
+            </div>
           </div>
         </div>
       </section>
-    </div>
-    )
-}
+    </>
+  );
+};

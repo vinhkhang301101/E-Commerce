@@ -9,21 +9,21 @@ import { Link } from "react-router-dom";
 import { PATH } from "@/config/path";
 
 export const CartItem = ({ allowSelect, productId, product, quantity }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [_quantity, setQuantity] = useState(quantity);
-  const { loading } = useCart()
-  const _loading = loading[productId] || false
-  const [openPopconfirm, setOpenPopconfirm] = useState(false)
+  const { loading } = useCart();
+  const _loading = loading[productId] || false;
+  const [openPopconfirm, setOpenPopconfirm] = useState(false);
   const [openPopconfirmQuantity, setOpenPopconfirmQuantity] = useState(false);
 
   useEffect(() => {
     if (_quantity != quantity) {
-      setQuantity(quantity)
+      setQuantity(quantity);
     }
-  }, [quantity])
+  }, [quantity]);
 
   const onDecrement = () => {
-    setQuantity(_quantity - 1)
+    setQuantity(_quantity - 1);
     dispatch(
       updateCartItemAction({
         productId,
@@ -49,11 +49,11 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
         quantity: val,
       })
     );
-  }
+  };
 
   const onRemoveCartItem = () => {
-    dispatch(removeCartItemAction(productId))
-  }
+    dispatch(removeCartItemAction(productId));
+  };
 
   return (
     <Spin spinning={_loading}>

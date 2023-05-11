@@ -1,8 +1,11 @@
+import { Portal } from "@/components/Portal";
+import { PROFILE_TITLE_ID } from "@/config";
 import React from "react";
 
 export const Profile = () => {
   return (
-    <form>
+    <>
+      <Portal selector={PROFILE_TITLE_ID}>My Account</Portal>
       <div className="row">
         <div className="col-12">
           {/* Email */}
@@ -90,6 +93,6 @@ export const Profile = () => {
           </button>
         </div>
       </div>
-    </form>
+    </>
   );
 };

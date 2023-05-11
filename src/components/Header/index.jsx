@@ -10,10 +10,10 @@ import { CheckCircleTwoTone } from "@ant-design/icons";
 import { cartActions } from "@/store/cart";
 
 export const Header = () => {
-  const dispatch = useDispatch()
-  const [openCartDrawer, setOpenCartDrawer] = useState(false)
+  const dispatch = useDispatch();
+  const [openCartDrawer, setOpenCartDrawer] = useState(false);
   const { cart, openCartOver } = useCart();
-  const [openSearchDrawer, setOpenSearchDrawer] = useState(false)
+  const [openSearchDrawer, setOpenSearchDrawer] = useState(false);
   return (
     <>
       <SearchDrawer

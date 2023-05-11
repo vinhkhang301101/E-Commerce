@@ -4,9 +4,11 @@ import { CartItem } from "../CartItem";
 import { currency } from "@/utils";
 import { PATH } from "@/config/path";
 import { Link } from "react-router-dom";
+import { useScrollTop } from "@/hooks/useScrollTop";
 
 export const CartDrawer = ({ open, onClose }) => {
   const { cart } = useCart();
+  useScrollTop()
   return (
     <Drawer
       open={open}

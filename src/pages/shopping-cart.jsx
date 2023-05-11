@@ -9,13 +9,15 @@ import { Link, useNavigate } from "react-router-dom";
 export const ViewCart = () => {
   useScrollTop();
   const { cart } = useCart();
-  const { user } = useAuth()
-  const navigate = useNavigate()
-  // useEffect(() => {
-  //   if(!user) {
-  //     navigate(PATH.Account)
-  //   }
-  // }, [])
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(user);
+    if (!user) {
+      navigate(PATH.Account);
+    }
+  }, []);
 
   return (
     <>
@@ -84,15 +86,19 @@ export const ViewCart = () => {
                     <div className="card-body">
                       <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
                         <li className="list-group-item d-flex">
-                          <span>Subtotal</span>{" "}
+                          <span>Subtotal</span>
                           <span className="ml-auto font-size-sm">$89.00</span>
                         </li>
                         <li className="list-group-item d-flex">
-                          <span>Tax</span>{" "}
+                          <span>Promotion</span>
+                          <span className="ml-auto font-size-sm">-$44.50</span>
+                        </li>
+                        <li className="list-group-item d-flex">
+                          <span>Tax</span>
                           <span className="ml-auto font-size-sm">$00.00</span>
                         </li>
                         <li className="list-group-item d-flex font-size-lg font-weight-bold">
-                          <span>Total</span>{" "}
+                          <span>Total</span>
                           <span className="ml-auto font-size-sm">$89.00</span>
                         </li>
                         <li className="list-group-item font-size-sm text-center text-gray-500">

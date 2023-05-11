@@ -8,7 +8,7 @@ import { message } from "antd";
 import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
-import { Link, generatePath } from "react-router-dom";
+import { Link, generatePath, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
 export const ProductCard = ({
@@ -23,51 +23,49 @@ export const ProductCard = ({
   review_count,
   categories,
 }) => {
-
   const img1 = images[0]?.thumbnail_url;
   const img2 = images[1] ? images?.[1].thumbnail_url : img1;
-  const category = useCategory(categories)
-  const dispatch = useDispatch()
-  const { cart } = useCart()
-  const { user } = useAuth()
+  const category = useCategory(categories);
+  const dispatch = useDispatch();
+  const { cart } = useCart();
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const onAddWishlist = async () => {
-    
-    const key = `add-wishlist-${id}`
+    const key = `add-wishlist-${id}`;
 
     try {
-
       message.loading({
         key,
         content: `Adding product "${name}" into Wishlist`,
-        duration: 0
-    })
-      await productService.addWishlist(id) //tien hanh add wishlist
+        duration: 0,
+      });
+      await productService.addWishlist(id); //tien hanh add wishlist
       // await delay(6000)
-      message.success({ 
+      message.success({
         key,
-        content: `Adding "${name}" to Wishlist Successfully!`
-    })
+        content: `Adding "${name}" to Wishlist Successfully!`,
+      });
     } catch (err) {
-      handleError(err, key)
+      handleError(err, key);
     }
-  }
+  };
 
   const onAddCartItem = () => {
-    // if(user) {
-      const { listItems } = cart
-      const product = listItems.find(e => e.product.id === id)
+    if (user) {
+      const { listItems } = cart;
+      const product = listItems.find((e) => e.product.id === id);
       dispatch(
         updateCartItemAction({
           productId: id,
           quantity: product ? product.quantity + 1 : 1,
-          showPopover: true
+          showPopover: true,
         })
       );
-    // } else {
-    //   navigate(PATH.Account)
-    // }
-  }
+    } else {
+      navigate(PATH.Account);
+    }
+  };
 
   return (
     <div className="col-6 col-md-4">
@@ -99,7 +97,8 @@ export const ProductCard = ({
               </button>
             </span>
             <span className="card-action">
-              <button onClick={onAddWishlist}
+              <button
+                onClick={onAddWishlist}
                 className="btn btn-xs btn-circle btn-white-primary"
                 data-toggle="button"
               >

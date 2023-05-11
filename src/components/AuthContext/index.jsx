@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
       const res = await authService.login(data);
       if (res.data) {
         setToken(res.data);
-        const user = await userService.getUser();
+        const user = await userService.getUserService();
         setUser(user.data);
         _setUser(user.data);
         message.success("Login Success!");
@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
     message.success("Logout Success!")
   };
+
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
       {children}

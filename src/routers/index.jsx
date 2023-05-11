@@ -91,13 +91,13 @@ export const routers = [
 
       {
         element: <GuestRoute redirect={PATH.Profile.index} />,
+        path: PATH.Account,
         children: [
           {
             index: true,
             element: <Account />,
           },
         ],
-        path: PATH.Account,
       },
 
       {

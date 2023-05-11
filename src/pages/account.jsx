@@ -20,8 +20,8 @@ import { useNavigate } from "react-router-dom";
 export const Account = () => {
   useBodyClass("bg-light");
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const { user } = useAuth()
+  const navigate = useNavigate();
+  const { user } = useAuth();
   // const {search} = useSearch()
   const { loading: resendEmailLoading, excute: resendEmailService } = useAsync(
     userService.resendEmail
@@ -33,7 +33,7 @@ export const Account = () => {
     queryFn: () =>
       userService.register({
         ...formRegister.values,
-        redirect: PATH.Profile,
+        redirect: PATH.Profile.index,
       }),
     limitDuration: 1000,
   });
@@ -78,9 +78,8 @@ export const Account = () => {
   const onLogin = async () => {
     if (formLogin.validate()) {
       try {
-        await dispatch(loginAction(formLogin.values)).unwrap();
+        dispatch(loginAction(formLogin.values));
         message.success("Login Success");
-        navigate(PATH.Info)
       } catch (err) {
         handleError(err);
       }
@@ -88,16 +87,16 @@ export const Account = () => {
   };
 
   const onResendEmail = async (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     try {
       await resendEmailService({
-        username: res.username
-      })
-      message.success('Resend Email Success')
+        username: res.username,
+      });
+      message.success("Resend Email Success");
     } catch (err) {
-      handleError(err)
+      handleError(err);
     }
-  }
+  };
 
   return (
     <section className="py-12">
@@ -267,7 +266,7 @@ export const Account = () => {
               </div>
             </div>
           </div>
-        )} 
+        )}
       </div>
     </section>
   );
