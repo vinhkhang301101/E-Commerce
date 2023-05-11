@@ -13,7 +13,6 @@ export const PATH = {
     Wishlist: PROFILE + "/wishlist",
     Address: PROFILE + "/address",
     Payment: PROFILE + "/payment",
-    // Info: PROFILE + "/info",
 
   },
   Account: "/account",
@@ -24,7 +23,6 @@ export const PATH = {
   Faq: "/faq",
   ShippingAndReturns: "/shipping-and-returns",
   Store_locator: "/store-locator",
-  // Info: "/info",
   Wishlist: "/wishlist"
 
 };

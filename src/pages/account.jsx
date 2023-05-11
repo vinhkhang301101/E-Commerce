@@ -33,7 +33,7 @@ export const Account = () => {
     queryFn: () =>
       userService.register({
         ...formRegister.values,
-        redirect: PATH.Profile.index,
+        redirect: window.location.origin + window.location.pathname,
       }),
     limitDuration: 1000,
   });
@@ -42,7 +42,7 @@ export const Account = () => {
   //   if(search.code){
   //     dispatch(loginByCodeAction(search.code))
   //   }
-  // })
+  // }, [])
 
   const formLogin = useForm({
     username: [required(), regexp("email")],

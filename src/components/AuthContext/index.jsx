@@ -1,10 +1,8 @@
-import { PATH } from "@/config/path";
 import { authService } from "@/services/auth";
 import { userService } from "@/services/user";
 import { clearToken, clearUser, getUser, setToken, setUser } from "@/utils";
 import { message } from "antd";
-import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext({});
 
@@ -12,7 +10,7 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, _setUser] = useState(getUser);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const login = async (data) => {
     try {
@@ -23,7 +21,7 @@ export const AuthProvider = ({ children }) => {
         setUser(user.data);
         _setUser(user.data);
         message.success("Login Success!");
-        navigate(PATH.Profile.index);
+        // navigate(PATH.Profile.index);
       }
     } catch (err) {
       console.log(err);

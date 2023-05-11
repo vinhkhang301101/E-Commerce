@@ -17,7 +17,6 @@ import { BlogPost } from "@/pages/blog-post";
 import { Faq } from "@/pages/faq";
 import { ShippingAndReturns } from "@/pages/shipping-and-returns";
 import { Store_locator } from "../pages/store-locator";
-import { Info } from "@/pages/profile/info";
 import { Wishlist } from "@/pages/profile/wishlist";
 
 export const routers = [
@@ -59,10 +58,6 @@ export const routers = [
         element: <Faq />,
       },
 
-      {
-        path: PATH.Info,
-        element: <Info />,
-      },
       {
         path: PATH.Wishlist,
         element: <Wishlist />,

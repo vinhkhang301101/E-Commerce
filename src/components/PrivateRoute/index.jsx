@@ -1,8 +1,8 @@
+import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../AuthContext";
 
 export const PrivateRoute = ({ redirect = "/" }) => {
-  const { user } = useAuth();
+  const { user } = useAuthRedux();
 
   if (!user) return <Navigate to={redirect} />;
   return <Outlet />;
