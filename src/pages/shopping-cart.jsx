@@ -1,6 +1,7 @@
 import { useAuth } from "@/components/AuthContext";
 import { CartItem } from "@/components/CartItem";
 import { PATH } from "@/config/path";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useCart } from "@/hooks/useCart";
 import { useScrollTop } from "@/hooks/useScrollTop";
 import React, { useEffect } from "react";
@@ -9,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const ViewCart = () => {
   useScrollTop();
   const { cart } = useCart();
-  const { user } = useAuth();
+  const { user } = useAuthRedux();
   const navigate = useNavigate();
 
   useEffect(() => {
