@@ -33,9 +33,11 @@ export const ProductCard = ({
   const navigate = useNavigate();
 
   const onAddWishlist = async () => {
-    const key = `add-wishlist-${id}`;
+    
 
     try {
+      const key = `add-wishlist-${id}`;
+
       message.loading({
         key,
         content: `Adding product "${name}" into Wishlist`,
@@ -48,6 +50,7 @@ export const ProductCard = ({
         content: `Adding "${name}" to Wishlist Successfully!`,
       });
     } catch (err) {
+      console.log(key);
       handleError(err, key);
     }
   };

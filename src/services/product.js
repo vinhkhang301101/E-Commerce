@@ -2,8 +2,8 @@ import { PRODUCT_API } from '@/config/api'
 import { http } from '@/utils'
 
 export const productService = {
-  getProduct(query = "", signal) {
-    return http.get(`${PRODUCT_API}${query}`, { signal });
+  getProduct(query = '', signal) {
+    return http.get(`${PRODUCT_API}${query}`, {signal});
   },
 
   getProductDetail(id) {
@@ -14,7 +14,7 @@ export const productService = {
     return http.get(`${PRODUCT_API}/categories`);
   },
 
-  getWishlist(query = "") {
+  getWishlist(query = '') {
     return http.get(`${PRODUCT_API}/wishlist${query}`);
   },
 
