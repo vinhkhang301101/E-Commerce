@@ -7,7 +7,7 @@ export const AUTHEN_API = import.meta.env.VITE_AUTHEN_API;
 export const USER_API = import.meta.env.VITE_USER_API;
 export const CART_API = import.meta.env.VITE_CART_API
 
-// let refreshTokenPromise = null
+let refreshTokenPromise = null
 
 export const http = axios.create();
 http.interceptors.response.use(
