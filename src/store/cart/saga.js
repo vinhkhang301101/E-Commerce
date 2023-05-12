@@ -1,8 +1,8 @@
 import { cartService } from "@/services/cart";
-import { getToken, setCart } from "@/utils";
+import { getToken, handleError, setCart } from "@/utils";
 import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
-import { cartActions, getCartAction } from ".";
+import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction } from ".";
 
 export function* fetchCardItem(action) {
   try {
@@ -65,11 +65,54 @@ export function* fetchCart() {
   }
 }
 
-export function* fetchPreCheckout() {
+export function* fetchSelectCartItem(action) {
+  try {
+    let {
+      cart: {
+        preCheckoutData: { listItems },
+      },
+    } = yield select();
+    listItems = [...listItems];
+
+    const { productId, checked } = action.payload;
+
+    if (checked) {
+      listItems.push(productId);
+    } else {
+      listItems = listItems.filter((e) => e !== productId);
+    }
+
+    yield put(
+      cartActions.setPreCheckoutData({
+        listItems,
+      })
+    );
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+export function* fetchPreCheckout(action) {
   try {
     let { cart: { preCheckoutData } } = yield select()
-    const res = yield call(cartService.preCheckout, preCheckoutData)
-    yield put(cartActions.setPreCheckoutResponse(res.data))
+    if (action.type === cartActions.setPreCheckoutData.toString()) {
+      const res = yield call(cartService.preCheckout, preCheckoutData)
+
+      yield put(cartActions.setPreCheckoutResponse(res.data))
+    } else if (action.type === updateCartItemAction.toString()) {
+      let { productId } = action.payload
+
+      if (preCheckoutData.listItems.find(e => e === productId)) {
+        const res = yield call(cartService.preCheckout, preCheckoutData)
+        yield put(cartActions.setPreCheckoutResponse(res.data))
+      }
+    } else if (action.type === removeCartItemAction.toString()) {
+      if (preCheckoutData.listItems.find(e => e === action.payload)) {
+        const res = yield call(cartService.preCheckout, preCheckoutData)
+        yield put(cartActions.setPreCheckoutResponse(res.data))
+      }
+    }
+    
   } catch(err) {
     handleError(err)
   }

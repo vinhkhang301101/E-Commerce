@@ -7,6 +7,7 @@ import {
   fetchCart,
   fetchPreCheckout,
   fetchRemoveItem,
+  fetchSelectCartItem,
   setCartSaga,
 } from "./saga";
 import { getCart } from "@/utils";
@@ -57,6 +58,7 @@ export const {
 export const updateCartItemAction = createAction(`${name}/addCartItem`);
 export const removeCartItemAction = createAction(`${name}/removeItem`);
 export const getCartAction = createAction(`${name}/getCart`);
+export const toggleCheckoutItemAction = createAction(`${name}/selectCartItem`);
 
 export function* cartSaga() {
   yield takeLatest(updateCartItemAction, fetchCardItem);
@@ -64,5 +66,6 @@ export function* cartSaga() {
   yield takeLatest([getCartAction, loginSuccessAction], fetchCart);
   yield takeLatest(logoutAction, clearCart);
   yield takeLatest(cartActions.setCart, setCartSaga);
-  yield takeLatest(cartActions.setPreCheckoutData, fetchPreCheckout);
+  yield takeLatest(toggleCheckoutItemAction, fetchSelectCartItem);
+  yield takeLatest([cartActions.setPreCheckoutData, updateCartItemAction, removeCartItemAction], fetchPreCheckout);
 }

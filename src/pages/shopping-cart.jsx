@@ -1,4 +1,4 @@
-import { useAuth } from "@/components/AuthContext";
+// import { useAuth } from "@/components/AuthContext";
 import { CartItem } from "@/components/CartItem";
 import { PATH } from "@/config/path";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
@@ -95,7 +95,7 @@ export const ViewCart = () => {
                         <li className="list-group-item d-flex">
                           <span>Promotion</span>
                           <span className="ml-auto font-size-sm">
-                            {currency(preCheckoutResponse?.promotion)}
+                            - {currency(preCheckoutResponse?.promotion)}
                           </span>
                         </li>
                         <li className="list-group-item d-flex">

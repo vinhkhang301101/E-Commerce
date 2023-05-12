@@ -1,10 +1,10 @@
 import { useCart } from "@/hooks/useCart";
-import { removeCartItemAction, updateCartItemAction } from "@/store/cart";
+import { removeCartItemAction, toggleCheckoutItemAction, updateCartItemAction } from "@/store/cart";
 import { currency } from "@/utils";
 import { Popconfirm, Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { Checkbox } from "../Checkbox";
+import { Checkbox } from "../Checkbox";
 import { Link } from "react-router-dom";
 import { PATH } from "@/config/path";
 
@@ -55,13 +55,22 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
     dispatch(removeCartItemAction(productId));
   };
 
+  const onSelectCartItem = (checked) => {
+    dispatch(
+      toggleCheckoutItemAction({
+        productId,
+        checked
+      })
+    );
+  }
+
   return (
     <Spin spinning={_loading}>
       <li className="list-group-item">
         <div className="row align-items-center">
-          <div className="col-4">
+          <div className="col-4 d-flex flex align-items-center gap-2">
+            {allowSelect && <Checkbox onChange={onSelectCartItem}/>}
             {/* Image */}
-            {/* {allowSelect && <Checkbox />} */}
             <Link to={PATH.Product}>
               <img
                 className="img-fluid"

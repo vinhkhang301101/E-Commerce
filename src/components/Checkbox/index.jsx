@@ -8,7 +8,7 @@ export const Checkbox = (props) => {
   };
 
   return (
-    <div className="custom-control custom-checkbox mr-2">
+    <div className="custom-control custom-checkbox">
       <input
         className="custom-control-input"
         id={id}
@@ -16,7 +16,7 @@ export const Checkbox = (props) => {
         {...props}
         onChange={_onChange}
       />
-      <label className="custom-control-label" htmlFor="loginRemember" />
+      <label className="custom-control-label" htmlFor={id} />
     </div>
   );
 };

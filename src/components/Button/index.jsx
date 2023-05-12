@@ -7,12 +7,12 @@ export const Button = ({ children, loading, ...props }) => {
       className={cn(
         "btn btn-sm btn-dark flex items-center justify-center gap-3",
         {
-          "disabled pointer-events-none": loading
+          "disabled pointer-events-none": loading,
         }
       )}
       {...props}
-    > 
-      {loading && <LoadingOutlined className="mr-1"/>}
+    >
+      {loading && <LoadingOutlined className="align-items-center mr-1" />}
       {children}
     </button>
   );

@@ -2,14 +2,18 @@ import { authService } from "@/services/auth";
 import { userService } from "@/services/user";
 import { clearToken, clearUser, getUser, setToken, setUser } from "@/utils";
 import { message } from "antd";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({});
 
-export const useAuth = () => useContext(AuthContext);
-
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate()
   const [user, _setUser] = useState(getUser);
+
+  useEffect(() => {
+    setUser(user || null)
+  }, [user])
 
   const login = async (data) => {
     try {
@@ -17,10 +21,9 @@ export const AuthProvider = ({ children }) => {
       if (res.data) {
         setToken(res.data);
         const user = await userService.getUserService();
-        setUser(user.data);
         _setUser(user.data);
         message.success("Login Success!");
-        // navigate(PATH.Profile.index);
+        navigate(PATH.Profile.index);
       }
     } catch (err) {
       console.log(err);
@@ -38,8 +41,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, setUser: _setUser }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);
