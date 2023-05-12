@@ -2,7 +2,7 @@ import { cartService } from "@/services/cart";
 import { getToken, handleError, setCart } from "@/utils";
 import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
-import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction } from ".";
+import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction, updateItemQuantitySuccessAction } from ".";
 
 export function* fetchCardItem(action) {
   try {
@@ -22,6 +22,7 @@ export function* fetchCardItem(action) {
           behavior: "smooth",
         });
       }
+      yield put(updateItemQuantitySuccessAction(action.payload.productId));
     } else {
       yield put(removeCartItemAction(action.payload.productId));
     }
@@ -47,6 +48,7 @@ export function* fetchRemoveItem(action) {
         loading: false,
       })
     );
+    yield put(updateItemQuantitySuccessAction(action.payload))
   } catch (err) {
     console.log(err);
   }
@@ -95,24 +97,16 @@ export function* fetchSelectCartItem(action) {
 export function* fetchPreCheckout(action) {
   try {
     let { cart: { preCheckoutData } } = yield select()
-    if (action.type === cartActions.setPreCheckoutData.toString()) {
-      const res = yield call(cartService.preCheckout, preCheckoutData)
-
-      yield put(cartActions.setPreCheckoutResponse(res.data))
-    } else if (action.type === updateCartItemAction.toString()) {
-      let { productId } = action.payload
-
-      if (preCheckoutData.listItems.find(e => e === productId)) {
-        const res = yield call(cartService.preCheckout, preCheckoutData)
-        yield put(cartActions.setPreCheckoutResponse(res.data))
-      }
-    } else if (action.type === removeCartItemAction.toString()) {
-      if (preCheckoutData.listItems.find(e => e === action.payload)) {
-        const res = yield call(cartService.preCheckout, preCheckoutData)
-        yield put(cartActions.setPreCheckoutResponse(res.data))
-      }
+    if (action.type === updateItemQuantitySuccessAction.toString()) {
+      let productId = action.payload;
+      if (!preCheckoutData.listItems.find((e) => e === productId)) return;
     }
-    
+    yield put(cartActions.togglePreCheckoutLoading(true))
+
+    const res = yield call(cartService.preCheckout, preCheckoutData)
+    yield put(cartActions.setPreCheckoutResponse(res.data))
+
+    yield put(cartActions.togglePreCheckoutLoading(false))
   } catch(err) {
     handleError(err)
   }

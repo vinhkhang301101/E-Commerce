@@ -27,6 +27,7 @@ export const {
         listItems: [],
       },
       preCheckoutResponse: null,
+      preCheckoutLoading: false,
       loading: {
         // 223344: true,
       },
@@ -52,6 +53,10 @@ export const {
     setPreCheckoutResponse(state, action) {
       state.preCheckoutResponse = action.payload;
     },
+
+    togglePreCheckoutLoading(state, action) {
+      state.preCheckoutLoading = action.payload;
+    },
   },
 });
 
@@ -59,6 +64,7 @@ export const updateCartItemAction = createAction(`${name}/addCartItem`);
 export const removeCartItemAction = createAction(`${name}/removeItem`);
 export const getCartAction = createAction(`${name}/getCart`);
 export const toggleCheckoutItemAction = createAction(`${name}/selectCartItem`);
+export const updateItemQuantitySuccessAction = createAction(`${name}/updateItemQuantitySuccess`);
 
 export function* cartSaga() {
   yield takeLatest(updateCartItemAction, fetchCardItem);
@@ -67,5 +73,5 @@ export function* cartSaga() {
   yield takeLatest(logoutAction, clearCart);
   yield takeLatest(cartActions.setCart, setCartSaga);
   yield takeLatest(toggleCheckoutItemAction, fetchSelectCartItem);
-  yield takeLatest([cartActions.setPreCheckoutData, updateCartItemAction, removeCartItemAction], fetchPreCheckout);
+  yield takeLatest([cartActions.setPreCheckoutData, updateItemQuantitySuccessAction], fetchPreCheckout);
 }

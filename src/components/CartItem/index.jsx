@@ -22,25 +22,19 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
     }
   }, [quantity]);
 
-  const onDecrement = () => {
-    setQuantity(_quantity - 1);
-    dispatch(
-      updateCartItemAction({
-        productId,
-        quantity: _quantity - 1,
-      })
-    );
-  };
-
-  const onIncrement = () => {
-    setQuantity(_quantity + 1);
-    dispatch(
-      updateCartItemAction({
-        productId,
-        quantity: _quantity + 1,
-      })
-    );
-  };
+  const onChangeQuantityCurry = (val) => () => {
+    if (val === 0) {
+      dispatch(removeCartItemAction(productId));
+    } else {
+      setQuantity(val);
+      dispatch(
+        updateCartItemAction({
+          productId,
+          quantity: val,
+        })
+      );
+    }
+  }
 
   const onUpdateQuantity = (val) => {
     dispatch(
@@ -49,10 +43,6 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
         quantity: val,
       })
     );
-  };
-
-  const onRemoveCartItem = () => {
-    dispatch(removeCartItemAction(productId));
   };
 
   const onSelectCartItem = (checked) => {
@@ -69,7 +59,7 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
       <li className="list-group-item">
         <div className="row align-items-center">
           <div className="col-4 d-flex flex align-items-center gap-2">
-            {allowSelect && <Checkbox onChange={onSelectCartItem}/>}
+            {allowSelect && <Checkbox onChange={onSelectCartItem} />}
             {/* Image */}
             <Link to={PATH.Product}>
               <img
@@ -115,11 +105,15 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                   description="Do you want to remove this product?"
                   onConfirm={() => {
                     setOpenPopconfirmQuantity(false);
-                    onRemoveCartItem();
+                    onChangeQuantityCurry(0)();
                   }}
                 >
                   <button
-                    onClick={_quantity > 1 ? onDecrement : undefined}
+                    onClick={
+                      _quantity > 1
+                        ? onChangeQuantityCurry(_quantity - 1)
+                        : undefined
+                    }
                     className="btn"
                   >
                     -
@@ -141,7 +135,10 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                     }
                   }}
                 />
-                <button onClick={onIncrement} className="btn">
+                <button
+                  onClick={onChangeQuantityCurry(_quantity + 1)}
+                  className="btn"
+                >
                   +
                 </button>
               </div>
@@ -156,7 +153,7 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                 description="Do you want to remove this product?"
                 onConfirm={() => {
                   setOpenPopconfirm(false);
-                  onRemoveCartItem();
+                  onChangeQuantityCurry(0)();
                 }}
               >
                 <a
