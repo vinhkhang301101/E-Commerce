@@ -1,19 +1,20 @@
 import { useAuth } from "@/components/AuthContext";
 import { CartItem } from "@/components/CartItem";
 import { PATH } from "@/config/path";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useCart } from "@/hooks/useCart";
 import { useScrollTop } from "@/hooks/useScrollTop";
+import { currency } from "@/utils";
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const ViewCart = () => {
   useScrollTop();
-  const { cart } = useCart();
-  const { user } = useAuth();
+  const { cart, preCheckoutResponse } = useCart();
+  const { user } = useAuthRedux();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
       navigate(PATH.Account);
     }
@@ -87,19 +88,27 @@ export const ViewCart = () => {
                       <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
                         <li className="list-group-item d-flex">
                           <span>Subtotal</span>
-                          <span className="ml-auto font-size-sm">$89.00</span>
+                          <span className="ml-auto font-size-sm">
+                            {currency(preCheckoutResponse?.subTotal)}
+                          </span>
                         </li>
                         <li className="list-group-item d-flex">
                           <span>Promotion</span>
-                          <span className="ml-auto font-size-sm">-$44.50</span>
+                          <span className="ml-auto font-size-sm">
+                            {currency(preCheckoutResponse?.promotion)}
+                          </span>
                         </li>
                         <li className="list-group-item d-flex">
                           <span>Tax</span>
-                          <span className="ml-auto font-size-sm">$00.00</span>
+                          <span className="ml-auto font-size-sm">
+                            {currency(preCheckoutResponse?.tax)}
+                          </span>
                         </li>
                         <li className="list-group-item d-flex font-size-lg font-weight-bold">
                           <span>Total</span>
-                          <span className="ml-auto font-size-sm">$89.00</span>
+                          <span className="ml-auto font-size-sm">
+                            {currency(preCheckoutResponse?.total)}
+                          </span>
                         </li>
                         <li className="list-group-item font-size-sm text-center text-gray-500">
                           Shipping cost calculated at Checkout *

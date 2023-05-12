@@ -5,6 +5,7 @@ import {
   clearCart,
   fetchCardItem,
   fetchCart,
+  fetchPreCheckout,
   fetchRemoveItem,
   setCartSaga,
 } from "./saga";
@@ -21,9 +22,10 @@ export const {
     return {
       cart: getCart(),
       openCartOver: false,
-      preCheckOutData: {
+      preCheckoutData: {
         listItems: [],
       },
+      preCheckoutResponse: null,
       loading: {
         // 223344: true,
       },
@@ -42,8 +44,12 @@ export const {
       state.loading[action.payload.productId] = action.payload.loading;
     },
 
-    setpreCheckoutData(state, action) {
-      state.setpreCheckoutData = action.payload
+    setPreCheckoutData(state, action) {
+      state.preCheckoutData = action.payload;
+    },
+
+    setPreCheckoutResponse(state, action) {
+      state.preCheckoutResponse = action.payload;
     },
   },
 });
@@ -58,4 +64,5 @@ export function* cartSaga() {
   yield takeLatest([getCartAction, loginSuccessAction], fetchCart);
   yield takeLatest(logoutAction, clearCart);
   yield takeLatest(cartActions.setCart, setCartSaga);
+  yield takeLatest(cartActions.setPreCheckoutData, fetchPreCheckout);
 }

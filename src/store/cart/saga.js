@@ -1,6 +1,6 @@
 import { cartService } from "@/services/cart";
 import { getToken, setCart } from "@/utils";
-import { call, delay, put, race, take } from "redux-saga/effects";
+import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
 import { cartActions, getCartAction } from ".";
 
@@ -62,6 +62,16 @@ export function* fetchCart() {
     if (cart) {
       yield put(cartActions.setCart(cart.data));
     }
+  }
+}
+
+export function* fetchPreCheckout() {
+  try {
+    let { cart: { preCheckoutData } } = yield select()
+    const res = yield call(cartService.preCheckout, preCheckoutData)
+    yield put(cartActions.setPreCheckoutResponse(res.data))
+  } catch(err) {
+    handleError(err)
   }
 }
 

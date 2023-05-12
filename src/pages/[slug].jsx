@@ -14,7 +14,7 @@ export const ProductDetailPages = () => {
     queryFn: () => productService.getProductDetail(id),
     enabled: !!id,
     onError: () => {
-      message.error("Product have not exist");
+      message.error("Product is not exist!");
       navigate(PATH.Product);
     },
   });

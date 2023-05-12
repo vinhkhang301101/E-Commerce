@@ -1,1 +1,1 @@
-export const currency = (num) => new Intl.NumberFormat().format(num)
+export const currency = (money = 0) => new Intl.NumberFormat().format(money)
