@@ -39,7 +39,7 @@ export const Counter = () => {
     <div
       className="d-flex mb-9"
       data-countdown
-      data-date="May 15, 2023 15:37:25"
+      data-date="May 20, 2023 15:37:25"
     >
       <div className="text-center">
         <div className="font-size-h1 font-weight-bolder text-primary" data-days>

@@ -1,69 +1,149 @@
+import { Button } from "@/components/Button";
+import { Field } from "@/components/Field";
 import { Portal } from "@/components/Portal";
 import { PROFILE_TITLE_ID } from "@/config";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
+import { useForm } from "@/hooks/useForm";
+import { useQuery } from "@/hooks/useQuery";
+import { userService } from "@/services/user";
+import { setUserAction } from "@/store/auth";
+import { confirm, regexp, required, validate } from "@/utils/validate";
+import { handleError } from "@/utils/handleError";
+import { message } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
+
+const rules = {
+  name: [required()],
+  phone: [required(), regexp("phone")],
+  currentPassword: [
+    (_, forms) => {
+      if (forms.newPassword) {
+        const errorObj = validate(
+          {
+            currentPassword: [required()],
+          },
+          forms
+        );
+        return errorObj.currentPassword;
+      }
+    },
+  ],
+  newPassword: [
+    (value, forms) => {
+      if (forms.currentPassword) {
+        if(forms.currentPassword === value) return "Please enter a different password than the old password !"
+        const errorObj = validate(
+          {
+            newPassword: [required()],
+          },
+          forms
+        );
+        return errorObj.newPassword;
+      }
+    },
+  ],
+  confirmPassword: [confirm("newPassword")],
+};
 
 export const Profile = () => {
-  // test phát coi sao
+  const dispatch = useDispatch();
+  const { user } = useAuthRedux();
+  const userForm = useForm(rules, { initialValue: user });
+
+  const { loading, refetch: updateProfileService } = useQuery({
+    enabled: false,
+    queryFn: ({ params }) => userService.updateProfile(...params),
+  });
+
+  const {loading: changePasswordLoading, refetch: changePasswordService} = useQuery({
+    enabled: false,
+    queryFn: ({params}) => {userService.changePassword(...params)}
+  })
+
+  const onSubmit = async () => {
+    try {
+      if (userForm.validate()) {
+        const res = await updateProfileService(userForm.values);
+        dispatch(setUserAction(res.data));
+        message.success("Update profile success");
+
+        if(userForm.values.newPassword){
+          await changePasswordService({
+            currentPassword: userForm.values.currentPassword,
+            newPassword: userForm.values.newPassword
+          })
+
+          message.success('Change password success !!!')
+        }
+      }
+    } catch (error) {
+      handleError();
+    }
+  };
   return (
-    <>
+    <div>
       <Portal selector={PROFILE_TITLE_ID}>My Account</Portal>
       <div className="row">
         <div className="col-12">
-          {/* Email */}
-          <div className="form-group">
-            <label htmlFor="accountFirstName">Full Name *</label>
-            <input
-              className="form-control form-control-sm"
-              id="accountFirstName"
-              type="text"
-              placeholder="Full Name *"
-              defaultValue="Daniel"
-              required
-            />
+          <div className="profile-avatar">
+            <div className="wrap">
+              <img src="../img/avt.png" alt="avatar" />
+              <i className="icon">
+                <img src="./img/icons/icon-ruler.svg" alt="icon" />
+              </i>
+            </div>
           </div>
         </div>
         <div className="col-12">
-          {/* Email */}
-          <div className="form-group">
-            <label htmlFor="accountEmail">Email Address *</label>
-            <input
-              disabled
-              className="form-control form-control-sm"
-              id="accountEmail"
-              type="email"
-              placeholder="Email Address *"
-              defaultValue="user@email.com"
-              required
-            />
-          </div>
+          <Field
+            label="Full Name *"
+            placeholder="Full Name *"
+            {...userForm.register("name")}
+          ></Field>
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12">
+          <Field
+            label="Phone Number *"
+            placeholder="Phone Number *"
+            {...userForm.register("phone")}
+          ></Field>
+        </div>
+        <div className="col-12">
+          <Field
+            label="Email Address *"
+            placeholder="Email Address *"
+            {...userForm.register("username")}
+            disabled
+          ></Field>
+        </div>
+
+        <div className="col-12">
           {/* Password */}
-          <div className="form-group">
-            <label htmlFor="accountPassword">Current Password *</label>
-            <input
-              className="form-control form-control-sm"
-              id="accountPassword"
+            <Field
               type="password"
+              label="Current Password *"
               placeholder="Current Password *"
-              required
-            />
-          </div>
+              {...userForm.register("currentPassword")}
+            ></Field>
         </div>
         <div className="col-12 col-md-6">
-          <div className="form-group">
-            <label htmlFor="AccountNewPassword">New Password *</label>
-            <input
-              className="form-control form-control-sm"
-              id="AccountNewPassword"
+            <Field
               type="password"
+              label="New Password *"
               placeholder="New Password *"
-              required
-            />
-          </div>
+              {...userForm.register("newPassword")}
+            ></Field>
+        </div>
+        <div className="col-12 col-md-6">
+            <Field
+              type="password"
+              label="Confirm Password *"
+              placeholder="Confirm Password *"
+              {...userForm.register("confirmPassword")}
+            ></Field>
         </div>
         <div className="col-12 col-lg-6">
-          <div className="form-group">
             <label>Date of Birth</label>
             <input
               className="form-control form-control-sm"
@@ -71,7 +151,6 @@ export const Profile = () => {
               placeholder="dd/mm/yyyy"
               required
             />
-          </div>
         </div>
         <div className="col-12 col-lg-6">
           {/* Gender */}
@@ -89,11 +168,11 @@ export const Profile = () => {
         </div>
         <div className="col-12">
           {/* Button */}
-          <button className="btn btn-dark" type="submit">
+          <Button onClick={onSubmit} loading={loading}>
             Save Changes
-          </button>
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };

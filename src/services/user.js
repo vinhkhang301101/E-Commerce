@@ -11,5 +11,13 @@ export const userService = {
   
   resendEmail() {
     return http.post(`${USER_API}/resend-email`)
+  },
+
+  updateProfile(data){
+    return http.patch(`${USER_API}`, data)
+  },
+
+  changePassword(data){
+    return http.post(`${USER_API}/change-password`, data)
   }
 };

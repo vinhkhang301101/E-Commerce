@@ -79,7 +79,7 @@ export const useQuery = ({
     }
   };
 
-  const fetchData = async () => {
+  const fetchData = async (...args) => {
     controllerRef.current.abort();
     controllerRef.current = new AbortController();
     const startTime = Date.now();
@@ -101,7 +101,7 @@ export const useQuery = ({
       res = getCacheDataOrPreviousData();
 
       if (!res) {
-        res = queryFn({ signal: controllerRef.current.signal });
+        res = queryFn({ signal: controllerRef.current.signal, params: args });
         if (cacheName) {
           _asyncFunction[cacheName] = res;
         }

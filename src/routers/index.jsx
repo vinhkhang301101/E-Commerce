@@ -57,12 +57,6 @@ export const routers = [
         path: PATH.Faq,
         element: <Faq />,
       },
-
-      {
-        path: PATH.Wishlist,
-        element: <Wishlist />,
-      },
-
       {
         path: PATH.Store_locator,
         element: <Store_locator />,

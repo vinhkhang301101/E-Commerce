@@ -2075,7 +2075,7 @@ export const Header = () => {
                   </a>
                 </li>
                 <li className="nav-item ml-lg-n4">
-                  <Link className="nav-link" to={PATH.Wishlist}>
+                  <Link className="nav-link" to={PATH.Profile.Wishlist}>
                     <i className="fe fe-heart" />
                   </Link>
                 </li>
