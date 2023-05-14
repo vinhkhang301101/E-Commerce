@@ -55,6 +55,7 @@ export const useForm = (rules, {initialValue = {}, dependencies = {}} = {}) => {
   return {
     values,
     error,
+    setValues,
     register,
     validate: _validate,
     reset

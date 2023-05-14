@@ -32,7 +32,8 @@ const rules = {
   newPassword: [
     (value, forms) => {
       if (forms.currentPassword) {
-        if(forms.currentPassword === value) return "Please enter a different password than the old password !"
+        if (forms.currentPassword === value)
+          return "Please enter a different password than the old password !";
         const errorObj = validate(
           {
             newPassword: [required()],
@@ -56,10 +57,13 @@ export const Profile = () => {
     queryFn: ({ params }) => userService.updateProfile(...params),
   });
 
-  const {loading: changePasswordLoading, refetch: changePasswordService} = useQuery({
-    enabled: false,
-    queryFn: ({params}) => {userService.changePassword(...params)}
-  })
+  const { loading: changePasswordLoading, refetch: changePasswordService } =
+    useQuery({
+      enabled: false,
+      queryFn: ({ params }) => {
+        userService.changePassword(...params);
+      },
+    });
 
   const onSubmit = async () => {
     try {
@@ -68,13 +72,19 @@ export const Profile = () => {
         dispatch(setUserAction(res.data));
         message.success("Update profile success");
 
-        if(userForm.values.newPassword){
+        if (userForm.values.newPassword) {
           await changePasswordService({
             currentPassword: userForm.values.currentPassword,
-            newPassword: userForm.values.newPassword
-          })
+            newPassword: userForm.values.newPassword,
+          }).then((res) => {
+            userForm.setValues({
+              currentPassword: "",
+              newPassword: "",
+              confirmPassword: "",
+            });
+          });
 
-          message.success('Change password success !!!')
+          message.success("Change password success !!!");
         }
       }
     } catch (error) {
@@ -120,37 +130,40 @@ export const Profile = () => {
 
         <div className="col-12">
           {/* Password */}
-            <Field
-              type="password"
-              label="Current Password *"
-              placeholder="Current Password *"
-              {...userForm.register("currentPassword")}
-            ></Field>
+          <Field
+            type="password"
+            label="Current Password *"
+            placeholder="Current Password *"
+            {...userForm.register("currentPassword")}
+            autoComplete="new-password"
+          ></Field>
         </div>
         <div className="col-12 col-md-6">
-            <Field
-              type="password"
-              label="New Password *"
-              placeholder="New Password *"
-              {...userForm.register("newPassword")}
-            ></Field>
+          <Field
+            type="password"
+            label="New Password *"
+            placeholder="New Password *"
+            {...userForm.register("newPassword")}
+            autoComplete="new-password"
+          ></Field>
         </div>
         <div className="col-12 col-md-6">
-            <Field
-              type="password"
-              label="Confirm Password *"
-              placeholder="Confirm Password *"
-              {...userForm.register("confirmPassword")}
-            ></Field>
+          <Field
+            type="password"
+            label="Confirm Password *"
+            placeholder="Confirm Password *"
+            {...userForm.register("confirmPassword")}
+            autoComplete="new-password"
+          ></Field>
         </div>
         <div className="col-12 col-lg-6">
-            <label>Date of Birth</label>
-            <input
-              className="form-control form-control-sm"
-              type="date"
-              placeholder="dd/mm/yyyy"
-              required
-            />
+          <label>Date of Birth</label>
+          <input
+            className="form-control form-control-sm"
+            type="date"
+            placeholder="dd/mm/yyyy"
+            required
+          />
         </div>
         <div className="col-12 col-lg-6">
           {/* Gender */}

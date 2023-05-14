@@ -30,7 +30,7 @@ http.interceptors.response.use(
             refreshToken: token.refreshToken,
           });
   
-          const res = await refreshTokenPromise
+          const res = refreshTokenPromise
   
           setToken(res.data);
         }
