@@ -1,10 +1,10 @@
 import { useCart } from "@/hooks/useCart";
-import { removeCartItemAction, updateCartItemAction } from "@/store/cart";
+import { removeCartItemAction, toggleCheckoutItemAction, updateCartItemAction } from "@/store/cart";
 import { currency } from "@/utils";
 import { Popconfirm, Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { Checkbox } from "../Checkbox";
+import { Checkbox } from "../Checkbox";
 import { Link } from "react-router-dom";
 import { PATH } from "@/config/path";
 
@@ -21,26 +21,19 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
       setQuantity(quantity);
     }
   }, [quantity]);
-
-  const onDecrement = () => {
-    setQuantity(_quantity - 1);
-    dispatch(
-      updateCartItemAction({
-        productId,
-        quantity: _quantity - 1,
-      })
-    );
-  };
-
-  const onIncrement = () => {
-    setQuantity(_quantity + 1);
-    dispatch(
-      updateCartItemAction({
-        productId,
-        quantity: _quantity + 1,
-      })
-    );
-  };
+  const onChangeQuantityCurry = (val) => () => {
+    if (val === 0) {
+      dispatch(removeCartItemAction(productId));
+    } else {
+      setQuantity(val);
+      dispatch(
+        updateCartItemAction({
+          productId,
+          quantity: val,
+        })
+      );
+    }
+  }
 
   const onUpdateQuantity = (val) => {
     dispatch(
@@ -51,17 +44,22 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
     );
   };
 
-  const onRemoveCartItem = () => {
-    dispatch(removeCartItemAction(productId));
-  };
+  const onSelectCartItem = (checked) => {
+    dispatch(
+      toggleCheckoutItemAction({
+        productId,
+        checked
+      })
+    );
+  }
 
   return (
     <Spin spinning={_loading}>
       <li className="list-group-item">
         <div className="row align-items-center">
-          <div className="col-4">
+          <div className="col-4 d-flex flex align-items-center gap-2">
+            {allowSelect && <Checkbox onChange={onSelectCartItem} />}
             {/* Image */}
-            {/* {allowSelect && <Checkbox />} */}
             <Link to={PATH.Product}>
               <img
                 className="img-fluid"
@@ -106,11 +104,15 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                   description="Do you want to remove this product?"
                   onConfirm={() => {
                     setOpenPopconfirmQuantity(false);
-                    onRemoveCartItem();
+                    onChangeQuantityCurry(0)();
                   }}
                 >
                   <button
-                    onClick={_quantity > 1 ? onDecrement : undefined}
+                    onClick={
+                      _quantity > 1
+                        ? onChangeQuantityCurry(_quantity - 1)
+                        : undefined
+                    }
                     className="btn"
                   >
                     -
@@ -132,7 +134,10 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                     }
                   }}
                 />
-                <button onClick={onIncrement} className="btn">
+                <button
+                  onClick={onChangeQuantityCurry(_quantity + 1)}
+                  className="btn"
+                >
                   +
                 </button>
               </div>
@@ -147,7 +152,7 @@ export const CartItem = ({ allowSelect, productId, product, quantity }) => {
                 description="Do you want to remove this product?"
                 onConfirm={() => {
                   setOpenPopconfirm(false);
-                  onRemoveCartItem();
+                  onChangeQuantityCurry(0)();
                 }}
               >
                 <a

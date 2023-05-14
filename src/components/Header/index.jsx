@@ -2015,7 +2015,7 @@ export const Header = () => {
             {/* Brand */}
             <Link className="navbar-brand" to={PATH.Home}>
               <img style={{ width: "50px" }} src="/img/logo.svg" />
-              Shopper.
+              E-Commerce
             </Link>
             {/* Toggler */}
             <button

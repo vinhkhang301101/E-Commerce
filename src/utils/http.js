@@ -16,10 +16,8 @@ http.interceptors.response.use(
   },
   async (error) => {
     try {
-      if (
-        (error.response.status === error.response.data.error_code) ===
-        "TOKEN_EXPIRED"
-      ) {
+
+      if (error.response.status === 403 && error.response.data.error_code === "TOKEN_EXPIRED") {
         if(refreshTokenPromise) {
           await refreshTokenPromise
         } else {
@@ -30,9 +28,10 @@ http.interceptors.response.use(
             refreshToken: token.refreshToken,
           });
   
-          const res = refreshTokenPromise
+          const res = await refreshTokenPromise
   
           setToken(res.data);
+
         }
         return http(error.config);
       }

@@ -3,15 +3,24 @@ import {  http } from "@/utils"
 
 
 export const cartService = {
-    addItem(productId, quantity) {
-        return http.patch(`${CART_API}/${productId}`, { quantity })
-    },
+  addItem(productId, quantity) {
+    return http.patch(`${CART_API}/${productId}`, { quantity });
+  },
 
-    getCart() {
-        return http.get(`${CART_API}`)
-    },
+  getCart() {
+    return http.get(`${CART_API}`);
+  },
 
-    removeItem(productId) {
-        return http.delete(`${CART_API}/${productId}`)
-    }
-}
+  removeItem(productId) {
+    return http.delete(`${CART_API}/${productId}`);
+  },
+
+  preCheckout(data) {
+    return http.post(`${CART_API}/pre-checkout`, data);
+  },
+
+  getPromotion(code) {
+    return http.get(`${CART_API}/promotion/${code}`);
+  },
+};
+

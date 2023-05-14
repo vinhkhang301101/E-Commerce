@@ -184,12 +184,11 @@ export const Footer = () => {
           <div className="row">
             <div className="col">
               {/* Copyright */}
-              <p className="mb-3 mb-md-0 font-size-xxs text-muted">
+              <p className="mb-3 mb-md-0 font-size-xxs text-muted text-center">
                 © 2019 All rights reserved. Designed by Unvab.
               </p>
             </div>
-            <div className="col-auto">
-              {/* Payment methods */}
+            {/* <div className="col-auto">
               <img
                 className="footer-payment"
                 src="./img/payment/mastercard.svg"
@@ -220,7 +219,7 @@ export const Footer = () => {
                 src="./img/payment/klarna.svg"
                 alt="..."
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

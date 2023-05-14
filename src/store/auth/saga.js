@@ -64,10 +64,6 @@ export function* fetchLoginByCode() {
   }
 }
 
-
-
-
-
 // export const loginAction = createAsyncThunk(
 //   "auth/login",
 //   async (data, thunkApi) => {

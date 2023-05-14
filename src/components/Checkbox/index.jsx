@@ -16,7 +16,7 @@ export const Checkbox = (props) => {
         {...props}
         onChange={_onChange}
       />
-      <label className="custom-control-label" htmlFor="loginRemember" />
+      <label className="custom-control-label" htmlFor={id} />
     </div>
   );
 };

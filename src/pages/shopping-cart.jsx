@@ -1,24 +1,61 @@
-import { useAuth } from "@/components/AuthContext";
+import { Button } from "@/components/Button";
 import { CartItem } from "@/components/CartItem";
+import { Field } from "@/components/Field";
 import { PATH } from "@/config/path";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useCart } from "@/hooks/useCart";
+import { useForm } from "@/hooks/useForm";
 import { useScrollTop } from "@/hooks/useScrollTop";
+import { addPromotionAction, removePromotionAction } from "@/store/cart";
+import { cn, currency, required } from "@/utils";
+import { Spin, message } from "antd";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export const ViewCart = () => {
   useScrollTop();
-  const { cart } = useCart();
-  const { user } = useAuth();
+  const { cart, preCheckoutResponse, preCheckoutLoading, promotionLoading } = useCart();
+  const { user } = useAuthRedux();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const promotionForm = useForm({
+    code: [required()]
+  })
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
       navigate(PATH.Account);
     }
   }, []);
 
+  const onSubmitPromotion = () => {
+    if (promotionForm.validate()) {
+      dispatch(addPromotionAction({
+        data: promotionForm.values.code,
+        onSuccess: () => {
+          promotionForm.reset()
+          message.success("Added coupon successfully!")
+        },
+        onError: (err) => {
+          console.log(err);
+          message.error("Invalid coupon code!")
+        }
+      }))
+    }
+  }
+
+  const onRemovePromotion = () => {
+    dispatch(
+      removePromotionAction({
+        onSuccess: () => {
+          message.success("Removed coupon successfully!");
+        },
+      })
+    );
+  }
+
+  const { promotion } = preCheckoutResponse
   return (
     <>
       {/* CONTENT */}
@@ -43,84 +80,102 @@ export const ViewCart = () => {
                   {/* Footer */}
                   <div className="row align-items-end justify-content-between mb-10 mb-md-0">
                     <div className="col-12 col-md-7">
-                      <div className="promotion-code-card mb-5">
-                        <div className="title">Promotion (-50%)</div>
-                        <div className="Code">SALE50</div>
-                        <i className="fe fe-x close" />
-                      </div>
-                      {/* Coupon */}
-                      <form className="mb-7 mb-md-0">
-                        <label
-                          className="font-size-sm font-weight-bold"
-                          htmlFor="cartCouponCode"
-                        >
-                          Coupon code:
-                        </label>
-                        <div className="row form-row">
-                          <div className="col">
-                            {/* Input */}
-                            <input
-                              className="form-control form-control-sm"
-                              id="cartCouponCode"
-                              type="text"
-                              placeholder="Enter coupon code*"
-                            />
+                      {promotion && (
+                        <div className="promotion-code-card mb-5">
+                          <div className="title" style={{ fontWeight: "bold" }}>
+                            {promotion.title}
                           </div>
-                          <div className="col-auto">
-                            {/* Button */}
-                            <button
-                              className="btn btn-sm btn-dark"
-                              type="submit"
-                            >
-                              Apply
-                            </button>
-                          </div>
+                          <div className="Code">{promotion.description}</div>
+                          <i
+                            className="fe fe-x close"
+                            onClick={onRemovePromotion}
+                          />
                         </div>
-                      </form>
+                      )}
+                      {/* Coupon */}
+                      <div className="mb-7 mb-md-0">
+                        <Field
+                          label="Coupon code:"
+                          placeholder="Enter coupon code*"
+                          {...promotionForm.register("code")}
+                          renderField={(props) => (
+                            <div className="flex gap-2">
+                              <input
+                                {...props}
+                                onChange={(ev) =>
+                                  props.onChange(ev.target.value)
+                                }
+                                className="form-control form-control-sm"
+                              />
+                              <Button
+                                loading={promotionLoading}
+                                style={{ marginTop: "0.5rem" }}
+                                onClick={onSubmitPromotion}
+                              >
+                                Apply
+                              </Button>
+                            </div>
+                          )}
+                        />
+
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-12 col-md-5 col-lg-4 offset-lg-1">
                   {/* Total */}
                   <div className="card mb-7 bg-light">
-                    <div className="card-body">
-                      <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
-                        <li className="list-group-item d-flex">
-                          <span>Subtotal</span>
-                          <span className="ml-auto font-size-sm">$89.00</span>
-                        </li>
-                        <li className="list-group-item d-flex">
-                          <span>Promotion</span>
-                          <span className="ml-auto font-size-sm">-$44.50</span>
-                        </li>
-                        <li className="list-group-item d-flex">
-                          <span>Tax</span>
-                          <span className="ml-auto font-size-sm">$00.00</span>
-                        </li>
-                        <li className="list-group-item d-flex font-size-lg font-weight-bold">
-                          <span>Total</span>
-                          <span className="ml-auto font-size-sm">$89.00</span>
-                        </li>
-                        <li className="list-group-item font-size-sm text-center text-gray-500">
-                          Shipping cost calculated at Checkout *
-                        </li>
-                      </ul>
-                    </div>
+                    <Spin spinning={preCheckoutLoading}>
+                      <div className="card-body">
+                        <ul className="list-group list-group-sm list-group-flush-y list-group-flush-x">
+                          <li className="list-group-item d-flex">
+                            <span>Subtotal</span>
+                            <span className="ml-auto font-size-sm">
+                              {currency(preCheckoutResponse?.subTotal)}
+                            </span>
+                          </li>
+                          <li className="list-group-item d-flex">
+                            <span>Promotion</span>
+                            <span className="ml-auto font-size-sm">
+                              {promotion?.discount > 0 ? "- " : undefined}{" "}
+                              {currency(promotion?.discount)}
+                            </span>
+                          </li>
+                          <li className="list-group-item d-flex">
+                            <span>Tax</span>
+                            <span className="ml-auto font-size-sm">
+                              {currency(preCheckoutResponse?.tax)}
+                            </span>
+                          </li>
+                          <li className="list-group-item d-flex font-size-lg font-weight-bold">
+                            <span>Total</span>
+                            <span className="ml-auto font-size-sm">
+                              {currency(preCheckoutResponse?.total)}
+                            </span>
+                          </li>
+                          <li className="list-group-item font-size-sm text-center text-gray-500">
+                            Shipping cost calculated at Checkout *
+                          </li>
+                        </ul>
+                      </div>
+                    </Spin>
                   </div>
                   {/* Button */}
-                  <a
-                    className="btn btn-block btn-dark mb-2"
-                    href="checkout.html"
+                  <Link
+                    className={cn("btn btn-block btn-dark mb-2", {
+                      disabled: !preCheckoutResponse?.listItems?.length,
+                    })}
+                    to={PATH.Checkout}
                   >
                     Proceed to Checkout
-                  </a>
+                  </Link>
                   {/* Link */}
-                  <a
+                  <Link
                     className="btn btn-link btn-sm px-0 text-body"
-                    href="shop.html"
+                    to={PATH.Product}
                   >
                     <i className="fe fe-arrow-left mr-2" /> Continue Shopping
-                  </a>
+                  </Link>
                 </div>
               </div>
             </>

@@ -1,8 +1,9 @@
 import { cartService } from "@/services/cart";
-import { getToken, setCart } from "@/utils";
-import { call, delay, put, race, take } from "redux-saga/effects";
+import { getToken, handleError, setCart } from "@/utils";
+import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
-import { cartActions, getCartAction } from ".";
+import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction, updateItemQuantitySuccessAction } from ".";
+import { message } from "antd";
 
 export function* fetchCardItem(action) {
   try {
@@ -22,6 +23,7 @@ export function* fetchCardItem(action) {
           behavior: "smooth",
         });
       }
+      yield put(updateItemQuantitySuccessAction(action.payload.productId));
     } else {
       yield put(removeCartItemAction(action.payload.productId));
     }
@@ -47,6 +49,8 @@ export function* fetchRemoveItem(action) {
         loading: false,
       })
     );
+
+    yield put(updateItemQuantitySuccessAction(action.payload))
   } catch (err) {
     console.log(err);
   }
@@ -63,6 +67,66 @@ export function* fetchCart() {
       yield put(cartActions.setCart(cart.data));
     }
   }
+}
+export function* fetchSelectCartItem(action) {
+  try {
+    let { cart: { preCheckoutData } } = yield select();
+    let { listItems } = preCheckoutData;
+    listItems = [...listItems];
+
+    const { productId, checked } = action.payload;
+
+    if (checked) {
+      listItems.push(productId);
+    } else {
+      listItems = listItems.filter((e) => e !== productId);
+    }
+
+    yield put(
+      cartActions.setPreCheckoutData({
+        ...preCheckoutData,
+        listItems,
+      })
+    );
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+export function* fetchPreCheckout(action) {
+  try {
+    let { cart: { preCheckoutData } } = yield select()
+    if (action.type === updateItemQuantitySuccessAction.toString()) {
+      let productId = action.payload;
+      if (!preCheckoutData.listItems.find((e) => e === productId)) return;
+    }
+    yield put(cartActions.togglePreCheckoutLoading(true))
+
+    const res = yield call(cartService.preCheckout, preCheckoutData)
+    yield put(cartActions.setPreCheckoutResponse(res.data))
+
+    yield put(cartActions.togglePreCheckoutLoading(false))
+  } catch(err) {
+    handleError(err)
+  }
+}
+
+export function* fetchAddPromotion(action) {
+  try {
+    yield put(cartActions.togglePromotionLoading(true));
+    yield call(cartService.getPromotion, action.payload.data);
+    yield put(cartActions.togglePromotionCode(action.payload.data));
+    action.payload?.onSuccess?.()
+  } catch (err) {
+    action.payload?.onError?.(err)
+  } finally {
+    yield put(cartActions.togglePromotionLoading(false));
+  }
+}
+
+export function* removePromotion(action) {
+  yield put(cartActions.togglePromotionCode());
+  action?.payload?.onSuccess?.()
 }
 
 export function* clearCart() {

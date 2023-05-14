@@ -9,7 +9,8 @@ import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
 import { Link, generatePath, useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext";
+// import { useAuth } from "../AuthContext";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
 
 export const ProductCard = ({
   id,
@@ -28,12 +29,11 @@ export const ProductCard = ({
   const category = useCategory(categories);
   const dispatch = useDispatch();
   const { cart } = useCart();
-  const { user } = useAuth();
+  const { user } = useAuthRedux();
   const navigate = useNavigate();
 
   const onAddWishlist = async () => {
     const key = `add-wishlist-${id}`;
-
     try {
       message.loading({
         key,
@@ -47,7 +47,12 @@ export const ProductCard = ({
         content: `Adding "${name}" to Wishlist Successfully!`,
       });
     } catch (err) {
-      handleError(err, key);
+      // console.log(key);
+      // handleError(err, key);
+      message.error({
+        key,
+        content: `"${name}" existed in wishlist`
+      })
     }
   };
 
