@@ -3,6 +3,7 @@ import { getToken, handleError, setCart } from "@/utils";
 import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
 import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction, updateItemQuantitySuccessAction } from ".";
+import { message } from "antd";
 
 export function* fetchCardItem(action) {
   try {
@@ -69,11 +70,8 @@ export function* fetchCart() {
 
 export function* fetchSelectCartItem(action) {
   try {
-    let {
-      cart: {
-        preCheckoutData: { listItems },
-      },
-    } = yield select();
+    let { cart: { preCheckoutData } } = yield select();
+    let { listItems } = preCheckoutData;
     listItems = [...listItems];
 
     const { productId, checked } = action.payload;
@@ -86,6 +84,7 @@ export function* fetchSelectCartItem(action) {
 
     yield put(
       cartActions.setPreCheckoutData({
+        ...preCheckoutData,
         listItems,
       })
     );
@@ -110,6 +109,24 @@ export function* fetchPreCheckout(action) {
   } catch(err) {
     handleError(err)
   }
+}
+
+export function* fetchAddPromotion(action) {
+  try {
+    yield put(cartActions.togglePromotionLoading(true));
+    yield call(cartService.getPromotion, action.payload.data);
+    yield put(cartActions.togglePromotionCode(action.payload.data));
+    action.payload?.onSuccess?.()
+  } catch (err) {
+    action.payload?.onError?.(err)
+  } finally {
+    yield put(cartActions.togglePromotionLoading(false));
+  }
+}
+
+export function* removePromotion(action) {
+  yield put(cartActions.togglePromotionCode());
+  action?.payload?.onSuccess?.()
 }
 
 export function* clearCart() {

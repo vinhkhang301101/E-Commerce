@@ -2,7 +2,7 @@ import React, { useId } from "react";
 import { ErrorText, FieldStyle } from "./style";
 import { cn } from "@/utils";
 
-export const Field = ({ label, error, onChange, ...props }) => {
+export const Field = ({ label, error, onChange, renderField, ...props }) => {
   const id = useId();
   const _onChange = (ev) => {
     onChange?.(ev.target.value);
@@ -10,16 +10,17 @@ export const Field = ({ label, error, onChange, ...props }) => {
 
   return (
     <FieldStyle className={cn("form-group relative", { error })}>
-      <label className="sr-only" htmlFor={id}>
-        {label}
-      </label>
-      <input
-        {...props}
-        onChange={_onChange}
-        className="form-control form-control-sm"
-        id={id}
-        
-      />
+      {label && <label htmlFor={id}>{label}</label>}
+      {renderField ? (
+        renderField({ ...props, error, label, onChange, id })
+      ) : (
+        <input
+          {...props}
+          onChange={_onChange}
+          className="form-control form-control-sm"
+          id={id}
+        />
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </FieldStyle>
   );

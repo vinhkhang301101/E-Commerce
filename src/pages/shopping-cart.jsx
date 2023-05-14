@@ -1,25 +1,62 @@
 // import { useAuth } from "@/components/AuthContext";
+import { Button } from "@/components/Button";
 import { CartItem } from "@/components/CartItem";
+import { Field } from "@/components/Field";
 import { PATH } from "@/config/path";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useCart } from "@/hooks/useCart";
+import { useForm } from "@/hooks/useForm";
 import { useScrollTop } from "@/hooks/useScrollTop";
-import { cn, currency } from "@/utils";
-import { Spin } from "antd";
+import { addPromotionAction, removePromotionAction } from "@/store/cart";
+import { cn, currency, required } from "@/utils";
+import { Spin, message } from "antd";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export const ViewCart = () => {
   useScrollTop();
-  const { cart, preCheckoutResponse, preCheckoutLoading } = useCart();
+  const { cart, preCheckoutResponse, preCheckoutLoading, promotionLoading } = useCart();
   const { user } = useAuthRedux();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const promotionForm = useForm({
+    code: [required()]
+  })
 
   useEffect(() => {
     if (!user) {
       navigate(PATH.Account);
     }
   }, []);
+
+  const onSubmitPromotion = () => {
+    if (promotionForm.validate()) {
+      dispatch(addPromotionAction({
+        data: promotionForm.values.code,
+        onSuccess: () => {
+          promotionForm.reset()
+          message.success("Added coupon successfully!")
+        },
+        onError: (err) => {
+          console.log(err);
+          message.error("Invalid coupon code!")
+        }
+      }))
+    }
+  }
+
+  const onRemovePromotion = () => {
+    dispatch(
+      removePromotionAction({
+        onSuccess: () => {
+          message.success("Removed coupon successfully!");
+        },
+      })
+    );
+  }
+
+  const { promotion } = preCheckoutResponse
 
   return (
     <>
@@ -45,14 +82,44 @@ export const ViewCart = () => {
                   {/* Footer */}
                   <div className="row align-items-end justify-content-between mb-10 mb-md-0">
                     <div className="col-12 col-md-7">
-                      <div className="promotion-code-card mb-5">
-                        <div className="title">Promotion (-50%)</div>
-                        <div className="Code">SALE50</div>
-                        <i className="fe fe-x close" />
-                      </div>
+                      {promotion && (
+                        <div className="promotion-code-card mb-5">
+                          <div className="title" style={{ fontWeight: "bold" }}>
+                            {promotion.title}
+                          </div>
+                          <div className="Code">{promotion.description}</div>
+                          <i
+                            className="fe fe-x close"
+                            onClick={onRemovePromotion}
+                          />
+                        </div>
+                      )}
                       {/* Coupon */}
-                      <form className="mb-7 mb-md-0">
-                        <label
+                      <div className="mb-7 mb-md-0">
+                        <Field
+                          label="Coupon code:"
+                          placeholder="Enter coupon code*"
+                          {...promotionForm.register("code")}
+                          renderField={(props) => (
+                            <div className="flex gap-2">
+                              <input
+                                {...props}
+                                onChange={(ev) =>
+                                  props.onChange(ev.target.value)
+                                }
+                                className="form-control form-control-sm"
+                              />
+                              <Button
+                                loading={promotionLoading}
+                                style={{ marginTop: "0.5rem" }}
+                                onClick={onSubmitPromotion}
+                              >
+                                Apply
+                              </Button>
+                            </div>
+                          )}
+                        />
+                        {/* <label
                           className="font-size-sm font-weight-bold"
                           htmlFor="cartCouponCode"
                         >
@@ -60,7 +127,6 @@ export const ViewCart = () => {
                         </label>
                         <div className="row form-row">
                           <div className="col">
-                            {/* Input */}
                             <input
                               className="form-control form-control-sm"
                               id="cartCouponCode"
@@ -68,17 +134,9 @@ export const ViewCart = () => {
                               placeholder="Enter coupon code*"
                             />
                           </div>
-                          <div className="col-auto">
-                            {/* Button */}
-                            <button
-                              className="btn btn-sm btn-dark"
-                              type="submit"
-                            >
-                              Apply
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+                          <div className="col-auto"></div>
+                        </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -97,7 +155,8 @@ export const ViewCart = () => {
                           <li className="list-group-item d-flex">
                             <span>Promotion</span>
                             <span className="ml-auto font-size-sm">
-                              - {currency(preCheckoutResponse?.promotion)}
+                              {promotion?.discount > 0 ? "- " : undefined}{" "}
+                              {currency(promotion?.discount)}
                             </span>
                           </li>
                           <li className="list-group-item d-flex">

@@ -16,7 +16,7 @@ export const store = configureStore({
     cart: cartReducer,
   },
   devTools: import.meta.env.VITE_NODE_ENV === "development",
-  middleware: (getMiddleware) => getMiddleware().concat(sagaMiddleware),
+  middleware: (getMiddleware) => getMiddleware({serializableCheck: false}).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);
