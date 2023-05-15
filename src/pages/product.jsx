@@ -13,6 +13,7 @@ import {
 import { PATH } from "@/config/path";
 import { cn, slugify } from "@/utils";
 import queryString from "query-string";
+import { Portal } from "@/components/Portal";
 
 export const Product = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ export const Product = () => {
     name: searchProduct,
   });
 
-  const clickTitle = () => {};
+  // const clickTitle = () => {};
 
   const { data, loading } = useQuery({
     queryKey: [qs],
@@ -76,7 +77,7 @@ export const Product = () => {
                                 className={cn("list-styled-link", {
                                   "font-bold": !id,
                                 })}
-                                tp={PATH.Product}
+                                to={PATH.Product}
                               >
                                 All Products
                               </Link>
@@ -434,7 +435,10 @@ export const Product = () => {
             <div className="row align-items-center mb-7">
               <div className="col-12 col-md">
                 {/* Heading */}
-                <h3 className="mb-1">Electronic Devices</h3>
+                <h3 className="mb-1 product-title">
+                  Điện thoại - Máy tính báng
+                </h3>
+
                 {/* Breadcrumb */}
                 <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
                   <li className="breadcrumb-item">

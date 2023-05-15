@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Store_locator = () => {
+export const StoreLocator = () => {
   return (
     <div>
         {/* BREADCRUMB */}

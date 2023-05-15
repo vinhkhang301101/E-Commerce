@@ -1,7 +1,6 @@
 import { useAuth } from "@/components/AuthContext";
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
-import { PATH } from "@/config/path";
 import { useAsync } from "@/hooks/useAsync";
 import { useBodyClass } from "@/hooks/useBodyClass";
 import { useForm } from "@/hooks/useForm";

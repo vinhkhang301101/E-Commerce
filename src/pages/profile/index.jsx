@@ -12,6 +12,8 @@ import { handleError } from "@/utils/handleError";
 import { message } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
+import _ from "lodash";
+import { object } from "@/utils/object";
 
 const rules = {
   name: [required()],
@@ -64,31 +66,40 @@ export const Profile = () => {
         userService.changePassword(...params);
       },
     });
-    // reup github again
-  const onSubmit = async () => {
-    try {
-      if (userForm.validate()) {
-        const res = await updateProfileService(userForm.values);
-        dispatch(setUserAction(res.data));
-        message.success("Update profile success");
 
-        if (userForm.values.newPassword) {
-          await changePasswordService({
-            currentPassword: userForm.values.currentPassword,
-            newPassword: userForm.values.newPassword,
-          }).then((res) => {
+  const onSubmit = async () => {
+    const checkOldData = object.isEqual(user, userForm.values, "name", "phone");
+
+    if (!userForm.values.newPassword && checkOldData) {
+      message.warning("Please enter to change information !");
+      return;
+    }
+
+    if (userForm.validate()) {
+      if (!checkOldData) {
+        updateProfileService(userForm.values)
+          .then((res) => {
+            dispatch(setUserAction(res.data));
+            message.success("Update profile success");
+          })
+          .catch(handleError);
+      }
+
+      if (userForm.values.newPassword) {
+        await changePasswordService({
+          currentPassword: userForm.values.currentPassword,
+          newPassword: userForm.values.newPassword,
+        })
+          .then((res) => {
             userForm.setValues({
               currentPassword: "",
               newPassword: "",
               confirmPassword: "",
             });
-          });
-
-          message.success("Change password success !!!");
-        }
+            message.success("Change password success !!!");
+          })
+          .catch(handleError);
       }
-    } catch (error) {
-      handleError();
     }
   };
   return (
@@ -153,7 +164,7 @@ export const Profile = () => {
             label="Confirm Password *"
             placeholder="Confirm Password *"
             {...userForm.register("confirmPassword")}
-            autoComplete="new-password" 
+            autoComplete="new-password"
           ></Field>
         </div>
         <div className="col-12 col-lg-6">
