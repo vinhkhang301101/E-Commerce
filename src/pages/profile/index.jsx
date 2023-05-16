@@ -9,11 +9,16 @@ import { userService } from "@/services/user";
 import { setUserAction } from "@/store/auth";
 import { confirm, regexp, required, validate } from "@/utils/validate";
 import { handleError } from "@/utils/handleError";
-import { message } from "antd";
-import React from "react";
+import { DatePicker, message } from "antd";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import _ from "lodash";
 import { object } from "@/utils/object";
+import { avatarDefault } from "@/config/assets";
+import { fileService } from "@/services/file";
+import { UploadFile } from "@/components/UploadFile";
+import dayjs from "dayjs";
+import { Radio } from "@/components/Radio";
 
 const rules = {
   name: [required()],
@@ -50,6 +55,7 @@ const rules = {
 };
 
 export const Profile = () => {
+  const fileRef = useRef();
   const dispatch = useDispatch();
   const { user } = useAuthRedux();
   const userForm = useForm(rules, { initialValue: user });
@@ -68,25 +74,45 @@ export const Profile = () => {
     });
 
   const onSubmit = async () => {
-    const checkOldData = object.isEqual(user, userForm.values, "name", "phone");
+    const checkOldData = object.isEqual(
+      user,
+      userForm.values,
+      "name",
+      "phone",
+      "birthday",
+      "gender"
+    );
 
-    if (!userForm.values.newPassword && checkOldData) {
+    let avatar;
+    if (fileRef.current) {
+      const res = await fileService.uploadFIle(fileRef.current);
+
+      if (res.link) {
+        avatar = res.link;
+      }
+    }
+
+    if (!avatar && !userForm.values.newPassword && checkOldData) {
       message.warning("Please enter to change information !");
       return;
     }
 
     if (userForm.validate()) {
-      if (!checkOldData) {
-        updateProfileService(userForm.values)
+      if (avatar || !checkOldData) {
+        updateProfileService({
+          ...userForm.values,
+          avatar,
+        })
           .then((res) => {
             dispatch(setUserAction(res.data));
+            fileRef.current = null;
             message.success("Update profile success");
           })
           .catch(handleError);
       }
 
       if (userForm.values.newPassword) {
-        await changePasswordService({
+        changePasswordService({
           currentPassword: userForm.values.currentPassword,
           newPassword: userForm.values.newPassword,
         })
@@ -102,19 +128,29 @@ export const Profile = () => {
       }
     }
   };
+
   return (
     <div>
       <Portal selector={PROFILE_TITLE_ID}>My Account</Portal>
       <div className="row">
         <div className="col-12">
-          <div className="profile-avatar">
-            <div className="wrap">
-              <img src="../img/avt.png" alt="avatar" />
-              <i className="icon">
-                <img src="/img/icons/icon-ruler.svg" alt="icon" />
-              </i>
-            </div>
-          </div>
+
+          <UploadFile onChange={(file) => (fileRef.current = file)}>
+            {(previewSrc, trigger) => (
+              <div className="profile-avatar">
+                <div className="wrap" onClick={trigger}>
+                  <img
+                    src={previewSrc || user.avatar || avatarDefault}
+                    alt="avatar"
+                  />
+                  <i className="icon">
+                    <img src="./img/icons/camera.svg" alt="icon" />
+                  </i>
+                </div>
+              </div>
+            )}
+          </UploadFile>
+
         </div>
         <div className="col-12">
           <Field
@@ -167,28 +203,37 @@ export const Profile = () => {
             autoComplete="new-password"
           ></Field>
         </div>
-        <div className="col-12 col-lg-6">
-          <label>Date of Birth</label>
-          <input
-            className="form-control form-control-sm"
-            type="date"
-            placeholder="dd/mm/yyyy"
-            required
-          />
+        <div className="col-12 col-md-6">
+          <Field
+            label="Date of Birth"
+            {...userForm.register("birthday")}
+            renderField={(props) => (
+              <DatePicker
+                format="DD/MM/YYYY"
+                value={props.value ? dayjs(props.value) : undefined}
+                onChange={(ev, date) => props.onChange(date)}
+                className="form-control form-control-sm"
+              ></DatePicker>
+            )}
+          ></Field>
         </div>
-        <div className="col-12 col-lg-6">
+        <div className="col-12 col-md-6">
           {/* Gender */}
-          <div className="form-group mb-8">
-            <label>Gender</label>
-            <div className="btn-group-toggle" data-toggle="buttons">
-              <label className="btn btn-sm btn-outline-border active">
-                <input type="radio" name="gender" defaultChecked /> Male
-              </label>
-              <label className="btn btn-sm btn-outline-border">
-                <input type="radio" name="gender" /> Female
-              </label>
-            </div>
-          </div>
+          <Field
+            label="Gender"
+            {...userForm.register("gender")}
+            renderField={(props) => (
+              <div className="btn-group-toggle">
+                <Radio.Group
+                  defaultValue={props.value}
+                  onChange={(value) => props?.onChange?.(value)}
+                >
+                  <Radio.Toggle value="male">Male</Radio.Toggle>
+                  <Radio.Toggle value="female">Female</Radio.Toggle>
+                </Radio.Group>
+              </div>
+            )}
+          ></Field>
         </div>
         <div className="col-12">
           {/* Button */}
