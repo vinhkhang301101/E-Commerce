@@ -28,6 +28,8 @@ export const {
       preCheckoutData: {
         promotionCode: [],
         listItems: [],
+        shippingMethods: "mien-phi",
+        paymentMethods: "money",
       },
       preCheckoutResponse: {},
       preCheckoutLoading: false,
@@ -38,6 +40,23 @@ export const {
     };
   },
   reducers: {
+    clearCart(state) {
+      return {
+        ...state,
+        openCartOver: false,
+        preCheckoutData: {
+          promotionCode: [],
+          listItems: [],
+          shippingMethods: "mien-phi",
+          paymentMethods: "money",
+        },
+        preCheckoutResponse: {},
+        preCheckoutLoading: false,
+        promotionLoading: false,
+        loading: {},
+      };
+    },
+
     setCart(state, action) {
       state.cart = action.payload;
     },
@@ -87,7 +106,7 @@ export const removePromotionAction = createAction(`${name}/removePromotion`);
 export function* cartSaga() {
   yield takeLatest(updateCartItemAction, fetchCardItem);
   yield takeLatest(removeCartItemAction, fetchRemoveItem);
-  yield takeLatest([getCartAction, loginSuccessAction], fetchCart);
+  yield takeLatest([getCartAction, loginSuccessAction, cartActions.clearCart], fetchCart);
   yield takeLatest(logoutAction, clearCart);
   yield takeLatest(cartActions.setCart, setCartSaga);
   yield takeLatest(toggleCheckoutItemAction, fetchSelectCartItem);

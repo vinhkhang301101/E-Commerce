@@ -1,21 +1,23 @@
-// const { useState, useRef, useMemo } = require("react");
+import queryString from "query-string";
+import { useSearchParams } from "react-router-dom";
 
-// export const useSearch = () => {
-//     const [search, setSearch] = useState('');
-//     const searchInputEl = useRef(null);
-//     const query = 'hard coded query with corresponding params';
+export const useSearch = (defaultValue) => {
+    const { search, setSearch } = useSearchParams();
 
-//     const params = useMemo(() => ({ 
-//       // query params with values
-//     }), [search]);
+    const value = {...defaultValue}
 
-//     const {
-//         loading, result: results, error, clear,
-//     } = useSearch(search, query, params, sanityConfig);
+    for(let [key, value] of search.entries()) {
+        try {
+            value[key] = JSON.parse(value || defaultValue[key])
+        } catch (err) {
+            value[key] = value || defaultValue[key]
+        }
+    }
 
-//     const clearSearch = () => {
-//         setSearch('');
-//         clear();
-//         searchInputEl.current.focus();
-//     };
-// }
+    const setValue = (valueObj) => {
+        const qs = queryString.stringify({ ...value, ...valueObj });
+        setSearch(qs)
+    }
+
+    return [value, setValue]
+}

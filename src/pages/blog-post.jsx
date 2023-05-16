@@ -1,5 +1,8 @@
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { PATH } from "@/config/path";
 import { useScrollTop } from "@/hooks/useScrollTop";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const BlogPost = () => {
   useScrollTop()
@@ -11,21 +14,10 @@ export const BlogPost = () => {
           <div className="row">
             <div className="col-12">
               {/* Breadcrumb */}
-              <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="index.html">
-                    Home
-                  </a>
-                </li>
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="blog.html">
-                    Blog
-                  </a>
-                </li>
-                <li className="breadcrumb-item active">
-                  B5 Tips to Increase Your Online Saleslog
-                </li>
-              </ol>
+              <Breadcrumb>
+                <Breadcrumb.Item to={PATH.Home}>Home</Breadcrumb.Item>
+                <Breadcrumb.Item to={PATH.BlogPost}>Blog-post</Breadcrumb.Item>
+              </Breadcrumb>
             </div>
           </div>
         </div>
@@ -53,7 +45,7 @@ export const BlogPost = () => {
                 {/* Image */}
                 <img
                   className="img-fluid"
-                  src="./img/blog/blog-9.jpg"
+                  src="/img/blog/blog-9.jpg"
                   alt="..."
                 />
               </div>
@@ -120,7 +112,7 @@ export const BlogPost = () => {
                 {/* Image */}
                 <img
                   className="img-fluid"
-                  src="./img/blog/blog-4.jpg"
+                  src="/img/blog/blog-4.jpg"
                   alt="..."
                 />
               </div>
@@ -128,7 +120,7 @@ export const BlogPost = () => {
                 {/* Image */}
                 <img
                   className="img-fluid"
-                  src="./img/blog/blog-5.jpg"
+                  src="/img/blog/blog-5.jpg"
                   alt="..."
                 />
               </div>
@@ -228,18 +220,30 @@ export const BlogPost = () => {
             <div className="row">
               <div className="col-12 text-center">
                 {/* Buttons */}
-                <a className="btn btn-facebook mr-3 mb-3" href="#!">
+                <Link
+                  className="btn btn-facebook mr-3 mb-3"
+                  to="https://www.facebook.com/"
+                >
                   <i className="fab fa-facebook-f mr-2" /> Share on Facebook
-                </a>
-                <a className="btn btn-twitter mr-3 mb-3" href="#!">
+                </Link>
+                <Link
+                  className="btn btn-twitter mr-3 mb-3"
+                  to="https://twitter.com/"
+                >
                   <i className="fab fa-twitter mr-2" /> Share on Twitter
-                </a>
-                <a className="btn btn-pinterest mr-3 mb-3" href="#!">
+                </Link>
+                <Link
+                  className="btn btn-pinterest mr-3 mb-3"
+                  to="https://www.pinterest.com/"
+                >
                   <i className="fab fa-pinterest-p mr-2" /> Share on Pinterest
-                </a>
-                <a className="btn btn-linkedin mr-3 mb-3" href="#!">
+                </Link>
+                <Link
+                  className="btn btn-linkedin mr-3 mb-3"
+                  to="https://www.linkedin.com/"
+                >
                   <i className="fab fa-linkedin-in mr-2" /> Share on LinkedIn
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -260,7 +264,7 @@ export const BlogPost = () => {
               <div className="card mb-7 mb-md-0">
                 {/* Image */}
                 <img
-                  src="./img/blog/blog-1.jpg"
+                  src="/img/blog/blog-1.jpg"
                   alt="..."
                   className="card-img-top"
                 />
@@ -280,9 +284,9 @@ export const BlogPost = () => {
                     gathered appear sixth.
                   </p>
                   {/* Link */}
-                  <a className="btn btn-link px-0 text-body" href="#!">
+                  <Link className="btn btn-link px-0 text-body" to={PATH.BlogPost}>
                     Read more <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -295,7 +299,7 @@ export const BlogPost = () => {
                 </div>
                 {/* Image */}
                 <img
-                  src="./img/blog/blog-2.jpg"
+                  src="/img/blog/blog-2.jpg"
                   alt="..."
                   className="card-img-top"
                 />
@@ -311,9 +315,9 @@ export const BlogPost = () => {
                     Wherein the third cattle.
                   </p>
                   {/* Link */}
-                  <a className="btn btn-link px-0 text-body" href="#!">
+                  <Link className="btn btn-link px-0 text-body" to={PATH.BlogPost}>
                     Read more <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -326,7 +330,7 @@ export const BlogPost = () => {
                 </div>
                 {/* Image */}
                 <img
-                  src="./img/blog/blog-3.jpg"
+                  src="/img/blog/blog-3.jpg"
                   alt="..."
                   className="card-img-top"
                 />
@@ -342,9 +346,9 @@ export const BlogPost = () => {
                     he beginning second.
                   </p>
                   {/* Link */}
-                  <a className="btn btn-link px-0 text-body" href="#!">
+                  <Link className="btn btn-link px-0 text-body" to={PATH.BlogPost}>
                     Read more <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

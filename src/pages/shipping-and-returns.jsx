@@ -1,4 +1,7 @@
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { PATH } from "@/config/path";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const ShippingAndReturns = () => {
   return (
@@ -9,16 +12,12 @@ export const ShippingAndReturns = () => {
           <div className="row">
             <div className="col-12">
               {/* Breadcrumb */}
-              <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="index.html">
-                    Home
-                  </a>
-                </li>
-                <li className="breadcrumb-item active">
-                  Shipping &amp; Returns
-                </li>
-              </ol>
+              <Breadcrumb>
+                <Breadcrumb.Item to={PATH.Home}>Home</Breadcrumb.Item>
+                <Breadcrumb.Item to={PATH.ShippingAndReturns}>
+                  Shipping & Returns
+                </Breadcrumb.Item>
+              </Breadcrumb>
             </div>
           </div>
         </div>
@@ -215,20 +214,20 @@ export const ShippingAndReturns = () => {
               {/* Buttons */}
               <div className="row mt-9">
                 <div className="col-12 col-md-6">
-                  <a
+                  <Link
                     className="btn btn-lg btn-block btn-outline-dark"
-                    href="faq.html"
+                    to={PATH.Faq}
                   >
                     Have more Questions?
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-12 col-md-6">
-                  <a
+                  <Link
                     className="btn btn-lg btn-block btn-outline-dark"
-                    href="contact-us.html"
+                    to={PATH.ContactUs}
                   >
                     Want to Contact Us?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

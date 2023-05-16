@@ -53,8 +53,8 @@ export const useQuery = ({
 
   const getCacheDataOrPreviousData = () => {
     if (cacheName) {
-      if (keepPreviousData && dataRef[cacheName]) {
-        return dataRef[cacheName];
+      if (keepPreviousData && dataRef.current[cacheName]) {
+        return dataRef.current[cacheName];
       }
 
       if (_asyncFunction[cacheName]) {
@@ -67,7 +67,7 @@ export const useQuery = ({
 
   const setCacheDataOrPreviousData = (data) => {
     if (keepPreviousData) {
-      dataRef[cacheName] = data;
+      dataRef.current[cacheName] = data;
     }
 
     if (cacheName && cacheTime) {
@@ -99,6 +99,7 @@ export const useQuery = ({
       }
 
       res = getCacheDataOrPreviousData();
+      // if (cacheName) delete _asyncFunction(cacheName)
 
       if (!res) {
         res = queryFn({ signal: controllerRef.current.signal, params: args });
@@ -136,11 +137,17 @@ export const useQuery = ({
       }
     }
   };
+
+
+  const clearPreviousData = () => {
+    dataRef.current = {}
+  }
   return {
     loading,
     error,
     data,
     status,
     refetch: fetchData,
+    clearPreviousData
   };
 };

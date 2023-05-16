@@ -134,6 +134,7 @@ export const Profile = () => {
       <Portal selector={PROFILE_TITLE_ID}>My Account</Portal>
       <div className="row">
         <div className="col-12">
+
           <UploadFile onChange={(file) => (fileRef.current = file)}>
             {(previewSrc, trigger) => (
               <div className="profile-avatar">
@@ -149,6 +150,7 @@ export const Profile = () => {
               </div>
             )}
           </UploadFile>
+
         </div>
         <div className="col-12">
           <Field

@@ -41,6 +41,7 @@ export function* fetchRemoveItem(action) {
         loading: true,
       })
     );
+    
     yield call(cartService.removeItem, action.payload);
     yield put(getCartAction());
     yield put(

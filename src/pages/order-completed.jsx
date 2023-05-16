@@ -1,4 +1,6 @@
+import { PATH } from "@/config/path";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const OrderCompleted = () => {
   return (
@@ -12,17 +14,18 @@ export const OrderCompleted = () => {
             <h2 className="mb-5">Your Order is Completed!</h2>
             {/* Text */}
             <p className="mb-7 text-gray-500">
-              Your order{" "}
-              <span className="text-body text-decoration-underline">
-                673290789
-              </span>{" "}
-              has been completed. Your order details are shown for your personal
-              accont.
+              Your order has been completed. Your order details are shown for
+              your personal accont.
             </p>
             {/* Button */}
-            <a className="btn btn-dark" href="./account-order.html">
-              View My Orders
-            </a>
+            <div className="flex gap-2">
+              <Link className="btn btn-dark mr-6" to={PATH.Profile.Order}>
+                View My Orders
+              </Link>
+              <Link className="btn btn-dark" to={PATH.Product}>
+                Continue Shoping
+              </Link>
+            </div>
           </div>
         </div>
       </div>
