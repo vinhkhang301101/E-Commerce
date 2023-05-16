@@ -1,12 +1,13 @@
 import { useCart } from "@/hooks/useCart";
 import { removeCartItemAction, toggleCheckoutItemAction, updateCartItemAction } from "@/store/cart";
 import { cn, currency } from "@/utils";
-import { Popconfirm, Spin } from "antd";
+import { Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Checkbox } from "../Checkbox";
 import { Link } from "react-router-dom";
 import { PATH } from "@/config/path";
+import { Popconfirm } from "../PopConfirm";
 
 export const CartItem = ({ footer, hideAction, allowSelect, productId, product, quantity, ...props }) => {
   const dispatch = useDispatch();
