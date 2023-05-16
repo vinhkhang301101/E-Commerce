@@ -9,11 +9,11 @@ export const Popconfirm = ({ showCancel = true,description, ...props }) => {
       description={
         <>
           {description}
-          <div className="flex justify-end mt-2">
+          <div className="mt-2" style={{display: "flex", justifyContent: "flex-end"}}>
             {
-            showCancel && <Button outline className="btn-sm" onClick={props.onCancel}>{props.cancelText || "Cancel"}</Button>
+              showCancel && <Button outline className="btn-xxs btn-dark mr-2" onClick={props.onCancel}>{props.cancelText || "Cancel"}</Button>
             }
-            <Button className="btn-sm" onClick={props.onConfirm}>{props.okText || "Ok"}</Button>
+            <Button className="btn-xxs btn-dark" onClick={props.onConfirm}>{props.okText || "Ok"}</Button>
           </div>
         </>
       }

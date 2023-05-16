@@ -9,7 +9,6 @@ import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
 import { Link, generatePath, useNavigate } from "react-router-dom";
-// import { useAuth } from "../AuthContext";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useAuth } from "../AuthContext";
 import { Popconfirm } from "../PopConfirm";
@@ -45,7 +44,7 @@ export const ProductCard = ({
         content: `Adding product "${name}" into Wishlist`,
         duration: 0,
       });
-      await productService.addWishlist(id); //tien hanh add wishlist
+      await productService.addWishlist(id);
       // await delay(6000)
       message.success({
         key,
@@ -137,8 +136,8 @@ export const ProductCard = ({
                 title="Announcement"
                 description="Please log-in before add product into wishlist"
                 onConfirm={() => navigate(PATH.Account)}
-                okText="Log-in"
-                showCancel={false}
+                okText="Login"
+                // showCancel={false}
                 okButtonProps={{ style: { height: 50 } }}
               >
                 <span className="card-action">
