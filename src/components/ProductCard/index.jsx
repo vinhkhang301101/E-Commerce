@@ -4,7 +4,7 @@ import { useCategory } from "@/hooks/useCategories";
 import { useDispatch } from "react-redux";
 import { updateCartItemAction } from "@/store/cart";
 import { productService } from "@/services/product";
-import { Popconfirm, message } from "antd";
+import { message } from "antd";
 import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
