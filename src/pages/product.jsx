@@ -436,7 +436,7 @@ export const Product = () => {
               <div className="col-12 col-md">
                 {/* Heading */}
                 <h3 className="mb-1 product-title">
-                  Điện thoại - Máy tính báng
+                  Điện thoại - Máy tính bảng
                 </h3>
 
                 {/* Breadcrumb */}
