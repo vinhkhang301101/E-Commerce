@@ -45,7 +45,7 @@ export const ProductCard = ({
         content: `Adding product "${name}" into Wishlist`,
         duration: 0,
       });
-      await productService.addWishlist(id); //tien hanh add wishlist
+      await productService.addWishlist(id);
       // await delay(6000)
       message.success({
         key,
