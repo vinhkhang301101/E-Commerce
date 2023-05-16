@@ -11,14 +11,19 @@ import { useCart } from "@/hooks/useCart";
 import { Link, generatePath, useNavigate } from "react-router-dom";
 // import { useAuth } from "../AuthContext";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
+import { useAuth } from "../AuthContext";
+import { Popconfirm } from "../PopConfirm";
 
 export const ProductCard = ({
   id,
   images,
+  showRemove,
   name,
   price,
   real_price,
   slug,
+  onRemoveWishlistSuccess,
+  showWishlist,
   discount_rate,
   rating_average,
   review_count,
@@ -51,8 +56,33 @@ export const ProductCard = ({
       // handleError(err, key);
       message.error({
         key,
-        content: `"${name}" existed in wishlist`
-      })
+        content: `"${name}" existed in wishlist`,
+      });
+    }
+  };
+
+  const onRemovewWishlist = async () => {
+    const key = `remove-wishlist-${id}`;
+    try {
+      message.loading({
+        key,
+        content: `Deleting product "${name}" out of Wishlist`,
+        duration: 0,
+      });
+      await productService.removeWishlist(id); //tien hanh add wishlist
+      // await delay(6000)
+      message.success({
+        key,
+        content: `Delete "${name}" out of wishlist Successfully!`
+      });
+      onRemoveWishlistSuccess?.(id)
+    } catch (err) {
+      // console.log(key);
+      // handleError(err, key);
+      message.error({
+        key,
+        content: `"${name}" existed in wishlist`,
+      });
     }
   };
 
@@ -101,15 +131,39 @@ export const ProductCard = ({
                 <i className="fe fe-shopping-cart" />
               </button>
             </span>
-            <span className="card-action">
-              <button
-                onClick={onAddWishlist}
-                className="btn btn-xs btn-circle btn-white-primary"
-                data-toggle="button"
+            {showWishlist && (
+              <Popconfirm
+                disabled={!!user}
+                title="Announcement"
+                description="Please log-in before add product into wishlist"
+                onConfirm={() => navigate(PATH.Account)}
+                okText="Log-in"
+                showCancel={false}
+                okButtonProps={{ style: { height: 50 } }}
               >
-                <i className="fe fe-heart" />
-              </button>
-            </span>
+                <span className="card-action">
+                  <button
+                    onClick={user ? onAddWishlist : undefined}
+                    className="btn btn-xs btn-circle btn-white-primary"
+                    data-toggle="button"
+                  >
+                    <i className="fe fe-heart" />
+                  </button>
+                </span>
+              </Popconfirm>
+            )}
+
+            {showRemove && (
+              <span className="card-action">
+                <button
+                  onClick={onRemovewWishlist}
+                  className="btn btn-xs btn-circle btn-white-primary"
+                  data-toggle="button"
+                >
+                  <i className="fe fe-x" />
+                </button>
+              </span>
+            )}
           </div>
         </div>
         {/* Body */}
@@ -238,26 +292,7 @@ export const ProductCardLoading = () => {
           <a className="card-img-hover" href="product.html">
             <Skeleton height={300} />
           </a>
-          {/* Actions */}
-          <div className="card-actions">
-            <span className="card-action"></span>
-            <span className="card-action">
-              <button
-                className="btn btn-xs btn-circle btn-white-primary"
-                data-toggle="button"
-              >
-                <i className="fe fe-shopping-cart" />
-              </button>
-            </span>
-            <span className="card-action">
-              <button
-                className="btn btn-xs btn-circle btn-white-primary"
-                data-toggle="button"
-              >
-                <i className="fe fe-heart" />
-              </button>
-            </span>
-          </div>
+          
         </div>
         {/* Body */}
         <div className="card-body px-0">
