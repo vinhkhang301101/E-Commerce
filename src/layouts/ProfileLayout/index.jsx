@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { PATH } from "@/config/path";
-import { Link } from "react-router-dom";
 import { logoutAction } from "@/store/auth";
 import { useDispatch } from "react-redux";
 

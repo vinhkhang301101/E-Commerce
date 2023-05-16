@@ -56,6 +56,7 @@ export const ViewCart = () => {
   }
 
   const { promotion } = preCheckoutResponse
+
   return (
     <>
       {/* CONTENT */}
@@ -152,9 +153,6 @@ export const ViewCart = () => {
                             <span className="ml-auto font-size-sm">
                               {currency(preCheckoutResponse?.total)}
                             </span>
-                          </li>
-                          <li className="list-group-item font-size-sm text-center text-gray-500">
-                            Shipping cost calculated at Checkout *
                           </li>
                         </ul>
                       </div>

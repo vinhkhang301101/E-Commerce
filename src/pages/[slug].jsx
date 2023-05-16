@@ -32,8 +32,8 @@ export const ProductDetailPages = () => {
             <div className="col-12">
               {/* Breadcrumb */}
               <Breadcrumb>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>Product</Breadcrumb.Item>
+                <Breadcrumb.Item to={PATH}>Home</Breadcrumb.Item>
+                <Breadcrumb.Item to={PATH.Product}>Product</Breadcrumb.Item>
                 <Breadcrumb.Item>{detail.data.name}</Breadcrumb.Item>
               </Breadcrumb>
               {/* <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
@@ -75,7 +75,7 @@ export const ProductDetailPages = () => {
                       {/* Item */}
                       <a href="./img/products/product-7.jpg" data-fancybox>
                         <img
-                          src="./img/products/product-7.jpg"
+                          src="/img/products/product-7.jpg"
                           alt="..."
                           className="card-img-top"
                         />
@@ -83,7 +83,7 @@ export const ProductDetailPages = () => {
                       {/* Item */}
                       <a href="./img/products/product-122.jpg" data-fancybox>
                         <img
-                          src="./img/products/product-122.jpg"
+                          src="/img/products/product-122.jpg"
                           alt="..."
                           className="card-img-top"
                         />
@@ -91,7 +91,7 @@ export const ProductDetailPages = () => {
                       {/* Item */}
                       <a href="./img/products/product-146.jpg" data-fancybox>
                         <img
-                          src="./img/products/product-146.jpg"
+                          src="/img/products/product-146.jpg"
                           alt="..."
                           className="card-img-top"
                         />
@@ -502,7 +502,7 @@ export const ProductDetailPages = () => {
                       {/* Size chart */}
                       <p className="mb-8">
                         <img
-                          src="./img/icons/icon-ruler.svg"
+                          src="/img/icons/icon-ruler.svg"
                           alt="..."
                           className="img-fluid"
                         />{" "}
@@ -699,7 +699,7 @@ export const ProductDetailPages = () => {
                           {/* Size */}
                           <p className="mb-0">
                             <img
-                              src="./img/icons/icon-ruler.svg"
+                              src="/img/icons/icon-ruler.svg"
                               alt="..."
                               className="img-fluid"
                             />
@@ -797,12 +797,12 @@ export const ProductDetailPages = () => {
                       <a className="card-img-hover" href="product.html">
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-120.jpg"
+                          src="/img/products/product-120.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-5.jpg"
+                          src="/img/products/product-5.jpg"
                           alt="..."
                         />
                       </a>
@@ -855,12 +855,12 @@ export const ProductDetailPages = () => {
                       <a className="card-img-hover" href="product.html">
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-121.jpg"
+                          src="/img/products/product-121.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-6.jpg"
+                          src="/img/products/product-6.jpg"
                           alt="..."
                         />
                       </a>
@@ -917,12 +917,12 @@ export const ProductDetailPages = () => {
                       <a className="card-img-hover" href="product.html">
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-122.jpg"
+                          src="/img/products/product-122.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-7.jpg"
+                          src="/img/products/product-7.jpg"
                           alt="..."
                         />
                       </a>
@@ -980,7 +980,7 @@ export const ProductDetailPages = () => {
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-8.jpg"
+                          src="/img/products/product-8.jpg"
                           alt="..."
                         />
                       </a>

@@ -1,8 +1,10 @@
+import { PATH } from "@/config/path";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-  <footer
+    <footer
       className="bg-dark bg-cover @@classList"
       style={{ backgroundImage: "url(./img/patterns/pattern-2.svg)" }}
     >
@@ -40,28 +42,34 @@ export const Footer = () => {
               {/* Social */}
               <ul className="list-unstyled list-inline mb-7 mb-md-0">
                 <li className="list-inline-item">
-                  <a href="#!" className="text-gray-350">
+                  <Link
+                    href="https://www.facebook.com/"
+                    className="text-gray-350"
+                  >
                     <i className="fab fa-facebook-f" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className="text-gray-350">
+                  <a href="https://www.youtube.com/" className="text-gray-350">
                     <i className="fab fa-youtube" />
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className="text-gray-350">
+                  <a href="https://twitter.com/" className="text-gray-350">
                     <i className="fab fa-twitter" />
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className="text-gray-350">
+                  <a
+                    href="https://www.instagram.com/"
+                    className="text-gray-350"
+                  >
                     <i className="fab fa-instagram" />
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className="text-gray-350">
-                    <i className="fab fa-medium" />
+                  <a href="https://www.linkedin.com/" className="text-gray-350">
+                    <i className="fab fa-linkedin" />
                   </a>
                 </li>
               </ul>
@@ -72,14 +80,14 @@ export const Footer = () => {
               {/* Links */}
               <ul className="list-unstyled mb-7 mb-sm-0">
                 <li>
-                  <a className="text-gray-300" href="./contact-us.html">
+                  <Link className="text-gray-300" to={PATH.ContactUs}>
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-300" href="./faq.html">
+                  <Link className="text-gray-300" to={PATH.Faq}>
                     FAQs
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -91,12 +99,9 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    className="text-gray-300"
-                    href="./shipping-and-returns.html"
-                  >
+                  <Link className="text-gray-300" to={PATH.ShippingAndReturns}>
                     Shipping &amp; Returns
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -106,24 +111,24 @@ export const Footer = () => {
               {/* Links */}
               <ul className="list-unstyled mb-7 mb-sm-0">
                 <li>
-                  <a className="text-gray-300" href="./shop.html">
+                  <Link className="text-gray-300" to={PATH.Product}>
                     Men's Shopping
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-300" href="./shop.html">
+                  <Link className="text-gray-300" to={PATH.Product}>
                     Women's Shopping
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-300" href="./shop.html">
+                  <Link className="text-gray-300" to={PATH.Product}>
                     Kids' Shopping
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-300" href="./shop.html">
+                  <Link className="text-gray-300" to={PATH.Product}>
                     Discounts
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -133,14 +138,14 @@ export const Footer = () => {
               {/* Links */}
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a className="text-gray-300" href="./about.html">
+                  <Link className="text-gray-300" to={PATH.ContactUs}>
                     Our Story
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-300" href="#!">
+                  <Link className="text-gray-300" to={PATH.ContactUs}>
                     Careers
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="text-gray-300" href="#!">

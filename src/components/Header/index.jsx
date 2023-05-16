@@ -286,12 +286,12 @@ export const Header = () => {
                       alt="..."
                     />
                     {/* Button */}
-                    <a
+                    <Link
                       className="btn btn-sm btn-block btn-primary"
-                      href="./product"
+                      to={PATH.Product}
                     >
                       More Product Info <i className="fe fe-info ml-2" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-12 col-lg-6 col-xl-7 py-9 px-md-9">
                     {/* Heading */}
@@ -700,44 +700,44 @@ export const Header = () => {
                     >
                       <ul className="list-styled font-size-lg py-3 mb-0">
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="./index">
+                          <Link className="list-styled-link" to={PATH.Home}>
                             Default
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Classic
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Fashion
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Boxed
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Simple
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Asymmetric
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Sidenav
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="/product">
+                          <Link className="list-styled-link" to={PATH.Product}>
                             Landing
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -764,47 +764,47 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg py-3">
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 All Clothing
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Blouses &amp; Shirts
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Coats &amp; Jackets
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Dresses
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Hoodies &amp; Sweats
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Denim
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Jeans
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Jumpers &amp; Cardigans
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Leggings
                               </a>
                             </li>
@@ -818,42 +818,42 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 All Shoes &amp; Boots
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Branded Shoes
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Boots
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Heels
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Trainers
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Sandals
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Shoes
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Wide Fit Shoes
                               </a>
                             </li>
@@ -867,47 +867,47 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 All Bags &amp; Accessories
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Accessories
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Bags &amp; Purses
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Luggage
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Belts
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Hats
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Hair Accessories
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Jewellery
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Travel Accessories
                               </a>
                             </li>
@@ -938,39 +938,27 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Default
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-topbar.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Topbar
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-collapse.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Collapse
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-simple.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Simple
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-masonry.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Masonry
                               </a>
                             </li>
@@ -982,39 +970,27 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./product">
+                              <a className="list-styled-link" href="#">
                                 Default
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-images-left.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Images Left
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-image-grid.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Image Grid
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-image-slider.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Image Slider
                               </a>
                             </li>
                             <li className="list-styled-item">
-                              <a
-                                className="list-styled-link"
-                                href="./product-images-stacked.html"
-                              >
+                              <a className="list-styled-link" href="#">
                                 Images Stacked
                               </a>
                             </li>
@@ -1026,33 +1002,36 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./productping-cart.html"
+                                to={PATH.ShoppingCart}
                               >
                                 Shopping Cart
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./checkout">
-                                Checkout
-                              </a>
-                            </li>
-                            <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./order-completed"
+                                to={PATH.Checkout}
+                              >
+                                Checkout
+                              </Link>
+                            </li>
+                            <li className="list-styled-item">
+                              <Link
+                                className="list-styled-link"
+                                to={PATH.OrderCompleted}
                               >
                                 Order Completed
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./shipping-and-returns"
+                                to={PATH.ShippingAndReturns}
                               >
                                 Shipping &amp; Returns
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -1062,81 +1041,84 @@ export const Header = () => {
                           {/* Links */}
                           <ul className="list-styled font-size-lg">
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-order.html"
+                                to={PATH.Profile.Order}
                               >
                                 Order
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-orders.html"
+                                to={PATH.Profile.Order}
                               >
                                 Orders
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-wishlist"
+                                to={PATH.Profile.Wishlist}
                               >
                                 Wishlist
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-personal-info.html"
+                                to={PATH.Profile.index}
                               >
                                 Personal Info
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-address.html"
+                                to={PATH.Profile.Address}
                               >
                                 Addresses
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-address-edit.html"
+                                to={PATH.Profile.AddressEdit}
                               >
                                 Addresses: New
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-payment.html"
+                                to={PATH.Profile.Payment}
                               >
                                 Payment
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-payment-edit.html"
+                                to={PATH.Profile.Payment}
                               >
                                 Payment: New
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a
+                              <Link
                                 className="list-styled-link"
-                                href="./account-payment-choose.html"
+                                to={PATH.Profile.Payment}
                               >
                                 Payment: Choose
-                              </a>
+                              </Link>
                             </li>
                             <li className="list-styled-item">
-                              <a className="list-styled-link" href="./auth">
+                              <Link
+                                className="list-styled-link"
+                                to={PATH.Account}
+                              >
                                 Auth
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -1312,28 +1294,40 @@ export const Header = () => {
                 {/* Social links */}
                 <ul className="list-inline">
                   <li className="list-inline-item">
-                    <a className="text-gray-350" href="#!">
+                    <a
+                      className="text-gray-350"
+                      href="https://www.facebook.com/"
+                    >
                       <i className="fab fa-facebook-f" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="text-gray-350" href="#!">
+                    <a
+                      className="text-gray-350"
+                      href="https://www.youtube.com/"
+                    >
                       <i className="fab fa-youtube" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="text-gray-350" href="#!">
+                    <a className="text-gray-350" href="https://twitter.com/">
                       <i className="fab fa-twitter" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="text-gray-350" href="#!">
+                    <a
+                      className="text-gray-350"
+                      href="https://www.instagram.com/"
+                    >
                       <i className="fab fa-instagram" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="text-gray-350" href="#!">
-                      <i className="fab fa-medium-m" />
+                    <a
+                      className="text-gray-350"
+                      href="https://www.linkedin.com/"
+                    >
+                      <i className="fab fa-linkedin-m" />
                     </a>
                   </li>
                 </ul>
@@ -1600,23 +1594,23 @@ export const Header = () => {
                 <div className="row mb-6">
                   <div className="col-12 col-md-3">
                     {/* Image */}
-                    <a href="./product">
+                    <Link to={PATH.Product}>
                       <img
                         className="img-fluid mb-7 mb-md-0"
                         src="/img/products/product-6.jpg"
                         alt="..."
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-12 col-md-9">
                     {/* Label */}
                     <p>
-                      <a
+                      <Link
                         className="font-weight-bold text-body"
-                        href="./product"
+                        to={PATH.Product}
                       >
                         Cotton floral print Dress
-                      </a>
+                      </Link>
                     </p>
                     {/* Radio */}
                     <div className="custom-control custom-control-inline custom-control-size mb-2">

@@ -4,7 +4,7 @@ import { useCategory } from "@/hooks/useCategories";
 import { useDispatch } from "react-redux";
 import { updateCartItemAction } from "@/store/cart";
 import { productService } from "@/services/product";
-import { message } from "antd";
+import { Popconfirm, message } from "antd";
 import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
@@ -210,7 +210,7 @@ export const ProductCard = ({
           <div className="card-product-price">
             {real_price < price ? (
               <>
-                <span className="text-primary sale">
+                <span className="text-primary sale mr-2">
                   {currency(real_price)}
                 </span>
                 <span className="font-size-xs text-gray-350 text-decoration-line-through">

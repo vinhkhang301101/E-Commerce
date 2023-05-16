@@ -12,8 +12,8 @@ export const PATH = {
     Order: PROFILE + "/order",
     Wishlist: PROFILE + "/wishlist",
     Address: PROFILE + "/address",
+    AddressEdit: PROFILE + "/address-edit",
     Payment: PROFILE + "/payment",
-
   },
   Account: "/account",
   ContactUs: "/contact-us",
@@ -22,5 +22,5 @@ export const PATH = {
   BlogPost: "/blog-post",
   Faq: "/faq",
   ShippingAndReturns: "/shipping-and-returns",
-  Store_locator: "/store-locator",
+  StoreLocator: "/store-locator",
 };
