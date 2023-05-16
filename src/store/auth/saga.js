@@ -2,12 +2,12 @@ import { PATH } from "@/config/path";
 import { authService } from "@/services/auth";
 import { userService } from "@/services/user";
 import {
-    clearToken,
-    clearUser,
-    getToken,
-    handleError,
-    setToken,
-    setUser
+  clearToken,
+  clearUser,
+  getToken,
+  handleError,
+  setToken,
+  setUser,
 } from "@/utils";
 import { call, put } from "redux-saga/effects";
 import { cartActions } from "../cart";
@@ -47,8 +47,14 @@ export function* fetchUser() {
 }
 
 export function* setUserSaga(action) {
-  setUser(action.payload);
-  yield put(authActions.setUser(user));
+  try {
+    if (getToken()) {
+      const user = yield call(userService.getUserService());
+      setUser(action.payload);
+
+      yield put(authActions.setUser(user.data));
+    }
+  } catch (err) {}
 }
 
 export function* fetchLoginByCode() {

@@ -23,4 +23,5 @@ export const PATH = {
   Faq: "/faq",
   ShippingAndReturns: "/shipping-and-returns",
   StoreLocator: "/store-locator",
+  Page404: "/page404"
 };
