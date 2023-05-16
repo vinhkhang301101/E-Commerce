@@ -3,6 +3,7 @@ import { PATH } from "@/config/path";
 import { ProfileLayout } from "@/layouts/ProfileLayout";
 import { Profile } from "@/pages/profile";
 import { Address } from "@/pages/profile/address";
+import { AddressEdit } from "@/pages/profile/address-edit";
 // import { Info } from "@/pages/profile/info";
 import { Order } from "@/pages/profile/order";
 import { Payment } from "@/pages/profile/payment";
@@ -30,6 +31,11 @@ export const profile = [
       {
         element: <Address />,
         path: PATH.Profile.Address,
+      },
+
+      {
+        element: <AddressEdit />,
+        path: PATH.Profile.AddressEdit,
       },
 
       {

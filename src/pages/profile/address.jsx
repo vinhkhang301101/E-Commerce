@@ -1,6 +1,8 @@
 import React from "react";
 import { Portal } from "@/components/Portal";
 import { PROFILE_TITLE_ID } from "@/config";
+import { Link } from "react-router-dom";
+import { PATH } from "@/config/path";
 
 export const Address = () => {
   return (
@@ -25,12 +27,12 @@ export const Address = () => {
               {/* Action */}
               <div className="card-action card-action-right">
                 {/* Button */}
-                <a
+                <Link
                   className="btn btn-xs btn-circle btn-white-primary"
-                  href="account-address-edit.html"
+                  to={PATH.Profile.AddressEdit}
                 >
                   <i className="fe fe-edit-2" />
-                </a>
+                </Link>
                 {/* Button */}
                 <button className="btn btn-xs btn-circle btn-white-primary">
                   <i className="fe fe-x" />
@@ -57,12 +59,12 @@ export const Address = () => {
               {/* Action */}
               <div className="card-action card-action-right">
                 {/* Button */}
-                <a
+                <Link
                   className="btn btn-xs btn-circle btn-white-primary"
-                  href="account-address-edit.html"
+                  to={PATH.Profile.AddressEdit}
                 >
                   <i className="fe fe-edit-2" />
-                </a>
+                </Link>
                 {/* Button */}
                 <button className="btn btn-xs btn-circle btn-white-primary">
                   <i className="fe fe-x" />
@@ -73,12 +75,12 @@ export const Address = () => {
         </div>
         <div className="col-12">
           {/* Button */}
-          <a
+          <Link
             className="btn btn-block btn-lg btn-outline-border"
-            href="account-address-edit.html"
+            to={PATH.Profile.AddressEdit}
           >
             Add Address <i className="fe fe-plus" />
-          </a>
+          </Link>
         </div>
       </div>
     </>

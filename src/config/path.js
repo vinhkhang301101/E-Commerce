@@ -12,8 +12,8 @@ export const PATH = {
     Order: PROFILE + "/order",
     Wishlist: PROFILE + "/wishlist",
     Address: PROFILE + "/address",
+    AddressEdit: PROFILE + "/address-edit",
     Payment: PROFILE + "/payment",
-
   },
   Account: "/account",
   ContactUs: "/contact-us",

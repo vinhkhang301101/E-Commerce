@@ -111,7 +111,7 @@ export const Profile = () => {
             <div className="wrap">
               <img src="../img/avt.png" alt="avatar" />
               <i className="icon">
-                <img src="./img/icons/icon-ruler.svg" alt="icon" />
+                <img src="/img/icons/icon-ruler.svg" alt="icon" />
               </i>
             </div>
           </div>

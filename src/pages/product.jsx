@@ -13,7 +13,8 @@ import {
 import { PATH } from "@/config/path";
 import { cn, slugify } from "@/utils";
 import queryString from "query-string";
-import { Portal } from "@/components/Portal";
+import { useCategories, useCategory } from "@/hooks/useCategories";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const Product = () => {
   const { id } = useParams();
@@ -37,9 +38,8 @@ export const Product = () => {
     queryFn: ({ signal }) => productService.getProduct(`?${qs}`, signal),
   });
 
-  const { data: categories, loading: categoryLoading } = useQuery({
-    queryFn: () => productService.getCategories(),
-  });
+  const { data: categories, loading: categoryLoading } = useCategories()
+  const category = useCategory(parseInt(id))
 
   return (
     <section className="py-11">
@@ -435,19 +435,24 @@ export const Product = () => {
             <div className="row align-items-center mb-7">
               <div className="col-12 col-md">
                 {/* Heading */}
-                <h3 className="mb-1 product-title">
-                  Điện thoại - Máy tính báng
+                <h3 className="mb-1">
+                  {category ? category.title : "All Products"}
                 </h3>
-
                 {/* Breadcrumb */}
-                <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
+                {/* <ol className="breadcrumb mb-md-0 font-size-xs text-gray-400">
                   <li className="breadcrumb-item">
                     <a className="text-gray-400" href="/">
                       Home
                     </a>
                   </li>
                   <li className="breadcrumb-item active">Electronic Devices</li>
-                </ol>
+                </ol> */}
+                <Breadcrumb>
+                  <Breadcrumb.Item to={PATH.Home}>Home</Breadcrumb.Item>
+                  <Breadcrumb.Item>
+                    {category ? category.title : "All Products"}
+                  </Breadcrumb.Item>
+                </Breadcrumb>
               </div>
               <div className="col-12 col-md-auto">
                 {/* Select */}

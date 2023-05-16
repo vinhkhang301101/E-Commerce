@@ -287,12 +287,12 @@ export const Home = () => {
                   {/* Heading */}
                   <h4 className="mb-0">Laptop</h4>
                   {/* Link */}
-                  <a
+                  <Link
                     className="btn btn-link stretched-link text-reset"
-                    href="/product"
+                    to={PATH.Product}
                   >
                     Shop Now <i className="fe fe-arrow-right ml-2" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -337,18 +337,18 @@ export const Home = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-120.jpg"
+                          src="/img/products/product-120.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-5.jpg"
+                          src="/img/products/product-5.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -374,15 +374,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Shoes
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Leather mid-heel Sandals
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$129.00</div>
@@ -395,18 +395,18 @@ export const Home = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-121.jpg"
+                          src="/img/products/product-121.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-6.jpg"
+                          src="/img/products/product-6.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -432,15 +432,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Dresses
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Cotton floral print Dress
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$40.00</div>
@@ -457,18 +457,18 @@ export const Home = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-122.jpg"
+                          src="/img/products/product-122.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-7.jpg"
+                          src="/img/products/product-7.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -494,15 +494,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Shoes
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Leather Sneakers
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold">
@@ -523,7 +523,7 @@ export const Home = () => {
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-8.jpg"
+                          src="/img/products/product-8.jpg"
                           alt="..."
                         />
                       </a>
@@ -552,15 +552,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Tops
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Cropped cotton Top
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$29.00</div>
@@ -576,7 +576,7 @@ export const Home = () => {
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-9.jpg"
+                          src="/img/products/product-9.jpg"
                           alt="..."
                         />
                       </a>
@@ -605,15 +605,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Dresses
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Floral print midi Dress
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$50.00</div>
@@ -630,18 +630,18 @@ export const Home = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-123.jpg"
+                          src="/img/products/product-123.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-10.jpg"
+                          src="/img/products/product-10.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -667,15 +667,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Bags
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Suede cross body Bag
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold">
@@ -693,18 +693,18 @@ export const Home = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-124.jpg"
+                          src="/img/products/product-124.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-11.jpg"
+                          src="/img/products/product-11.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -730,15 +730,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Skirts
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Printed A-line Skirt
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$79.00</div>
@@ -758,7 +758,7 @@ export const Home = () => {
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-12.jpg"
+                          src="/img/products/product-12.jpg"
                           alt="..."
                         />
                       </a>
@@ -787,15 +787,15 @@ export const Home = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="/product">
+                        <Link className="text-muted" to={PATH.Product}>
                           Shoes
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="text-body" to={PATH.Product}>
                           Heel strappy Sandals
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$90.00</div>
@@ -809,9 +809,9 @@ export const Home = () => {
             <div className="col-12">
               {/* Link  */}
               <div className="mt-7 text-center">
-                <a className="link-underline" href="#!">
+                <Link className="link-underline" to={PATH.Product}>
                   Discover more
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -878,7 +878,7 @@ export const Home = () => {
               <div className="card mb-2">
                 {/* Image */}
                 <img
-                  src="./img/products/product-16.jpg"
+                  src="/img/products/product-16.jpg"
                   alt="..."
                   className="card-img"
                 />
@@ -899,20 +899,20 @@ export const Home = () => {
               <div className="card mb-2">
                 {/* Image */}
                 <img
-                  src="./img/products/product-17.jpg"
+                  src="/img/products/product-17.jpg"
                   alt="..."
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-6 col-sm-4 col-md px-1">
@@ -920,20 +920,20 @@ export const Home = () => {
               <div className="card mb-2">
                 {/* Image */}
                 <img
-                  src="./img/products/product-18.jpg"
+                  src="/img/products/product-18.jpg"
                   alt="..."
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-6 col-sm-4 col-md px-1">
@@ -941,20 +941,20 @@ export const Home = () => {
               <div className="card mb-2">
                 {/* Image */}
                 <img
-                  src="./img/products/product-19.jpg"
+                  src="/img/products/product-19.jpg"
                   alt="..."
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-6 col-sm-4 col-md px-1">
@@ -962,20 +962,20 @@ export const Home = () => {
               <div className="card">
                 {/* Image */}
                 <img
-                  src="./img/products/product-20.jpg"
+                  src="/img/products/product-20.jpg"
                   alt="..."
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-6 col-sm-4 col-md px-1">
@@ -983,20 +983,20 @@ export const Home = () => {
               <div className="card">
                 {/* Image */}
                 <img
-                  src="./img/products/product-21.jpg"
+                  src="/img/products/product-21.jpg"
                   alt="..."
                   className="card-img"
                 />
                 {/* Overlay */}
-                <a
+                <Link
                   className="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
-                  href="/blog-post"
+                  to={PATH.BlogPost}
                 >
                   <p className="my-0 font-size-xxs text-center text-white">
                     <i className="fe fe-heart mr-2" /> 248{" "}
                     <i className="fe fe-message-square mr-2 ml-3" /> 7
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -1004,7 +1004,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/mango.svg"
+                src="/img/brands/gray-350/mango.svg"
                 alt="..."
                 className="img-fluid mb-7 mb-md-0"
               />
@@ -1012,7 +1012,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/zara.svg"
+                src="/img/brands/gray-350/zara.svg"
                 alt="..."
                 className="img-fluid mb-7 mb-md-0"
               />
@@ -1020,7 +1020,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/reebok.svg"
+                src="/img/brands/gray-350/reebok.svg"
                 alt="..."
                 className="img-fluid mb-7 mb-md-0"
               />
@@ -1028,7 +1028,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/asos.svg"
+                src="/img/brands/gray-350/asos.svg"
                 alt="..."
                 className="img-fluid mb-7 mb-md-0"
               />
@@ -1036,7 +1036,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/stradivarius.svg"
+                src="/img/brands/gray-350/stradivarius.svg"
                 alt="..."
                 className="img-fluid mb-6 mb-sm-0"
               />
@@ -1044,7 +1044,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/adidas.svg"
+                src="/img/brands/gray-350/adidas.svg"
                 alt="..."
                 className="img-fluid mb-6 mb-sm-0"
               />
@@ -1052,7 +1052,7 @@ export const Home = () => {
             <div className="col-4 col-sm-3 col-md text-center">
               {/* Brand */}
               <img
-                src="./img/brands/gray-350/bershka.svg"
+                src="/img/brands/gray-350/bershka.svg"
                 alt="..."
                 className="img-fluid"
               />
