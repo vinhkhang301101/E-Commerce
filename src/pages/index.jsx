@@ -1,5 +1,4 @@
 import { Counter } from '@/components/Counter';
-import { FlickitySlider } from '@/components/Flickity';
 import { PATH } from '@/config/path';
 import React from 'react'
 import { Link } from 'react-router-dom';

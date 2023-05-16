@@ -4,12 +4,11 @@ import { useCategory } from "@/hooks/useCategories";
 import { useDispatch } from "react-redux";
 import { updateCartItemAction } from "@/store/cart";
 import { productService } from "@/services/product";
-import { Popconfirm, message } from "antd";
+import { message } from "antd";
 import { handleError } from "@/utils";
 import { PATH } from "@/config/path";
 import { useCart } from "@/hooks/useCart";
 import { Link, generatePath, useNavigate } from "react-router-dom";
-// import { useAuth } from "../AuthContext";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useAuth } from "../AuthContext";
 import { Popconfirm } from "../PopConfirm";
@@ -137,8 +136,8 @@ export const ProductCard = ({
                 title="Announcement"
                 description="Please log-in before add product into wishlist"
                 onConfirm={() => navigate(PATH.Account)}
-                okText="Log-in"
-                showCancel={false}
+                okText="Login"
+                // showCancel={false}
                 okButtonProps={{ style: { height: 50 } }}
               >
                 <span className="card-action">
