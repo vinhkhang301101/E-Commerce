@@ -102,7 +102,8 @@ export const Profile = () => {
         updateProfileService({
           ...userForm.values,
           avatar,
-        })
+        }
+        )
           .then((res) => {
             dispatch(setUserAction(res.data));
             fileRef.current = null;
