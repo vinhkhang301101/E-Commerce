@@ -1212,43 +1212,33 @@ export const Header = () => {
                     >
                       <ul className="list-styled font-size-lg py-3 mb-0">
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="./about.html">
+                          <Link
+                            className="list-styled-link"
+                            to={PATH.ContactUs}
+                          >
                             About
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a
+                          <Link
                             className="list-styled-link"
-                            href="./contact-us.html"
+                            to={PATH.ContactUs}
                           >
                             Contact Us
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a
+                          <Link
                             className="list-styled-link"
-                            href="./store-locator.html"
+                            to={PATH.StoreLocator}
                           >
                             Store Locator
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="./faq">
+                          <Link className="list-styled-link" to={PATH.Faq}>
                             FAQ
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          <a
-                            className="list-styled-link"
-                            href="./coming-soon.html"
-                          >
-                            Coming Soon
-                          </a>
-                        </li>
-                        <li className="list-styled-item">
-                          <a className="list-styled-link" href="./404.html">
-                            404
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -1270,14 +1260,14 @@ export const Header = () => {
                     >
                       <ul className="list-styled font-size-lg py-3 mb-0">
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="./blog">
+                          <Link className="list-styled-link" to={PATH.Blog}>
                             Blog
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-styled-item">
-                          <a className="list-styled-link" href="./blog-post">
+                          <Link className="list-styled-link" to={PATH.BlogPost}>
                             Blog Post
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
