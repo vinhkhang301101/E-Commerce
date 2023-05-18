@@ -1920,7 +1920,7 @@ export const Header = () => {
                       USD
                     </a>
                     <a className="dropdown-item" href="#!">
-                      EUR
+                      VND
                     </a>
                   </div>
                 </li>
@@ -1939,10 +1939,7 @@ export const Header = () => {
                       English
                     </a>
                     <a className="dropdown-item" href="#">
-                      French
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      German
+                      Tiếng Việt
                     </a>
                   </div>
                 </li>
