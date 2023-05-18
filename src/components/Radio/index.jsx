@@ -14,6 +14,7 @@ export const Radio = ({ children, ...props }) => {
         checked={props.value == value}
         className="custom-control-input"
         type="radio"
+        onChange={() => onChange(props.value)}
       />
       <label
         className="custom-control-label flex items-center"
@@ -30,11 +31,16 @@ Radio.Toggle = ({ children, ...props }) => {
   return (
     <label
       className={cn("btn btn-sm btn-outline-border", {
-        active: props.value == value,
+        active: props.value === value,
       })}
       onClick={() => onChange(props.value)}
     >
-      <input type="radio" name="gender" checked={props.value == value} />
+      <input
+        type="radio"
+        name="gender"
+        checked={props.value === value}
+        onChange={() => onChange(props.value)}
+      />
       {children}
     </label>
   );
@@ -43,7 +49,7 @@ Radio.Toggle = ({ children, ...props }) => {
 Radio.Group = ({ children, defaultValue, toggle, ...props }) => {
   const [value, setValue] = useState(defaultValue);
   const onChange = (_value) => {
-    if (toggle && _value == value) {
+    if (toggle && _value === value) {
       setValue();
       props?.onChange?.();
       return;
