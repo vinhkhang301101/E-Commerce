@@ -68,7 +68,7 @@ export const CartItem = ({ footer, hideAction, allowSelect, productId, product, 
               <Checkbox checked={selected} onChange={onSelectCartItem} />
             )}
             {/* Image */}
-            <Link onClick={() => setOpenCartDrawer(false)} to={w}>
+            <Link onClick={() => setOpenCartDrawer(false)} to={`/${slug}`}>
               <img
                 className="img-fluid"
                 src={product.thumbnail_url}
