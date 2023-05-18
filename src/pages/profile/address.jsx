@@ -15,23 +15,23 @@ export const Address = () => {
             <div className="card-body">
               {/* Text */}
               <p className="font-size-sm mb-0 leading-[35px]">
-                <a
+                <Link
                   className="text-body text-xl font-bold "
-                  href="./product.html"
+                  to={PATH.Address}
                 >
-                  Đặng Thuyền Vương
-                </a>{" "}
+                  Nguyễn Phước Vĩnh Khang
+                </Link>{" "}
                 <br />
-                <b>Số điện thoại:</b> 123456789 <br />
-                <b>Email:</b>dangthuyenvuong@gmail.com
+                <b>Phone Number: </b> 0987654321 <br />
+                <b>Email: </b>vinhkhangnp@gmail.com
                 <br />
-                <b>Quận / Huyện:</b> Q1 <br />
-                <b>Tỉnh / thành phố:</b> Ho Chi Minh <br />
-                <b>Địa chỉ:</b> 123
+                <b>District: </b> Thủ Đức <br />
+                <b>Province / City:</b> TP HCM <br />
+                <b>Address: </b> 11/30
               </p>
               <div className="card-action-right-bottom">
                 <div className="color-success cursor-pointer">
-                  Địa chỉ mặc định
+                  Default Address
                 </div>
               </div>
               {/* Action */}
@@ -55,17 +55,17 @@ export const Address = () => {
               <p className="font-size-sm mb-0 leading-[35px]">
                 <Link
                   className="text-body text-xl font-bold "
-                  to={PATH.Profile}
+                  to={PATH.Address}
                 >
-                  Đặng Thuyền Vương
+                  Nguyễn Phước Vĩnh Khang
                 </Link>{" "}
                 <br />
-                <b>Số điện thoại:</b> 123456789 <br />
-                <b>Email:</b>dangthuyenvuong@gmail.com
+                <b>Phone Number: </b> 0123456789 <br />
+                <b>Email: </b>kgrenijagaming@gmail.com
                 <br />
-                <b>Quận / Huyện:</b> Q1 <br />
-                <b>Tỉnh / thành phố:</b> Ho Chi Minh <br />
-                <b>Địa chỉ:</b> 123
+                <b>District: </b> Thủ Đức <br />
+                <b>Province / City:</b> TP HCM <br />
+                <b>Address: </b> 30/11
               </p>
               {/* Action */}
               <div className="card-action card-action-right gap-2 flex">

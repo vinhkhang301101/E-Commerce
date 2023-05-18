@@ -15,6 +15,7 @@ import { cn, slugify } from "@/utils";
 import queryString from "query-string";
 import { useCategories, useCategory } from "@/hooks/useCategories";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { useScrollTop } from "@/hooks/useScrollTop";
 
 export const Product = () => {
   const { id } = useParams();
@@ -29,6 +30,8 @@ export const Product = () => {
     categories: id,
     name: searchProduct,
   });
+
+  useScrollTop()
 
   // const clickTitle = () => {};
 

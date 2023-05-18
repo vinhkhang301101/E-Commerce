@@ -39,6 +39,7 @@ export const {
       },
     };
   },
+  
   reducers: {
     clearCart(state) {
       return {

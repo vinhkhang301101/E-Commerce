@@ -6,7 +6,7 @@ import { useCart } from "@/hooks/useCart";
 import { useForm } from "@/hooks/useForm";
 // import { useQuery } from "@/hooks/useQuery";
 // import { cartService } from "@/services/cart";
-import { cartActions } from "@/store/cart";
+import { cartActions, removeCartItemAction } from "@/store/cart";
 // import { userService } from "@/services/user";
 import { currency, handleError, regexp, required } from "@/utils";
 import { Spin } from "antd";
@@ -23,7 +23,7 @@ const addressRules = {
   address: [required()],
 };
 
-export const Checkout = ({ productId }) => {
+export const Checkout = () => {
   const { preCheckoutResponse, preCheckoutLoading, preCheckoutData } = useCart();
   const noteRef = useRef()
   const navigate = useNavigate();
@@ -53,8 +53,9 @@ export const Checkout = ({ productId }) => {
       // _address = addressForm.values;
       // return addressForm.values
       navigate(PATH.OrderCompleted);
+      console.log(preCheckoutData.listItems);
+      dispatch(removeCartItemAction(preCheckoutData.listItems));
     }
-    dispatch(cartActions.clearCart());
 
     // checkoutService({
     //   shipping: {

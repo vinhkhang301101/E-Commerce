@@ -303,9 +303,7 @@ export const Home = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 col-xl-6">
-              {/* Heading */}
               <h2 className="mb-4 text-center">Top month Sellers</h2>
-              {/* Nav */}
               <div className="nav justify-content-center mb-10">
                 <a
                   className="nav-link active"

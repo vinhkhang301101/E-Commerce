@@ -36,6 +36,7 @@ const rules = {
       }
     },
   ],
+
   newPassword: [
     (value, forms) => {
       if (forms.currentPassword) {
@@ -106,7 +107,7 @@ export const Profile = () => {
           .then((res) => {
             dispatch(setUserAction(res.data));
             fileRef.current = null;
-            message.success("Update profile success");
+            message.success("Update profile success!");
           })
           .catch(handleError);
       }
@@ -116,7 +117,7 @@ export const Profile = () => {
           currentPassword: userForm.values.currentPassword,
           newPassword: userForm.values.newPassword,
         })
-          .then((res) => {
+          .then(res => {
             userForm.setValues({
               currentPassword: "",
               newPassword: "",
