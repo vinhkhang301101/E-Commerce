@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Tab } from "@/components/Tab";
 import { PATH } from "@/config/path";
 import { useAuthRedux } from "@/hooks/useAuthRedux";
 import { useCart } from "@/hooks/useCart";
@@ -7,7 +8,7 @@ import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
 import { updateCartItemAction } from "@/store/cart";
 import { currency } from "@/utils";
-import { message, Image } from "antd";
+import { message, Image, Tabs, Button } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -20,7 +21,7 @@ export const ProductDetailPages = () => {
   const { user } = useAuthRedux();
   const dispatch = useDispatch();
 
-  const {openImageModal, setOpenImageModal} = useState(false)
+  const [openImageModal, setOpenImageModal] = useState(false);
 
   const { data: detail, loading } = useQuery({
     queryFn: () => productService.getProductDetail(id),
@@ -132,25 +133,20 @@ export const ProductDetailPages = () => {
                     </div>
                   </div>
                   {/* Slider */}
-                  <div className="flickity-nav mx-n2 mb-10 mb-md-0 flex">
-                    {product.images.slice(0, 4).map((e) => (
-                      <div
-                        onClick={() => setOpenImageModal(true)}
-                        key={e.thumbnail_url}
-                        className="col-12 px-2"
-                        style={{ maxWidth: 113 }}
-                      >
-                        <div
-                          className="embed-responsive embed-responsive-1by1 bg-cover"
-                          style={{ backgroundImage: `url(${e.thumbnail_url})` }}
-                        />
-                      </div>
-                    ))}
+                  {/* <div className="flickity-nav mx-n2 mb-10 mb-md-0 flex">
+                      {
+                        product.images.slice(0, 4).map((e) => (
+                          <div onClick={() => setOpenImageModal(true)} key={e.thumbnail_url} className="col-12 px-2" style={{ maxWidth: 113 }}>
+                          <div className="embed-responsive embed-responsive-1by1 bg-cover" style={{backgroundImage: `url(${e.thumbnail_url})`}}/>
+                    </div>
+                        ))
+                      }
 
-                    {
-                      // product.images.length > 4
-                    }
-                  </div>
+                      {
+                        product.images.length === 5
+                      }
+
+                     </div>  */}
                 </div>
                 <div className="col-12 col-md-6 pl-lg-10">
                   {/* Header */}

@@ -299,7 +299,7 @@ export const Home = () => {
         </div>
       </section>
       {/* TOP SELLERS */}
-      <section className="py-12">
+      {/* <section className="py-12">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 col-xl-6">
@@ -325,15 +325,11 @@ export const Home = () => {
             <div className="tab-pane fade show active" id="topSellersTab">
               <div className="row">
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Badge */}
                     <div className="badge badge-white card-badge card-badge-left text-uppercase">
                       New
                     </div>
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
@@ -346,7 +342,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </Link>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -367,31 +362,24 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Shoes
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Leather mid-heel Sandals
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$129.00</div>
                     </div>
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
@@ -404,7 +392,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </Link>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -425,35 +412,27 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Dresses
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Cotton floral print Dress
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$40.00</div>
                     </div>
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Badge */}
                     <div className="badge badge-dark card-badge card-badge-left text-uppercase">
                       Sale
                     </div>
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
@@ -466,7 +445,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </Link>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -487,21 +465,17 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Shoes
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Leather Sneakers
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold">
                         <span className="font-size-xs text-gray-350 text-decoration-line-through">
                           $85.00
@@ -512,11 +486,8 @@ export const Home = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
@@ -524,7 +495,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </a>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -545,31 +515,24 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Tops
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Cropped cotton Top
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$29.00</div>
                     </div>
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
@@ -577,7 +540,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </a>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -598,35 +560,27 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Dresses
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Floral print midi Dress
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$50.00</div>
                     </div>
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Badge */}
                     <div className="badge badge-dark card-badge card-badge-left text-uppercase">
                       Sale
                     </div>
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
@@ -639,7 +593,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </Link>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -660,21 +613,17 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Bags
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Suede cross body Bag
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold">
                         <span className="font-size-xs text-gray-350 text-decoration-line-through">
                           $79.00
@@ -685,11 +634,8 @@ export const Home = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
@@ -702,7 +648,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </Link>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -723,35 +668,27 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Skirts
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Printed A-line Skirt
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$79.00</div>
                     </div>
                   </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
-                  {/* Card */}
                   <div className="card mb-7">
-                    {/* Badge */}
                     <div className="badge badge-white card-badge card-badge text-uppercase">
                       New
                     </div>
-                    {/* Image */}
                     <div className="card-img">
-                      {/* Image */}
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
@@ -759,7 +696,6 @@ export const Home = () => {
                           alt="..."
                         />
                       </a>
-                      {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
                         <span className="card-action">
@@ -780,21 +716,17 @@ export const Home = () => {
                         </span>
                       </div>
                     </div>
-                    {/* Body */}
                     <div className="card-body px-0">
-                      {/* Category */}
                       <div className="font-size-xs">
                         <Link className="text-muted" to={PATH.Product}>
                           Shoes
                         </Link>
                       </div>
-                      {/* Title */}
                       <div className="font-weight-bold">
                         <Link className="text-body" to={PATH.Product}>
                           Heel strappy Sandals
                         </Link>
                       </div>
-                      {/* Price */}
                       <div className="font-weight-bold text-muted">$90.00</div>
                     </div>
                   </div>
@@ -804,7 +736,6 @@ export const Home = () => {
           </div>
           <div className="row">
             <div className="col-12">
-              {/* Link  */}
               <div className="mt-7 text-center">
                 <Link className="link-underline" to={PATH.Product}>
                   Discover more
@@ -813,11 +744,11 @@ export const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* COUNTDOWN */}
       <section
-        className="py-13 bg-cover"
-        style={{ backgroundImage: "url(./img/covers/cover-4.jpg)" }}
+        className="py-13 bg-cover mt-13"
+        style={{ backgroundImage: "url(/img/covers/cover-4.jpg)" }}
       >
         <div className="container">
           <div className="row justify-content-end">
