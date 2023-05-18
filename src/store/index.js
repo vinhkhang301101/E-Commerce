@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { cartReducer, cartSaga, getCartAction } from "./cart";
 import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";

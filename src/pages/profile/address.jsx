@@ -9,21 +9,31 @@ export const Address = () => {
     <>
       <Portal selector={PROFILE_TITLE_ID}>My Address</Portal>
       <div className="row">
-        <div className="col-12 col-lg-6">
+        <div className="col-12">
           {/* Card */}
           <div className="card card-lg bg-light mb-8">
             <div className="card-body">
-              {/* Heading */}
-              <h6 className="mb-6">Shipping Address</h6>
               {/* Text */}
-              <p className="text-muted mb-0">
-                Daniel Robinson <br />
-                3997 Raccoon Run <br />
-                Kingston <br />
-                45644 <br />
-                United States <br />
-                6146389574
+              <p className="font-size-sm mb-0 leading-[35px]">
+                <a
+                  className="text-body text-xl font-bold "
+                  href="./product.html"
+                >
+                  Đặng Thuyền Vương
+                </a>{" "}
+                <br />
+                <b>Số điện thoại:</b> 123456789 <br />
+                <b>Email:</b>dangthuyenvuong@gmail.com
+                <br />
+                <b>Quận / Huyện:</b> Q1 <br />
+                <b>Tỉnh / thành phố:</b> Ho Chi Minh <br />
+                <b>Địa chỉ:</b> 123
               </p>
+              <div className="card-action-right-bottom">
+                <div className="color-success cursor-pointer">
+                  Địa chỉ mặc định
+                </div>
+              </div>
               {/* Action */}
               <div className="card-action card-action-right">
                 {/* Button */}
@@ -33,31 +43,32 @@ export const Address = () => {
                 >
                   <i className="fe fe-edit-2" />
                 </Link>
-                {/* Button */}
-                <button className="btn btn-xs btn-circle btn-white-primary">
-                  <i className="fe fe-x" />
-                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-12 col-lg-6">
+        <div className="col-12">
           {/* Card */}
           <div className="card card-lg bg-light mb-8">
             <div className="card-body">
-              {/* Heading */}
-              <h6 className="mb-6">Billing Address</h6>
               {/* Text */}
-              <p className="text-muted mb-0">
-                Daniel Robinson <br />
-                3997 Raccoon Run <br />
-                Kingston <br />
-                45644 <br />
-                United States <br />
-                6146389574
+              <p className="font-size-sm mb-0 leading-[35px]">
+                <Link
+                  className="text-body text-xl font-bold "
+                  to={PATH.Profile}
+                >
+                  Đặng Thuyền Vương
+                </Link>{" "}
+                <br />
+                <b>Số điện thoại:</b> 123456789 <br />
+                <b>Email:</b>dangthuyenvuong@gmail.com
+                <br />
+                <b>Quận / Huyện:</b> Q1 <br />
+                <b>Tỉnh / thành phố:</b> Ho Chi Minh <br />
+                <b>Địa chỉ:</b> 123
               </p>
               {/* Action */}
-              <div className="card-action card-action-right">
+              <div className="card-action card-action-right gap-2 flex">
                 {/* Button */}
                 <Link
                   className="btn btn-xs btn-circle btn-white-primary"

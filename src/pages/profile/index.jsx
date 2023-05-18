@@ -208,7 +208,7 @@ export const Profile = () => {
             {...userForm.register("birthday")}
             renderField={(props) => (
               <DatePicker
-                format="DD/MM/YYYY"
+                // format="DD/MM/YYYY"
                 value={props.value ? dayjs(props.value) : undefined}
                 onChange={(ev, date) => props.onChange(date)}
                 className="form-control form-control-sm"
