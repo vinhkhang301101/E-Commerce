@@ -36,6 +36,7 @@ export const validate = (rules, forms) => {
           break;
         }
       }
+      
       if (rule.regexp && forms[name]) {
         let regexp = rule.regexp;
         if (regexp in REGEXP) {

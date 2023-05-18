@@ -39,7 +39,7 @@ export function* logout() {
 export function* fetchUser() {
   try {
     if (getToken()) {
-      const user = yield call(userService.getUserService());
+      const user = yield call(userService.getUserService);
       setUser(user.data);
       yield put(authActions.setUser(user.data));
     }
@@ -47,14 +47,8 @@ export function* fetchUser() {
 }
 
 export function* setUserSaga(action) {
-  try {
-    if (getToken()) {
-      const user = yield call(userService.getUserService());
-      setUser(action.payload);
-
-      yield put(authActions.setUser(user.data));
-    }
-  } catch (err) {}
+  setUser(action.payload)
+  yield put(authActions.setUser(user))
 }
 
 export function* fetchLoginByCode() {

@@ -1,19 +1,27 @@
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Tab } from "@/components/Tab";
 import { PATH } from "@/config/path";
+import { useAuthRedux } from "@/hooks/useAuthRedux";
+import { useCart } from "@/hooks/useCart";
 import { useCategory } from "@/hooks/useCategories";
 import { useQuery } from "@/hooks/useQuery";
 import { productService } from "@/services/product";
+import { updateCartItemAction } from "@/store/cart";
 import { currency } from "@/utils";
-import { message, Image } from "antd";
+import { message, Image, Tabs, Button } from "antd";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export const ProductDetailPages = () => {
   const { slug } = useParams();
   const [, id] = slug.split("-p");
   const navigate = useNavigate();
+  const { cart } = useCart();
+  const { user } = useAuthRedux();
+  const dispatch = useDispatch();
 
-  const {openImageModal, setOpenImageModal} = useState(false)
+  const [openImageModal, setOpenImageModal] = useState(false);
 
   const { data: detail, loading } = useQuery({
     queryFn: () => productService.getProductDetail(id),
@@ -55,6 +63,22 @@ export const ProductDetailPages = () => {
     }
   };
 
+  const onAddCartItem = () => {
+    if (user) {
+      const { listItems } = cart;
+      const product = listItems.find((e) => e.product.id === id);
+      dispatch(
+        updateCartItemAction({
+          productId: id,
+          quantity: product ? product.quantity + 1 : 1,
+          showPopover: true,
+        })
+      );
+    } else {
+      navigate(PATH.Account);
+    }
+  };
+
   return (
     <div>
       {/* BREADCRUMB */}
@@ -68,19 +92,6 @@ export const ProductDetailPages = () => {
                 <Breadcrumb.Item to={PATH.Product}>Product</Breadcrumb.Item>
                 <Breadcrumb.Item>{detail.data.name}</Breadcrumb.Item>
               </Breadcrumb>
-              {/* <ol className="breadcrumb mb-0 font-size-xs text-gray-400">
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="index.html">
-                    Home
-                  </a>
-                </li>
-                <li className="breadcrumb-item">
-                  <a className="text-gray-400" href="shop.html">
-                    Women's Shoes
-                  </a>
-                </li>
-                <li className="breadcrumb-item active">Leather Sneakers</li>
-              </ol> */}
             </div>
           </div>
         </div>
@@ -100,38 +111,51 @@ export const ProductDetailPages = () => {
                     </div>
                     {/* Slider */}
                     <div className="mb-4">
-                        <img onClick={() => setOpenImageModal(true)} src={product.images[0].thumbnail_url} alt="..." className="card-img-top" style={{cursor: "pointer"}} />
+                      <img
+                        onClick={() => setOpenImageModal(true)}
+                        src={product.images[0].thumbnail_url}
+                        alt="..."
+                        className="card-img-top"
+                        style={{ cursor: "pointer" }}
+                      />
                     </div>
-                    <div style={{display: "none"}}>
-                    <Image.PreviewGroup preview={{ visible: openImageModal, onVisibleChange: vis => setOpenImageModal(vis)}}>
-                      {product.images.map(e => <Image src={e.thumbnail_url}/>)}
-                    </Image.PreviewGroup>
+                    <div style={{ display: "none" }}>
+                      <Image.PreviewGroup
+                        preview={{
+                          visible: openImageModal,
+                          onVisibleChange: (vis) => setOpenImageModal(vis),
+                        }}
+                      >
+                        {product.images.map((e) => (
+                          <Image src={e.thumbnail_url} />
+                        ))}
+                      </Image.PreviewGroup>
                     </div>
                   </div>
                   {/* Slider */}
-                  <div className="flickity-nav mx-n2 mb-10 mb-md-0 flex">
+                  {/* <div className="flickity-nav mx-n2 mb-10 mb-md-0 flex">
                       {
                         product.images.slice(0, 4).map((e) => (
                           <div onClick={() => setOpenImageModal(true)} key={e.thumbnail_url} className="col-12 px-2" style={{ maxWidth: 113 }}>
-                          <div className="embed-responsive embed-responsive-1by1 bg-cover" style={{backgroundImage: `url(${e.thumbnail_url})`,}}/>
+                          <div className="embed-responsive embed-responsive-1by1 bg-cover" style={{backgroundImage: `url(${e.thumbnail_url})`}}/>
                     </div>
                         ))
                       }
 
                       {
-                        // product.images.length > 4
+                        product.images.length === 5
                       }
 
-                     </div> 
+                     </div>  */}
                 </div>
                 <div className="col-12 col-md-6 pl-lg-10">
                   {/* Header */}
                   <div className="row mb-1">
                     <div className="col">
                       {/* Preheading */}
-                      <a className="text-muted" href="shop.html">
+                      <Link className="text-muted" to={PATH.Product}>
                         {category?.title}
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-auto flex items-center">
                       {/* Rating */}
@@ -167,10 +191,11 @@ export const ProductDetailPages = () => {
                   {/* Form */}
                   <div className="form-row mb-7">
                     <p className="col-12">{product.short_description}</p>
-                    
+
                     <div className="col-12 col-lg">
                       {/* Submit */}
                       <button
+                        onClick={onAddCartItem}
                         type="submit"
                         className="btn btn-block btn-dark mb-2"
                       >
@@ -179,7 +204,8 @@ export const ProductDetailPages = () => {
                     </div>
                     <div className="col-12 col-lg-auto">
                       {/* Wishlist */}
-                      <button onClick={onAddWishlist}
+                      <button
+                        onClick={onAddWishlist}
                         className="btn btn-outline-dark btn-block mb-2"
                         data-toggle="button"
                       >
@@ -192,19 +218,19 @@ export const ProductDetailPages = () => {
                     <span className="mr-4">Share:</span>
                     <a
                       className="btn btn-xxs btn-circle btn-light font-size-xxxs text-gray-350"
-                      href="#!"
+                      href="https://twitter.com/"
                     >
                       <i className="fab fa-twitter" />
                     </a>
                     <a
                       className="btn btn-xxs btn-circle btn-light font-size-xxxs text-gray-350"
-                      href="#!"
+                      href="https://www.facebook.com/"
                     >
                       <i className="fab fa-facebook-f" />
                     </a>
                     <a
                       className="btn btn-xxs btn-circle btn-light font-size-xxxs text-gray-350"
-                      href="#!"
+                      href="https://www.pinterest.com/"
                     >
                       <i className="fab fa-pinterest-p" />
                     </a>
@@ -323,11 +349,6 @@ export const ProductDetailPages = () => {
                           </ul>
                           {/* Size */}
                           <p className="mb-0">
-                            <img
-                              src="./img/icons/icon-ruler.svg"
-                              alt="..."
-                              className="img-fluid"
-                            />
                             <a
                               className="text-reset text-decoration-underline ml-3"
                               data-toggle="modal"
@@ -385,12 +406,12 @@ export const ProductDetailPages = () => {
                       {/* Caption */}
                       <p className="mb-0 text-gray-500">
                         May, life blessed night so creature likeness their, for.{" "}
-                        <a
+                        <Link
                           className="text-body text-decoration-underline"
-                          href="#!"
+                          to={PATH.ShippingAndReturns}
                         >
                           Find out more
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </div>
@@ -419,18 +440,18 @@ export const ProductDetailPages = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-120.jpg"
+                          src="/img/products/product-120.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-5.jpg"
+                          src="/img/products/product-5.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -456,15 +477,15 @@ export const ProductDetailPages = () => {
                     <div className="card-body px-0">
                       {/* Category */}
                       <div className="font-size-xs">
-                        <a className="text-muted" href="shop.html">
+                        <Link className="card-img-hover" to={PATH.Product}>
                           Shoes
-                        </a>
+                        </Link>
                       </div>
                       {/* Title */}
                       <div className="font-weight-bold">
-                        <a className="text-body" href="product.html">
+                        <Link className="card-img-hover" to={PATH.Product}>
                           Leather mid-heel Sandals
-                        </a>
+                        </Link>
                       </div>
                       {/* Price */}
                       <div className="font-weight-bold text-muted">$129.00</div>
@@ -477,18 +498,18 @@ export const ProductDetailPages = () => {
                     {/* Image */}
                     <div className="card-img">
                       {/* Image */}
-                      <a className="card-img-hover" href="product.html">
+                      <Link className="card-img-hover" to={PATH.Product}>
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-121.jpg"
+                          src="/img/products/product-121.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-6.jpg"
+                          src="/img/products/product-6.jpg"
                           alt="..."
                         />
-                      </a>
+                      </Link>
                       {/* Actions */}
                       <div className="card-actions">
                         <span className="card-action"></span>
@@ -542,12 +563,12 @@ export const ProductDetailPages = () => {
                       <a className="card-img-hover" href="product.html">
                         <img
                           className="card-img-top card-img-back"
-                          src="./img/products/product-122.jpg"
+                          src="/img/products/product-122.jpg"
                           alt="..."
                         />
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-7.jpg"
+                          src="/img/products/product-7.jpg"
                           alt="..."
                         />
                       </a>
@@ -605,7 +626,7 @@ export const ProductDetailPages = () => {
                       <a href="#!">
                         <img
                           className="card-img-top card-img-front"
-                          src="./img/products/product-8.jpg"
+                          src="/img/products/product-8.jpg"
                           alt="..."
                         />
                       </a>
