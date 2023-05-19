@@ -103,7 +103,8 @@ export const Profile = () => {
         updateProfileService({
           ...userForm.values,
           avatar,
-        })
+        }
+        )
           .then((res) => {
             console.log(res.data);
             dispatch(setUserAction(res.data));
