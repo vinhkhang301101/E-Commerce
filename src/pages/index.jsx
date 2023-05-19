@@ -299,7 +299,7 @@ export const Home = () => {
         </div>
       </section>
       {/* TOP SELLERS */}
-      {/* <section className="py-12">
+      <section className="py-12">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 col-xl-6">
@@ -744,10 +744,10 @@ export const Home = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       {/* COUNTDOWN */}
       <section
-        className="py-13 bg-cover mt-13"
+        className="py-13 bg-cover"
         style={{ backgroundImage: "url(/img/covers/cover-4.jpg)" }}
       >
         <div className="container">

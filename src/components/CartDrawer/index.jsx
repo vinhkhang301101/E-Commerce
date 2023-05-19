@@ -45,7 +45,7 @@ export const CartDrawer = ({ open, onClose }) => {
             {/* Footer */}
             <div className="modal-footer line-height-fixed font-size-sm bg-light mt-auto">
               <strong>Subtotal</strong>
-              <strong className="ml-auto">{currency(cart?.subTotal)}</strong>
+              <strong className="ml-auto">{currency(cart?.subTotal)} VND</strong>
             </div>
             {/* Buttons */}
             <div className="modal-body">

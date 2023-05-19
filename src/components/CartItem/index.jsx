@@ -25,6 +25,7 @@ export const CartItem = ({ footer, hideAction, allowSelect, productId, product, 
       setQuantity(quantity);
     }
   }, [quantity]);
+  
   const onChangeQuantityCurry = (val) => () => {
     if (val === 0) {
       dispatch(removeCartItemAction(productId));
@@ -68,7 +69,7 @@ export const CartItem = ({ footer, hideAction, allowSelect, productId, product, 
               <Checkbox checked={selected} onChange={onSelectCartItem} />
             )}
             {/* Image */}
-            <Link onClick={() => setOpenCartDrawer(false)} to={`/${slug}`}>
+            <Link onClick={() => setOpenCartDrawer(false)} to={PATH.Product}>
               <img
                 className="img-fluid"
                 src={product.thumbnail_url}

@@ -20,6 +20,13 @@ export const ProductDetailPages = () => {
   const { cart } = useCart();
   const { user } = useAuthRedux();
   const dispatch = useDispatch();
+  const { listItems } = cart;
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate(PATH.Account);
+  //   }
+  // }, []);
 
   const [openImageModal, setOpenImageModal] = useState(false);
 
@@ -33,7 +40,7 @@ export const ProductDetailPages = () => {
   });
 
   const category = useCategory(detail?.data?.categories);
-  console.log(category);
+  // console.log(category);
 
   if (loading) return null;
 
@@ -65,15 +72,15 @@ export const ProductDetailPages = () => {
 
   const onAddCartItem = () => {
     if (user) {
-      const { listItems } = cart;
-      const product = listItems.find((e) => e.product.id === id);
+      const cartItem = listItems.find((e) => e.productId === product.id);
       dispatch(
         updateCartItemAction({
-          productId: id,
-          quantity: product ? product.quantity + 1 : 1,
+          productId: product.id,
+          quantity: cartItem ? cartItem.quantity + 1 : 1,
           showPopover: true,
         })
       );
+
     } else {
       navigate(PATH.Account);
     }
@@ -242,7 +249,7 @@ export const ProductDetailPages = () => {
         </div>
       </section>
       {/* DESCRIPTION */}
-      <section className="pt-11">
+      <section>
         <div className="container">
           <div className="row">
             <div className="col-12">

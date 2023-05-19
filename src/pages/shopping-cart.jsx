@@ -118,7 +118,6 @@ export const ViewCart = () => {
                             </div>
                           )}
                         />
-
                       </div>
                     </div>
                   </div>
@@ -151,7 +150,7 @@ export const ViewCart = () => {
                           <li className="list-group-item d-flex font-size-lg font-weight-bold">
                             <span>Total</span>
                             <span className="ml-auto font-size-sm">
-                              {currency(preCheckoutResponse?.total)}
+                              {currency(preCheckoutResponse?.total)} VND
                             </span>
                           </li>
                         </ul>

@@ -47,8 +47,8 @@ export function* fetchUser() {
 }
 
 export function* setUserSaga(action) {
-  setUser(action.payload)
-  yield put(authActions.setUser(user))
+  setUser(action.payload);
+  yield put(authActions.setUser(user.data));
 }
 
 export function* fetchLoginByCode() {

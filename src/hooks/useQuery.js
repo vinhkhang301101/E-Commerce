@@ -1,7 +1,7 @@
+import { delay } from "@/utils";
 import { localStorageCache, sessionStorageCache } from "@/utils/cache";
 import { CanceledError } from "axios";
 import { useEffect, useRef, useState } from "react";
-import {delay} from "@/utils/delay"
 
 const _cache = {
   localStorage: localStorageCache,
@@ -112,7 +112,7 @@ export const useQuery = ({
         res = await res;
       }
 
-      if(res) {
+      if (res) {
         res = await res;
       }
 

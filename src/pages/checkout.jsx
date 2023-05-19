@@ -199,7 +199,7 @@ export const Checkout = () => {
                       className="custom-control-label font-size-sm text-body text-nowrap"
                       htmlFor="checkoutPaymentPaypal"
                     >
-                      Trả tiền khi nhận hàng
+                      Pay when you receive your order
                     </label>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export const Checkout = () => {
                       <li className="list-group-item d-flex font-size-lg font-weight-bold">
                         <span>Total</span>
                         <span className="ml-auto font-size-sm">
-                          {currency(preCheckoutResponse?.total)}
+                          {currency(preCheckoutResponse?.total)} VND
                         </span>
                       </li>
                     </ul>
@@ -279,7 +279,7 @@ export const Checkout = () => {
                 described in our privacy policy.
               </p>
               {/* Button */}
-              <Button style={{ width: "100%" }} onClick={onPlaceOrder} >
+              <Button style={{ width: "100%" }} onClick={onPlaceOrder}>
                 Place Order
               </Button>
             </div>

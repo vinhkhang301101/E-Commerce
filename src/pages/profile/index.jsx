@@ -105,6 +105,7 @@ export const Profile = () => {
           avatar,
         })
           .then((res) => {
+            console.log(res.data);
             dispatch(setUserAction(res.data));
             fileRef.current = null;
             message.success("Update profile success!");
@@ -117,7 +118,7 @@ export const Profile = () => {
           currentPassword: userForm.values.currentPassword,
           newPassword: userForm.values.newPassword,
         })
-          .then(res => {
+          .then((res) => {
             userForm.setValues({
               currentPassword: "",
               newPassword: "",
@@ -150,7 +151,6 @@ export const Profile = () => {
               </div>
             )}
           </UploadFile>
-
         </div>
         <div className="col-12">
           <Field

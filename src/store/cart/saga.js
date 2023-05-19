@@ -2,7 +2,13 @@ import { cartService } from "@/services/cart";
 import { getToken, handleError, setCart } from "@/utils";
 import { call, delay, put, race, select, take } from "redux-saga/effects";
 import { authActions } from "../auth";
-import { cartActions, getCartAction, removeCartItemAction, updateCartItemAction, updateItemQuantitySuccessAction } from ".";
+import {
+  cartActions,
+  getCartAction,
+  removeCartItemAction,
+  updateCartItemAction,
+  updateItemQuantitySuccessAction,
+} from ".";
 import { message } from "antd";
 
 export function* fetchCardItem(action) {
@@ -41,7 +47,7 @@ export function* fetchRemoveItem(action) {
         loading: true,
       })
     );
-    
+
     yield call(cartService.removeItem, action.payload);
     yield put(getCartAction());
     yield put(
@@ -51,7 +57,7 @@ export function* fetchRemoveItem(action) {
       })
     );
 
-    yield put(updateItemQuantitySuccessAction(action.payload))
+    yield put(updateItemQuantitySuccessAction(action.payload));
   } catch (err) {
     console.log(err);
   }
@@ -71,7 +77,9 @@ export function* fetchCart() {
 }
 export function* fetchSelectCartItem(action) {
   try {
-    let { cart: { preCheckoutData } } = yield select();
+    let {
+      cart: { preCheckoutData },
+    } = yield select();
     let { listItems } = preCheckoutData;
     listItems = [...listItems];
 
@@ -96,19 +104,21 @@ export function* fetchSelectCartItem(action) {
 
 export function* fetchPreCheckout(action) {
   try {
-    let { cart: { preCheckoutData } } = yield select()
+    let {
+      cart: { preCheckoutData },
+    } = yield select();
     if (action.type === updateItemQuantitySuccessAction.toString()) {
       let productId = action.payload;
       if (!preCheckoutData.listItems.find((e) => e === productId)) return;
     }
-    yield put(cartActions.togglePreCheckoutLoading(true))
+    yield put(cartActions.togglePreCheckoutLoading(true));
 
-    const res = yield call(cartService.preCheckout, preCheckoutData)
-    yield put(cartActions.setPreCheckoutResponse(res.data))
+    const res = yield call(cartService.preCheckout, preCheckoutData);
+    yield put(cartActions.setPreCheckoutResponse(res.data));
 
-    yield put(cartActions.togglePreCheckoutLoading(false))
-  } catch(err) {
-    handleError(err)
+    yield put(cartActions.togglePreCheckoutLoading(false));
+  } catch (err) {
+    handleError(err);
   }
 }
 
@@ -117,9 +127,9 @@ export function* fetchAddPromotion(action) {
     yield put(cartActions.togglePromotionLoading(true));
     yield call(cartService.getPromotion, action.payload.data);
     yield put(cartActions.togglePromotionCode(action.payload.data));
-    action.payload?.onSuccess?.()
+    action.payload?.onSuccess?.();
   } catch (err) {
-    action.payload?.onError?.(err)
+    action.payload?.onError?.(err);
   } finally {
     yield put(cartActions.togglePromotionLoading(false));
   }
@@ -127,7 +137,7 @@ export function* fetchAddPromotion(action) {
 
 export function* removePromotion(action) {
   yield put(cartActions.togglePromotionCode());
-  action?.payload?.onSuccess?.()
+  action?.payload?.onSuccess?.();
 }
 
 export function* clearCart() {
